@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-fix": "npx eslint . --fix",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.3",
