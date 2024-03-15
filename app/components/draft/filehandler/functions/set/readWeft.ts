@@ -1,4 +1,4 @@
-import { defaultDraftHeight, defaultTreadles, defaultWeftColor } from '@/app/constants/weaveDefaults'
+import { defaultDraftHeight, defaultTreadles, defaultWeftColor } from '@/app/resources/constants/weaveDefaults'
 
 import { createGrid, getHighest } from '../utils'
 

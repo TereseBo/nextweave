@@ -1,5 +1,5 @@
-import { defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/constants/weaveDefaults'
-import { resizeGrid } from '@/app/functions/resizeGrid'
+import { defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
+import { resizeGrid } from '@/app/resources/functions/resizeGrid'
 
 import { createGrid } from '../utils'
 import { readTieup } from './readTieup'

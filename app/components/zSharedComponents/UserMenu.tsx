@@ -1,3 +1,4 @@
+'use client'
 //Contains an optional nav-menu for signed in users, otherwise a link to sign in
 import './userMenu.scss'
 
@@ -11,7 +12,7 @@ export function UserMenu() {
     return (
         <div className='usermenu-container'>
             {isSignedIn ? <Link className="icon" href={'/profile'}>Profile</Link> : <Link className="icon" href="/sign-in">Sign in</Link>}
-            < UserButton />
+            < UserButton afterSignOutUrl='/weaver'/>
         </div>
     )
 }

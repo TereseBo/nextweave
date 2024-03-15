@@ -2,8 +2,8 @@
 //dependencies
 import { createContext, useEffect, useState } from 'react'
 
-import { defaultColor, defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/constants/weaveDefaults'
-import { resizeGrid } from '@/app/functions/resizeGrid'
+import { defaultColor, defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
+import { resizeGrid } from '@/app/resources/functions/resizeGrid'
 
 //exports
 export const WeaveContext = createContext<WeaveContextType | null>(null)
@@ -32,13 +32,13 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
 
   //Keeps grids updated on preferences change 
   useEffect(() => {
-  
-        setWarpGrid((prevValue)=>{return resizeGrid(prevValue, shafts, draftWidth)})
-        setTreadleGrid((prevValue)=>{ return resizeGrid(prevValue,draftHeight, treadles)})
-        setTieUpGrid((prevValue)=>{return resizeGrid(prevValue,shafts, treadles)}) 
+
+    setWarpGrid((prevValue) => { return resizeGrid(prevValue, shafts, draftWidth) })
+    setTreadleGrid((prevValue) => { return resizeGrid(prevValue, draftHeight, treadles) })
+    setTieUpGrid((prevValue) => { return resizeGrid(prevValue, shafts, treadles) })
 
   }, [shafts, draftHeight, draftWidth, treadles])
-  
+
 
   function initiateGrids() {
     if (!warpGrid) setWarpGrid(new Array(shafts).fill(new Array(draftWidth).fill('', 0)))

@@ -5,7 +5,7 @@ import './colorpicker.scss'
 import { useContext } from 'react'
 
 import { Colorinput } from '@/app/components/zSharedComponents/Colorinput'
-import { WeaveContext } from '@/app/contexts/weavecontext'
+import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { PreviousColor } from './Previouscolor'
 
@@ -13,14 +13,14 @@ export function ColorPicker({ }) {
     const { weftColors, warpColors, currentColor, setCurrentColor, colorChange } = useContext(WeaveContext) as WeaveContextType
 
     //Sets the active color
-    function updateCurrentColor(e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLInputElement>):void {
+    function updateCurrentColor(e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLInputElement>): void {
         let target = e.target as HTMLInputElement
         const value = target.value
         setCurrentColor(value)
     }
 
     //Replaces all instances of a color in the warp with a new value
-    function updateWarpColor(e: React.ChangeEvent<HTMLInputElement>):void {
+    function updateWarpColor(e: React.ChangeEvent<HTMLInputElement>): void {
         let target = e.target as HTMLInputElement
         const value = target.value
         console.log(target.id)
@@ -28,7 +28,7 @@ export function ColorPicker({ }) {
         colorChange(colorInputId, value)
     }
     //Replaces all instances of a color in the weft with a new value
-    function updateWeftColor(e: React.ChangeEvent<HTMLInputElement>):void {
+    function updateWeftColor(e: React.ChangeEvent<HTMLInputElement>): void {
         let target = e.target as HTMLInputElement
         const value = target.value
         const colorInputId = target.id
@@ -50,14 +50,14 @@ export function ColorPicker({ }) {
                             <h3>Current <br />color</h3>
                             <Colorinput id="current-color" label="" value={currentColor} changehandler={updateCurrentColor} clickhandler={undefined} />
                         </div>
-                        
+
                         <div className="color-box" >
                             <h3>Colors in <br />draft</h3>
                             <div id="previous-colors">
-                                {(warpColors.length > 0) &&(
-                                <PreviousColor header='Warp' clickhandler={updateCurrentColor} changehandler={updateWarpColor} content={warpColors} />)}
-                                {(weftColors.length > 0) &&(
-                                <PreviousColor header='Weft' clickhandler={updateCurrentColor} changehandler={updateWeftColor} content={weftColors} />)}
+                                {(warpColors.length > 0) && (
+                                    <PreviousColor header='Warp' clickhandler={updateCurrentColor} changehandler={updateWarpColor} content={warpColors} />)}
+                                {(weftColors.length > 0) && (
+                                    <PreviousColor header='Weft' clickhandler={updateCurrentColor} changehandler={updateWeftColor} content={weftColors} />)}
                             </div>
                         </div>
                     </div>
