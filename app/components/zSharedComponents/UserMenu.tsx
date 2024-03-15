@@ -2,15 +2,15 @@
 import './userMenu.scss'
 
 import { UserButton } from '@clerk/nextjs';
-import { auth } from '@clerk/nextjs';
+import { useAuth } from '@clerk/nextjs';
 import Link from 'next/link'
 
 export function UserMenu() {
-    const { userId } = auth();
+    const { isSignedIn, userId } = useAuth();
 
     return (
         <div className='usermenu-container'>
-            {userId ? <Link className="icon" href={`/${userId}`}>Profile</Link> : <Link className="icon" href="/sign-in">Sign in</Link>}
+            {isSignedIn ? <Link className="icon" href={'/profile'}>Profile</Link> : <Link className="icon" href="/sign-in">Sign in</Link>}
             < UserButton />
         </div>
     )
