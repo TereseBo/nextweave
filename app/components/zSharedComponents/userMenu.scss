@@ -1,0 +1,21 @@
+@use '@/app/resources/style/variables.scss' as v;
+
+.usermenu-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+a.icon {
+    padding: 0.1rem !important;
+    background-color: v.$base-color !important;
+    color: v.$accent-color1 !important;
+    border: 1px solid v.$accent-color1 !important;
+    font-size: 0.8rem !important;
+
+    &:hover {
+        background-color: v.$accent-color2 !important;;
+        border: none !important;
+    }
+
+}

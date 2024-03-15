@@ -1,4 +1,4 @@
-import { defaultColor } from '@/app/constants/weaveDefaults'
+import { defaultColor } from '@/app/resources/constants/weaveDefaults'
 
 export function readTieup(tieupGrid: grid, pattern: [number[]]) {
 

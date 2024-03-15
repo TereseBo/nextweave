@@ -1,4 +1,4 @@
-import { defaultDraftWidth, defaultShafts, defaultWarpColor } from '@/app/constants/weaveDefaults'
+import { defaultDraftWidth, defaultShafts, defaultWarpColor } from '@/app/resources/constants/weaveDefaults'
 
 import { createGrid } from '../utils'
 

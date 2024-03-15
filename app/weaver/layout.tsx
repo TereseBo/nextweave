@@ -1,10 +1,10 @@
 'use client'
-import { WeaveProviderWrapper } from '@/app/contexts/WeaveProviderWrapper'
+import { WeaveProviderWrapper } from '@/app/resources/contexts/WeaveProviderWrapper'
 
 export default function WeaverBaseLayout({
     children,
 }: {
-    children:  React.ReactElement 
+    children: React.ReactElement
 }) {
     return (
         <>

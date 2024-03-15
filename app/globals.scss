@@ -1,0 +1,87 @@
+@use '@/app/resources/style/mixins.scss' as m;
+@use '@/app/resources/style/variables.scss' as v;
+
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  background-color: v.$base-color;
+  color: v.$accent-color1;
+  @include m.baseText;
+
+
+  a,
+  button {
+    @include m.buttonOrlink;
+
+  }
+
+  form {
+    @include m.text-area;
+    @include m.flexColumn;
+    box-sizing: border-box;
+    padding: 1.5rem;
+
+    gap: 1rem;
+    margin: 1rem;
+
+    label {
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    input {
+      margin: 0 0.2rem 0 0.2rem;
+      padding: 0.2rem 0.2rem 0 0.2rem;
+      background-color: v.$secondary-color;
+      @include m.underline-input;
+
+      &:focus {
+        outline: none;
+        background-color: v.$base-color;
+        border-radius: 1.5px 1.5px 0 0;
+      }
+
+      /*Spinbutton removal Chrome*/
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Spinbutton removal Firefox */
+      &[type=number] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+      &.notMatching{
+        background-color: rgb(241, 165, 165);
+        border-radius: 3px;
+    }
+    }
+
+    .form-header {
+      @include m.form-header;
+      @include m.flexColumn;
+      margin: 0 0 1rem 0;
+
+    }
+  }
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

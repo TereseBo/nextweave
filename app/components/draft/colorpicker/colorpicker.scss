@@ -1,13 +1,12 @@
-@use '../../../style/mixins.scss' as m;
-@use '../../../style/variables.scss' as v;
-
+@use '@/app/resources/style/mixins.scss' as m;
+@use '@/app/resources/style/variables.scss' as v;
 
 .form-container {
-   
-        position: sticky;
-        top: 50px;
-    
-    
+
+    position: sticky;
+    top: 50px;
+
+
     display: flex;
     flex-direction: column;
 
@@ -15,10 +14,10 @@
         font-size: 0.8rem;
     }
 
-     h3 {
+    h3 {
         margin: 0 0 0.3rem 0;
         padding: 0;
-    } 
+    }
 
     #colorpick-form {
 
@@ -56,7 +55,7 @@
                 #previous-colors {
                     display: flex;
                     justify-content: center;
-                    gap:0.5rem;
+                    gap: 0.5rem;
                 }
             }
         }

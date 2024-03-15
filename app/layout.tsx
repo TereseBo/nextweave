@@ -1,17 +1,8 @@
 import {
   ClerkProvider,
-  OrganizationSwitcher,
-  SignedIn,
-  UserButton,
 } from "@clerk/nextjs";
-import "./globals.css";
+import "./globals.scss";
 import { Inter } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
-import Script from "next/script";
-import { Docs, Github, Times } from "./icons";
-import { Twitter } from "./icons";
-import { Discord } from "./icons";
 import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });

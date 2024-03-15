@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import { WeaveContext } from '@/app/contexts/weavecontext'
+import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { createWeaveObject } from './functions/get/createWeaveObject'
 

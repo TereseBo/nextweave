@@ -6,7 +6,7 @@ import './grid.scss';
 import { ReactElement, useContext } from 'react'
 
 import { Row } from '@/app/components/draft/draft/Row'
-import { WeaveContext } from '@/app/contexts/weavecontext'
+import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { CellProps } from './Cell'
 

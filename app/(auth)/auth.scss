@@ -1,0 +1,40 @@
+@use '@/app/resources/style/mixins.scss' as m;
+
+#auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap:1rem;
+
+    button,
+    a {
+        @include m.buttonOrlink;
+    }
+
+    img {
+        border: 2px solid white;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    div {
+        &.cl-internal-b3fm6y {
+            background-color: aliceblue;
+            color:black;
+        }
+
+        &.cl-footer {
+            display: flex;
+            justify-content: center;
+
+            span {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+    }
+}
