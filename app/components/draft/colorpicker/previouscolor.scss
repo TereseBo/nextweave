@@ -1,0 +1,23 @@
+.previous-color {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    gap: 0.5rem;
+
+    label {
+        display: none;
+    }
+
+    input {
+        &[type=color] {
+            width: 1.5rem;
+            height: 1.5rem;
+            padding: 0;
+            border: 0;
+            margin: -0.3rem;
+            box-sizing: border-box;
+            background-color: inherit;
+        }
+    }
+}

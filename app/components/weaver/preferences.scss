@@ -1,0 +1,52 @@
+@use '../../style/mixins.scss' as m;
+@use '../../style/variables.scss' as v;
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+
+    #preferences-form {
+        
+        @include m.flexColumn;
+        margin: auto;
+        
+        h5 {
+            margin: 0;
+            padding: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        div {
+            width: 100%;
+            box-sizing: border-box;
+            @include m.flexRow;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        label {
+            box-sizing: border-box;
+            text-align: end;
+
+        }
+
+        input {
+            width: 6ex;
+            border-width: 1px;
+            border-color: rgb(124, 119, 119);
+            border-style: none none solid none;
+            text-align: center;
+
+            &[type=submit] {
+                margin-top: 0.5rem;
+                @include m.buttonOrlink;
+                width: 50%;
+            }
+        }
+
+    }
+
+}
