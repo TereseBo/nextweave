@@ -1,4 +1,4 @@
-import { calculateNewWarpLength } from '@/components/calculator/functions/warplength'
+import { calculateNewWarpLength } from '@/app/components/calculator/functions/warplength'
 
 describe('Basic calculations on warp width return expected result', () => {
     const testItems = [
