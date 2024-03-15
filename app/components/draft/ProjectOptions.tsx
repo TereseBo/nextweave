@@ -4,14 +4,14 @@ import './ProjectOptions.scss'
 import { useState } from 'react'
 import { useContext, useEffect, useRef } from 'react'
 
+import { Warpwidthform } from '@/app/components/calculator/Warpwidthform'
+import { SecondaryMenu } from '@/app/components/zSharedComponents/SecondaryMeny'
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
 
 import { Downloadweave } from './filehandler/Downloadweave'
 import { Uploadweave } from './filehandler/Uploadweave'
 import { Yarnlist } from './forms/Yarnlist'
-import { Warpwidthform } from '@/app/components/calculator/Warpwidthform'
-import { SecondaryMenu } from '@/app/components/zSharedComponents/SecondaryMeny'
 
 export function ProjectOptions() {
     //State controls if yarnlist and warpeidth form are to be seen in the draftpage
