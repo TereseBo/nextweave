@@ -1,0 +1,25 @@
+.formsection {
+    display: flex;
+    width: 100%;
+
+    .sectionheader{
+        margin: 0;
+        padding: 0;
+        min-width: 100px;
+        text-align: end;
+        margin-right: 1rem;
+        white-space: nowrap
+
+    }
+
+    .sectionlabel, .unit{
+        margin: 0;
+        white-space: nowrap;
+
+    }
+    
+    .sectioninput{
+        margin: 0 0.2rem 0 0.5rem;
+        text-align: center;
+    }
+}

@@ -1,0 +1,54 @@
+//Contains styling for printing the draft, mainly focusing on reducing the size of visible elements and removing backgroundcolor
+@media print {
+
+    html,
+    body {
+        background-color: transparent;
+
+        header {
+            display: none !important;
+        }
+
+        .draft {
+            padding: 1rem !important;
+        }
+
+        #options-container,
+        #colorpick-form {
+            display: none !important;
+            padding: 0;
+        }
+
+        .secondary-menu {
+            display: none !important;
+        }
+
+        form {
+            background-color: transparent !important;
+            margin: 0.5rem !important;
+            padding: 0.5rem !important;
+            font-size: 0.8rem !important;
+            gap: 0.5em !important;
+
+            h3 {
+                margin-bottom: 0.3rem !important;
+                font-size: 1rem !important;
+            }
+
+            input {
+                padding: 0 !important;
+                font-size: 0.8rem !important;
+                background-color: transparent !important;
+            }
+        }
+
+        .cell {
+            height: 0.7rem !important;
+            width: 0.7rem !important;
+        }
+
+        .row {
+            height: 0.7rem !important;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@use '../../style/mixins.scss' as m;
+@use '../../style/variables.scss' as v;
+
+#warplength-form{
+    input:not(#items, #total){
+        width: 2rem;
+    }
+    #total{
+        width: 3rem;
+    }
+    .item-data {
+        @include m.flexColumn;
+        margin: 0%;
+        border: v.$thin-border;
+        border-style: solid none none none;
+
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+    
+        h6 {
+            margin: 0;
+        }
+    
+        &:last-child {
+            border-bottom-style: solid;
+            
+        }
+    }
+}
