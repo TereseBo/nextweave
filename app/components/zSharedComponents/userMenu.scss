@@ -7,15 +7,15 @@
 }
 
 a.icon {
-    padding: 0.1rem;
-    background-color: v.$base-color;
-    color: v.$accent-color1;
-    border: 1px solid v.$accent-color1;
-    font-size: 0.8rem;
+    padding: 0.1rem !important;
+    background-color: v.$base-color !important;
+    color: v.$accent-color1 !important;
+    border: 1px solid v.$accent-color1 !important;
+    font-size: 0.8rem !important;
 
     &:hover {
-        color: v.$base-color;
-        border: none
+        background-color: v.$accent-color2 !important;;
+        border: none !important;
     }
 
 }
