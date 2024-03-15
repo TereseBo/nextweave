@@ -1,0 +1,61 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": [
+    "react",
+    "simple-import-sort"
+  ],
+  "ignorePatterns": ["/*.yml"],
+  "rules": {
+    // increase the severity of sortingrules so they are auto-fixable
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ]
+  },
+  "overrides": [
+    // override 'simple-import-sort' original-config
+    {
+      "files": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx"
+      ],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [ //Sorted: style, react, other externat imports, components, functions other internal imports
+              [
+                "^.+\\.?(scss)$"
+              ],
+              [
+                "^react",
+                "^@?\\w"
+              ],
+              [
+                "external"
+              ],
+              [
+                "^(@|components)(/.*|$)"
+              ],
+              [
+                "^(@|functions)(/.*|$)"
+              ],
+              [
+                "^\\./(?=.*/)(?!/?$)",
+                "^\\.(?!/?$)",
+                "^\\./?$"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
