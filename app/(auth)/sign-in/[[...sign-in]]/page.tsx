@@ -1,3 +1,4 @@
+import '@/app/(auth)/auth.scss'
 import { SignIn } from "@clerk/nextjs";
 
 export default function Page() {
