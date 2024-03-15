@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { Warpwidthform } from '@/components/calculator/Warpwidthform'
+import { Warpwidthform } from '@/app/components/calculator/Warpwidthform'
 
 import '@testing-library/jest-dom'
 //TODO: Add tests for formfunction

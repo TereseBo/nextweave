@@ -1,7 +1,7 @@
 //Contains tests of calculator page content
 import { render, screen } from '@testing-library/react'
 
-import { Warplengthform } from '@/components/calculator/Warplengthform'
+import { Warplengthform } from '@/app/components/calculator/Warplengthform'
 
 import '@testing-library/jest-dom'
 //TODO: Add tests for formfunction
