@@ -1,22 +1,36 @@
 
 //Route for actions on single weaves owned by a user
-import { Db } from 'mongodb';
-import { NextResponse } from 'next/server';
+import { auth } from '@clerk/nextjs'
+import { Db } from 'mongodb'
+import { NextResponse } from 'next/server'
 
 import { dbConnection } from '@/app/resources/db/mongodb'
 import { Draft } from '@/app/resources/types/dbdocuments'
 
-export async function GET(
-    req: Request,
+export async function GET() {
+    //Fetches one weave for the user
+    const { userId } = auth();
+    if (!userId) {
+        return new NextResponse('Unauthorized', { status: 401 });
+    }
 
-) {
     try {
+        const db = await dbConnection() as Db
+        let dbResponse = await db.collection('drafts').findOne({ userId: userId })
+        console.log(dbResponse)
 
-        return NextResponse.json('Reached route api/[user]/weaves/[tag]', { status: 200 });
+        if (!dbResponse) {
+            return new NextResponse('You have no saved weaves', { status: 204 });
+        }
+
+        let draft = dbResponse.weave
+
+        return NextResponse.json({ weaveObject: draft }, { status: 200 });
+
     } catch (error) {
-        console.log('api/filehandler', error);
+        console.log('api/draft/GET', error);
         return new NextResponse(
-            'Ooops, something went wrong when getting the route',
+            'Ooops, something went very wrong on the server',
             { status: 500 }
         );
     }
@@ -27,11 +41,17 @@ export async function POST(
     req: Request,
 
 ) {
+
+    const { userId } = auth();
+    if (!userId) {
+        return new NextResponse('Unauthorized', { status: 401 });
+    }
+
     try {
         const db = await dbConnection() as Db
         const body = await req.json();
-        const { weaveObject, user } = body.values
-        let newDocument: Draft = { userId: user, name: 'One', weave: weaveObject, created: Date.now(), updated: Date.now(), public: false }
+        const { weaveObject, name } = body.values
+        let newDocument: Draft = { userId, name, weave: weaveObject, created: Date.now(), updated: Date.now(), public: false }
         let dbResponse = await db.collection('drafts').insertOne(newDocument)
         console.log(dbResponse)
 

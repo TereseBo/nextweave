@@ -11,12 +11,18 @@ export function DbLoadWeave() {
     async function clickhandler() {
 
         try {
-            let response = await fetch('/api/weave')
+            let response = await fetch('/api/draft')
+            console.log(response)
+
+            if(response.status==200){
             const body = await response.json();
 
             const { weaveObject } = body
 
             upSetGrids(weaveObject)
+            }else{
+                throw new Error
+            }
 
         } catch (error) {
             console.log(error)
@@ -30,6 +36,8 @@ export function DbLoadWeave() {
         let newGrids = readWeaveObject(weaveObj)
 
         updateGrid('tieup', newGrids.tieupGrid)
+        updateGrid('warp', newGrids.warpGrid)
+        updateGrid('weft', newGrids.treadleGrid)
     }
 
 
