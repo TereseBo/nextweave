@@ -1,8 +1,17 @@
 import { getHighest } from '../utils'
 
-export function collectWarp(warp: grid) {
+export function collectWarp(warp: grid | undefined) {
 
-    // let shafts = {}
+    if (!warp) {
+        let shafts: ShaftDescription = {
+            count: null,
+            pattern: [],
+            pattern_repeat: null,
+            colors: []
+        }
+        return shafts
+    }
+
     let colorPatternTracker = 0;
     let pattern: number[] = [];
     let colors: ColorDescription[] = [];
@@ -40,11 +49,11 @@ export function collectWarp(warp: grid) {
         })
     }
 
-    colors.push({ color: previousColor || 'bob', threads: colorPatternTracker + 1 });
+    colors.push({ color: previousColor || '', threads: colorPatternTracker + 1 });
     colors.shift()
     let shafts: ShaftDescription = {
-        count: getHighest(pattern),//OK
-        pattern: pattern, //Pattern OK
+        count: getHighest(pattern),
+        pattern: pattern,
         pattern_repeat: null,
         colors: colors
     }

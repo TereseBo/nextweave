@@ -28,7 +28,7 @@ export function DbSaveWeave() {
             if (response.status == 201) {
                 console.log('sucsess', response)
             }
-        }
+        })
     }
 
     return (

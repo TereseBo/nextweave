@@ -1,6 +1,16 @@
 import { getHighest } from '../utils'
 
-export function collectWeft(weft: grid) {
+export function collectWeft(weft: grid | undefined) {
+
+    if(!weft){
+        let treadling: TreadlingDescription = {
+            count: null,
+            pattern: [],
+            pattern_repeat: null,
+            colors: []
+        }
+        return treadling
+    }
 
     let newColor: color = '';
     let colorPatternTracker = 0;
@@ -33,8 +43,8 @@ export function collectWeft(weft: grid) {
     colors.push({ color: previousColor || 'bob', threads: colorPatternTracker + 1 });
     colors.shift()
     let treadling: TreadlingDescription = {
-        count: getHighest(pattern), //OK
-        pattern: pattern, // Pattern ok
+        count: getHighest(pattern),
+        pattern: pattern,
         pattern_repeat: null,
         colors: colors
     }
