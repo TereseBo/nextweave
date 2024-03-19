@@ -1,15 +1,16 @@
 
 //Route for actions on single weaves owned by a user
-import { auth } from '@clerk/nextjs'
 import { Db } from 'mongodb'
 import { NextResponse } from 'next/server'
 
 import { dbConnection } from '@/app/resources/db/mongodb'
 import { Draft } from '@/app/resources/types/dbdocuments'
 
-export async function GET() {
+export async function GET(
+    req: Request,
+    { params }: { params: { userId: string } }) {
     //Fetches one weave for the user
-    const { userId } = auth();
+    const userId = params.userId
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
     }
@@ -39,13 +40,9 @@ export async function GET() {
 //Inserts a Draft in the draft collection
 export async function POST(
     req: Request,
-
+    { params }: { params: { userId: string } }
 ) {
-
-    const { userId } = auth();
-    if (!userId) {
-        return new NextResponse('Unauthorized', { status: 401 });
-    }
+    const userId = params.userId
 
     try {
         const db = await dbConnection() as Db

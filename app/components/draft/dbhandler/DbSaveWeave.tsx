@@ -1,6 +1,7 @@
 import './dbsaveweave.scss'
 
 import { useContext, useState } from 'react'
+import { useAuth } from '@clerk/nextjs'
 
 import { createWeaveObject } from '@/app/components/draft/filehandler/functions/get/createWeaveObject'
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
@@ -12,12 +13,14 @@ export function DbSaveWeave() {
     const [open, setIsOpen] = useState(false);
     const openForm = () => setIsOpen(true);
     const closeForm = () => setIsOpen(false);
+    const { userId } = useAuth()
 
     async function saveWeave() {
+
         const weaveObject = createWeaveObject(warpGrid, treadleGrid, tieUpGrid)
         console.log(weaveObject)
-        const body = { values: { weaveObject, user: 'Tess', name: 'Three' } }
-        fetch('/api/draft', {
+        const body = { values: { weaveObject, name: 'Three' } }
+        fetch(`/api/${userId}/draft`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +40,7 @@ export function DbSaveWeave() {
                 <label>Name your draft:</label><input type='text'></input>
                 <button type='button' onClick={saveWeave}>Save</button>
             </form>
-            <button className={open ? 'hidden': ''} type='button' onClick={saveWeave}  onMouseEnter={openForm}>Save</button>
+            <button className={open ? 'hidden' : ''} type='button' onClick={saveWeave} onMouseEnter={openForm}>Save</button>
         </>
     )
 
