@@ -4,7 +4,7 @@ import './draftpage.scss'
 
 import { ColorPicker } from '@/app/components/draft/colorpicker/Colorpicker'
 import { Draft } from '@/app/components/draft/draft/Draft'
-import { ProjectOptions } from '@/app/components/draft/ProjectOptions'
+import { ProjectOptions } from '@/app/components/draft/draftoptions/ProjectOptions'
 import { Header } from '@/app/components/zSharedComponents/Header'
 
 export default function DraftPage() {
