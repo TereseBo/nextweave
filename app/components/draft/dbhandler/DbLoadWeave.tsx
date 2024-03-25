@@ -1,5 +1,4 @@
 //Contains load button to collect from db
-import './dbloadweave.scss'
 
 import { useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
