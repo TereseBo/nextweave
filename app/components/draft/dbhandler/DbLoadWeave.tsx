@@ -1,4 +1,6 @@
 //Contains load button to collect from db
+import './dbloadweave.scss'
+
 import { useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 
@@ -27,7 +29,7 @@ export function DbLoadWeave() {
                 const body = await response.json();
                 const { draftList } = body
                 setUserDrafts(draftList)
-               // setIsLoading(false)
+                // setIsLoading(false)
             } else {
                 //setIsLoading(false)
                 throw new Error
@@ -41,10 +43,12 @@ export function DbLoadWeave() {
 
     return (
         <>
-            <div >
-                {visibleDraftList ? <DraftSelection userDrafts={userDrafts} /> : null}
-                {isLoading ? 'Loading drafts' : null}
-            </div>
+
+
+            {visibleDraftList ? <DraftSelection userDrafts={userDrafts} /> : null}
+            {isLoading ? 'Loading drafts' : null}
+
+
             <button id="uploadButton" onClick={collectUserWeaves}>Load
             </button>
         </>

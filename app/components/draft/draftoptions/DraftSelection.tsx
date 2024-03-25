@@ -1,3 +1,5 @@
+import './draftselection.scss'
+
 import { useContext, useEffect, useState } from 'react'
 
 import { DraftPreview } from '@/app/components/draft/dbhandler/DraftPreview'
@@ -35,28 +37,34 @@ export function DraftSelection(params: { userDrafts: DraftList }) {
     }
 
     return (
-        userDrafts.length > 0 ?
-            <div id='draftcontainer'>
-                {userDrafts.map(draft => {
+        <div id='draftselection-container-container'>
+            {userDrafts.length > 0 ?
 
-                    if (!draft) return (<div key={Math.random()}>Hopsan</div>)
-                    else {
+                <div id='draftselection-container'>
+                    {userDrafts.map(draft => {
 
-                        return (<div key={draft._id} id={draft._id}>
-                            <DraftPreview weaveObj={draft?.weave} />
-                            <div>
-                                <span>Treadles:</span>{draft?.weave.treadling?.count || '-'}
-                                <span>Shafts:</span>{draft?.weave.shafts?.count || '-'}
-                                <span>Modified:</span>{draft?.updated}
-                            </div>
-                        </div>)
+                        if (!draft) return (<div key={Math.random()}>Hopsan</div>)
+                        else {
+
+                            return (<div key={draft._id} id={draft._id} className='draft-select-option'>
+                                <div className='bob'>
+                                    <DraftPreview weaveObj={draft?.weave} />
+                                    <div className='draft-info-container'>
+                                        <p> Treadles:<span>{draft?.weave.treadling?.count || '-'}</span></p>
+                                        <p>  Shafts:<span>{draft?.weave.shafts?.count || '-'}</span></p>
+                                        <p className='date'>  {draft?.updated}</p>
+                                    </div>
+                                </div>
+                                
+                            </div>)
+                        }
                     }
-                }
-                )}
-            </div> :
-            <div>
-                <div>No drafts found</div>
-            </div>
+                    )}
+                </div> :
+                <div>
+                    <div>No drafts found</div>
+                </div>}
+        </div>
     )
 
 }
