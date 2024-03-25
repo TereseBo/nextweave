@@ -13,8 +13,8 @@ export function DraftSelection(params: { userDrafts: DraftList }) {
     const { userDrafts } = params
     const { updateGrid } = useContext(WeaveContext) as WeaveContextType
 
-    function loadDraft(e: React.ChangeEvent<HTMLInputElement>): void {
-        const chosenDraftId = e.target.id
+    function loadDraft(e: React.MouseEvent<HTMLElement>): void {
+        const chosenDraftId = e.currentTarget.id 
 
         const chosenDraft = userDrafts.find(draft => (draft?._id == chosenDraftId))
         const weaveObject = chosenDraft?.weave
@@ -46,7 +46,8 @@ export function DraftSelection(params: { userDrafts: DraftList }) {
                         if (!draft) return (<div key={Math.random()}>Hopsan</div>)
                         else {
 
-                            return (<div key={draft._id} id={draft._id} className='draft-select-option'>
+                            return (
+                            <div key={draft._id} id={draft._id} className='draft-select-option' onClick={loadDraft}>
                                 <div className='bob'>
                                     <DraftPreview weaveObj={draft?.weave} />
                                     <div className='draft-info-container'>
