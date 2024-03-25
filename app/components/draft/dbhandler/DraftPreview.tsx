@@ -14,17 +14,14 @@ export function DraftPreview(params:{weaveObj:WeaveObject}) {
 
   useEffect(() => {
     //Create grids for reading the weave¨
-    let treadles= weaveObj.treadling.count || 0
+
     let shafts= weaveObj.shafts.count || 0
     let newGrids = readWeaveObject(params.weaveObj)
 
     //Trim since preview cant contain the full width
     let shortTreadleGrid= newGrids.treadleGrid.slice(-11,-1)
-    console.log('short treadlegrid', shortTreadleGrid)
     let shortWarpGrid= newGrids.warpGrid.map(row=>{return row.slice(-11,-1)})
-    console.log('short warpgrid', shortWarpGrid)
     let tieUpGrid=newGrids.tieupGrid
-    console.log('TieUpGrid', tieUpGrid)
 
     //Returns the color if present for the beat
     function getWeftColor(y: number) {
