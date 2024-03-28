@@ -39,6 +39,7 @@ type WeaveContextType={
     colorChange:(previousColorId:string, previousColor:color)=>void,
     initiateGrids:()=>void,
     updateGrid:(name:gridName, newValue:grid)=>void,
+    upSetGrids:(weaveObj:WeaveObject)=>void,
 /*     resizeGrid:(gridName:string, width:number, height:number)=> void,
     updateGrid:(x:number, y:number, color:color)=> void, */
 /*     updateWarp:(width:number, height:number)=> void, 

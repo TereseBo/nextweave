@@ -2,9 +2,9 @@
 //dependencies
 import { createContext, useEffect, useState } from 'react'
 
+import { readWeaveObject } from '@/app/components/draft/filehandler/functions/set/readWeaveObject'
 import { defaultColor, defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
 import { resizeGrid } from '@/app/resources/functions/resizeGrid'
-
 //exports
 export const WeaveContext = createContext<WeaveContextType | null>(null)
 
@@ -113,6 +113,15 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
     }
   }
 
+  function upSetGrids(weaveObj: WeaveObject): void {
+
+    let newGrids = readWeaveObject(weaveObj)
+
+    updateGrid('tieup', newGrids.tieupGrid)
+    updateGrid('warp', newGrids.warpGrid)
+    updateGrid('weft', newGrids.treadleGrid)
+}
+
   //Changes content of grid-array depending on cell-id
   function updateCell(cellId: string) {
     //x and y specifies the x and y coordinates in the grid
@@ -166,7 +175,7 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
 
   return (
 
-    <WeaveContext.Provider value={{ updateGrid, setShafts, setTreadles, treadles, initiateGrids, draftHeight, draftWidth, treadleGrid, warpGrid, tieUpGrid, updateCell, shafts, warpColors, weftColors, currentColor, setCurrentColor, colorChange }}>
+    <WeaveContext.Provider value={{ updateGrid, setShafts, setTreadles, treadles, initiateGrids, draftHeight, draftWidth, treadleGrid, warpGrid, tieUpGrid, updateCell, shafts, warpColors, weftColors, currentColor, setCurrentColor, colorChange, upSetGrids }}>
       {children}
     </WeaveContext.Provider>
   )

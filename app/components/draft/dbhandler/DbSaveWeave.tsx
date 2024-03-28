@@ -28,6 +28,8 @@ export function DbSaveWeave() {
             console.log(response)
             if (response.status == 201) {
                 console.log('sucsess', response)
+            }else{
+            alert('Ops, the draft could not be saved')
             }
         })
     }

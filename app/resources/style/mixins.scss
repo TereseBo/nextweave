@@ -25,7 +25,7 @@
     padding: 0.5rem;
 
     &:hover {
-        background-color: rgb(118, 56, 141);
+        background-color: v.$accent-color2;
     }
 }
 
@@ -38,7 +38,7 @@
 @mixin underline-input {
     text-align: center;
     border-width: 1px;
-    border-color: rgb(124, 119, 119);
+    border-color: v.$tertiary-color;
     border-style: none none solid none;
 }
 
@@ -130,6 +130,10 @@
 
 @mixin rounded-corners {
     border-radius: 12px;
+}
+
+@mixin soft-corners {
+    border-radius: 2px;
 }
 
 @mixin text-box {
