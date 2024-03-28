@@ -33,5 +33,10 @@ interface Reed extends mongoDB.Document {
     unit: 'cm' | 'in',
     length: number
 }
+type rD1 = Omit<Draft, 'created'> & { created: string };
+type reformattedDraft = Omit<Draft, 'updated'> & { updated: string };
+type DraftList =    [reformattedDraft?]
 
-export type { Draft, Loom, Reed, User }
+
+
+export type { Draft, DraftList, Loom, Reed, reformattedDraft,User }
