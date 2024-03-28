@@ -1,4 +1,4 @@
-//This component contains the logic for calculating the weave
+//This component renders a 10x10 minidraft from a fullsize weaveobject
 import './draftpreview.scss';
 
 import { useEffect, useState } from 'react'
@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { Grid } from '@/app/components/draft/draft/Grid'
 import { readWeaveObject } from '@/app/components/draft/filehandler/functions/set/readWeaveObject'
 
-//TODO:STYLE
+
 export function DraftPreview(params:{weaveObj:WeaveObject}) {
   
     const [previewGrid, setPreviewGrid] = useState<grid>(new Array(10).fill(new Array(10).fill('', 0)))
@@ -14,7 +14,6 @@ export function DraftPreview(params:{weaveObj:WeaveObject}) {
 
   useEffect(() => {
     //Create grids for reading the weave¨
-
     let shafts= weaveObj.shafts.count || 0
     let newGrids = readWeaveObject(params.weaveObj)
 
@@ -73,8 +72,6 @@ export function DraftPreview(params:{weaveObj:WeaveObject}) {
     function fillPreviewGrid(emptyPreview: grid): grid {
       //Resize if needed
       let gridCopy = emptyPreview
-      console.log('copyGrid', gridCopy)
-
 
       gridCopy.forEach((row: color[], y: number) => {
         let weftColor = getWeftColor(y)
@@ -90,7 +87,6 @@ export function DraftPreview(params:{weaveObj:WeaveObject}) {
           } else {
 
             if (warpColor) {
-
               let treadleNr = shortTreadleGrid ? shortTreadleGrid[y].indexOf(weftColor) : undefined
               let shaftNr = getWarpedShaft(x)
 
@@ -112,7 +108,7 @@ export function DraftPreview(params:{weaveObj:WeaveObject}) {
     setPreviewGrid(prevValue => fillPreviewGrid(JSON.parse(JSON.stringify(prevValue))))
 
 
-  }, [params.weaveObj])
+  }, [params.weaveObj, weaveObj.shafts.count])
 
   return (
     <div className="preview-container">
