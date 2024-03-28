@@ -22,7 +22,9 @@
     color: v.$secondary-color;
     @include baseText;
     white-space: nowrap;
-    padding: 0.5rem;    &:hover {
+    padding: 0.5rem;
+
+    &:hover {
         background-color: rgb(118, 56, 141);
     }
 }
@@ -135,5 +137,29 @@
     @include rounded-corners;
     font-size: v.$threadspace;
 
+
+}
+
+@mixin scroll-basic {
+
+    /* width */
+    &::-webkit-scrollbar {
+        width: 0.5rem;     
+    }
+
+    /* track */
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+    }
+
+    /* slider */
+    &::-webkit-scrollbar-thumb {
+        @include rounded-corners();
+        background:  v.$accent-color2;
+
+        &:hover {
+            background: v.$accent-color1;
+        }
+    }
 
 }

@@ -8,6 +8,7 @@
 
     #draftselection-container {
         @include m.text-area;
+        @include m.scroll-basic;
 
         position: absolute;
         max-height: 30rem;
