@@ -1,9 +1,11 @@
-export default function Profile() {
-
-    //TODO:After implementing login, register and usercontent, reroute accordingly.
+//This is a placeholder for the profile page
+export default function ProfilePage() {
     return (
-      <main className={'main'}>
-        <p>You reached profilepage</p>
-      </main>
+        <>
+
+            <div>
+                Profile page, good job!
+            </div>
+        </>
     )
-  }
+}
