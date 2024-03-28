@@ -1,6 +1,6 @@
-import './dbsaveweave.scss'
+//This component saves a draft to the DB
 
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { useAuth } from '@clerk/nextjs'
 
 import { createWeaveObject } from '@/app/components/draft/filehandler/functions/get/createWeaveObject'
@@ -9,10 +9,8 @@ import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 export function DbSaveWeave() {
     const { treadleGrid, tieUpGrid, warpGrid } = useContext(WeaveContext) as WeaveContextType
 
+//TODO: Add validation to ensure empty draft is not saved
 
-    const [open, setIsOpen] = useState(false);
-    const openForm = () => setIsOpen(true);
-    const closeForm = () => setIsOpen(false);
     const { userId } = useAuth()
 
     async function saveWeave() {
@@ -36,11 +34,7 @@ export function DbSaveWeave() {
 
     return (
         <>
-            <form className={open ? 'openForm' : 'hidden'} onMouseLeave={closeForm} >
-                <label>Name your draft:</label><input type='text'></input>
-                <button type='button' onClick={saveWeave}>Save</button>
-            </form>
-            <button className={open ? 'hidden' : ''} type='button' onClick={saveWeave} onMouseEnter={openForm}>Save</button>
+            <button type='button' onClick={saveWeave} >Save</button>
         </>
     )
 
