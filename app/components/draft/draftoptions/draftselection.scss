@@ -1,0 +1,73 @@
+@use '@/app/resources/style/mixins.scss' as m;
+@use '@/app/resources/style/variables.scss' as v;
+
+#draftselection-container-container {
+    position: relative;
+    width: fit-content;
+
+    .spacer {
+        padding: 3rem 3rem 0rem 3rem;
+        background-color: transparent;
+        position: absolute;
+        bottom: 4rem;
+        right: 0px;
+        z-index: 1000;
+
+        #draftselection-container {
+            @include m.text-area;
+            @include m.scroll-basic;
+            @include m.soft-corners;
+
+
+
+            max-height: 30rem;
+            overflow: auto;
+
+
+            display: flex;
+            flex-direction: column;
+
+            .draft-select-option {
+                display: flex;
+                flex-direction: column;
+                padding: 0.5rem;
+
+                align-items: center;
+                border: v.$thin-border;
+
+                &:hover {
+                    background-color: v.$base-color;
+                    font-weight: 900 !important;
+
+                }
+
+                .bob {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    font-size: small;
+
+                    span {
+                        font-weight: 900;
+                    }
+
+                    .draft-info-container {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        gap: 0.5rem;
+
+                    }
+
+                }
+
+                .date {
+                    font-size: x-small;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,10 @@
-export function collectTieup(tieupGrid: grid) {
+export function collectTieup(tieupGrid: grid| undefined) {
+    
     let pattern: number[][] = []
+    
+    if(!tieupGrid){
+        return pattern
+    }
 
     tieupGrid.forEach(row => {
         let patternRow: number[] = []

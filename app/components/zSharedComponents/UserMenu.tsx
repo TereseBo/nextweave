@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 export function UserMenu() {
-    const { isSignedIn, userId } = useAuth()
+    const { isSignedIn } = useAuth()
     const pathname = usePathname()
     return (
         <div className='usermenu-container'>
