@@ -1,9 +1,10 @@
 //This component renders a 10x10 minidraft from a fullsize weaveobject
+'use client'
 import './draftpreview.scss';
 
 import { useEffect, useState } from 'react'
 
-import { Grid } from '@/app/components/draft/draft/Grid'
+import { PreviewGrid } from '@/app/components/zSharedComponents/PreviewGrid';
 import { readWeaveObject } from '@/app/components/draft/weaveObjHandler/set/readWeaveObject'
 
 
@@ -112,7 +113,7 @@ export function DraftPreview(params: { weaveObj: WeaveObject }) {
 
   return (
     <div className="preview-container">
-      <Grid content={previewGrid} type='preview' />
+      <PreviewGrid content={previewGrid} type='preview' />
     </div>
   )
 

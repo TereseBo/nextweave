@@ -1,13 +1,16 @@
 'use client'
+import './draftcard.scss'
+
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
 import { ReformattedDraft } from '@/app/resources/types/dbdocuments'
 
-export function DraftCard(params: { draft: ReformattedDraft }) {
+export function DraftCard(params: { draft: any}) {
     const { draft } = params
     return (
         <DisplayCard >
-            <div key={draft._id} id={draft._id} className='draft-select-option' >
+            
+            <div className='horizontal' >
                 <div className='bob'>
                     <DraftPreview weaveObj={draft?.weave} />
                     <div className='draft-info-container'>

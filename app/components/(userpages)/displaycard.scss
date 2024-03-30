@@ -2,10 +2,18 @@
 @use '@/app/resources/style/mixins.scss' as m;
 
 .card {
-    @include m.text-box;
+    @include m.text-area;
+    @include m.rounded-corners;
+    padding: v.$threadspace;
+    width: fit-content;
+
+    
+    
+    
 
     .vertical {
-        @include m.flexColumn
+        @include m.flexColumn;
+        //align-content:center;
     }
 
     .horizontal {
