@@ -1,0 +1,15 @@
+@use '@/app/resources/style/variables.scss' as v;
+@use '@/app/resources/style/mixins.scss' as m;
+
+.card {
+    @include m.text-box;
+
+    .vertical {
+        @include m.flexColumn
+    }
+
+    .horizontal {
+        @include m.flexRow
+    }
+
+}
