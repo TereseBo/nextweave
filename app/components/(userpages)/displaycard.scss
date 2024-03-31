@@ -4,16 +4,20 @@
 .card {
     @include m.text-area;
     @include m.rounded-corners;
+    align-items: center;
     padding: v.$threadspace;
     width: fit-content;
-
-    
-    
     
 
+    button{
+        @include m.small-button ;
+    }
+    
     .vertical {
         @include m.flexColumn;
-        //align-content:center;
+        margin: 0;
+        //align-items:center;
+        
     }
 
     .horizontal {

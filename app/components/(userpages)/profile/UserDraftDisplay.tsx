@@ -5,7 +5,7 @@ import { DraftCard } from '@/app/components/(userpages)/profile/DraftCard'
 import { UserContext } from '@/app/resources/contexts/usercontext'
 import { UserContextType } from '@/app/resources/types/contexts'
 import { DraftList } from '@/app/resources/types/dbdocuments'
-import { useAuth } from '@clerk/nextjs'
+//import { useAuth } from '@clerk/nextjs'
 
 
 export function UserDraftDisplay() {
@@ -15,7 +15,7 @@ export function UserDraftDisplay() {
 
 
 
-    const { userId } = useAuth()
+    //const { userId } = useAuth()
     const [userDrafts, setUserDrafts] = useState<DraftList>([])
 
 
@@ -23,7 +23,7 @@ export function UserDraftDisplay() {
     async function collectUserWeaves() {
         //Collects all the users weaves fron db
         try {
-            let response = await fetch(`/api/${userId}/drafts`)
+            let response = await fetch(`/api/user_2dii9L385rba2mMqfGHkO39xFDU/drafts`)
 
             if (response.status == 200) {
                 const body = await response.json();
