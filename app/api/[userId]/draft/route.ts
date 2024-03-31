@@ -21,7 +21,7 @@ export async function GET(
         console.log(dbResponse)
 
         if (!dbResponse) {
-            return new NextResponse('You have no saved weaves', { status: 204 });
+            return new NextResponse('You have no saved weaves', { status: 200 });
         }
 
         let draft = dbResponse.weave
@@ -57,6 +57,37 @@ export async function POST(
         console.log('api/[user]/weaves/[tag]', error);
         return new NextResponse(
             'Ooops, something went wrong when posting the weave',
+            { status: 500 }
+        );
+    }
+}
+
+export async function DELETE(
+    req: Request,
+    { params }: { params: { userId: string, id:string } }) {
+    //Fetches one weave for the user
+    const userId = params.userId
+    if (!userId) {
+        return new NextResponse('Unauthorized', { status: 401 });
+    }
+
+    try {
+        const db = await dbConnection() as Db
+        let dbResponse = await db.collection('drafts').findOne({ userId: userId })
+        console.log(dbResponse)
+
+        if (!dbResponse) {
+            return new NextResponse('You have no saved weaves', { status: 200 });
+        }
+
+        let draft = dbResponse.weave
+
+        return NextResponse.json({ weaveObject: draft }, { status: 200 });
+
+    } catch (error) {
+        console.log('api/draft/GET', error);
+        return new NextResponse(
+            'Ooops, something went very wrong on the server',
             { status: 500 }
         );
     }

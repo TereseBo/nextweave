@@ -1,24 +1,15 @@
 'use client'
 import './userdraftdisplay.scss'
-import { useContext, useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { DraftCard } from '@/app/components/(userpages)/profile/DraftCard'
-import { UserContext } from '@/app/resources/contexts/usercontext'
-import { UserContextType } from '@/app/resources/types/contexts'
 import { DraftList } from '@/app/resources/types/dbdocuments'
 //import { useAuth } from '@clerk/nextjs'
 
 
 export function UserDraftDisplay() {
     //const [userId, setUserId]=useState()
-
-
-
-
-
     //const { userId } = useAuth()
     const [userDrafts, setUserDrafts] = useState<DraftList>([])
-
-
 
     async function collectUserWeaves() {
         //Collects all the users weaves fron db

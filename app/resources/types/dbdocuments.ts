@@ -4,7 +4,6 @@ import * as mongoDB from 'mongodb'
 interface Draft extends mongoDB.Document {
     _id?: ObjectId,
     userId: string,
-    name: string,
     weave: WeaveObject,
     created: number,
     updated: number,
@@ -28,12 +27,12 @@ interface Reed extends mongoDB.Document {
     length: number
 }
 type rD1 = Omit<Draft, 'created'> & { created: string };
-type reformattedDraft = Omit<Draft, 'updated'> & { updated: string };
+type ReformattedDraft = Omit<Draft, 'updated'> & { updated: string };
 
-type DraftList =    [reformattedDraft?]
+type DraftList =    [ReformattedDraft?]
 type LoomList=[Loom]
 type ReedList=[Reed]
 
 
 
-export type { Draft, DraftList, Loom, LoomList, Reed, ReedList, reformattedDraft }
+export type { Draft, DraftList, Loom, LoomList, Reed, ReedList, ReformattedDraft }
