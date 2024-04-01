@@ -1,5 +1,4 @@
 'use client'
-import { WeaveProviderWrapper } from '@/app/resources/contexts/WeaveProviderWrapper'
 
 export default function WeaverBaseLayout({
     children,
@@ -8,7 +7,7 @@ export default function WeaverBaseLayout({
 }) {
     return (
         <>
-            <main>  <WeaveProviderWrapper>{children}</WeaveProviderWrapper></main>
+            <main>  {children}</main>
             <footer></footer>
         </>
 

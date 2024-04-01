@@ -5,13 +5,13 @@ import {
 } from '@clerk/nextjs';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-
+import { WeaveProviderWrapper } from './resources/contexts/WeaveProviderWrapper';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Next.js Clerk Template',
+  title: 'newWeaver',
   description:
-    'A simple and powerful Next.js template featuring authentication and user management powered by Clerk.',
+    'A simple tool for generating weaveing drafts',
   openGraph: { images: ['/og.png'] },
 };
 
@@ -24,9 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <ClerkProvider>
         <body className={`${inter.className} min-h-screen flex flex-col`}>
-
+        <WeaveProviderWrapper>
           <main className="grow">{children}</main>
-          
+          </WeaveProviderWrapper>
         </body>
       </ClerkProvider>
 
