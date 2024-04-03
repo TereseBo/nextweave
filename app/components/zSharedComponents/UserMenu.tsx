@@ -10,8 +10,7 @@ import { usePathname } from 'next/navigation'
 export function UserMenu() {
     const { isSignedIn } = useAuth()
     const pathname = usePathname()
-    //TODO:Readd profile button when page has been implemented
-    {/* <Link className="icon" href={'/profile'}>Profile</Link> */}
+
     return (
         <div className='usermenu-container'>
             
