@@ -1,8 +1,11 @@
 'use client'
 import './editdraftform.scss'
+
 import {useState} from 'react'
+
 import { ColorPicker } from '@/app/components/draft/colorpicker/Colorpicker'
 import { Draft } from '@/app/components/draft/draft/Draft'
+
 import { DraftHeader } from './DraftHeader'
 export function EditDraftForm(params:{resource:any}){
 

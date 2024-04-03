@@ -1,6 +1,8 @@
 'use client'
 import './userdraftdisplay.scss'
+
 import {  useState } from 'react'
+
 import { DraftCard } from '@/app/components/(userpages)/profile/DraftCard'
 import { DraftList } from '@/app/resources/types/dbdocuments'
 //import { useAuth } from '@clerk/nextjs'
@@ -14,7 +16,7 @@ export function UserDraftDisplay() {
     async function collectUserWeaves() {
         //Collects all the users weaves fron db
         try {
-            let response = await fetch(`/api/user_2dii9L385rba2mMqfGHkO39xFDU/drafts`)
+            let response = await fetch('/api/user_2dii9L385rba2mMqfGHkO39xFDU/drafts')
 
             if (response.status == 200) {
                 const body = await response.json();

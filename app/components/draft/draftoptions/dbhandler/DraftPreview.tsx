@@ -4,8 +4,8 @@ import './draftpreview.scss';
 
 import { useEffect, useState } from 'react'
 
-import { PreviewGrid } from '@/app/components/zSharedComponents/PreviewGrid';
 import { readWeaveObject } from '@/app/components/draft/weaveObjHandler/set/readWeaveObject'
+import { PreviewGrid } from '@/app/components/zSharedComponents/PreviewGrid';
 
 
 export function DraftPreview(params: { weaveObj: WeaveObject }) {

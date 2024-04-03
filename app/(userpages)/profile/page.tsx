@@ -1,7 +1,8 @@
 //This is a placeholder for the profile page
-import { EditDraftForm } from "@/app/components/(userpages)/EditDraftForm"
-import { UserDraftDisplay } from "@/app/components/(userpages)/profile/UserDraftDisplay"
-import { ObjectId } from "mongodb"
+import { ObjectId } from 'mongodb'
+
+import { EditDraftForm } from '@/app/components/(userpages)/EditDraftForm'
+import { UserDraftDisplay } from '@/app/components/(userpages)/profile/UserDraftDisplay'
 const testDraft = {
     _id: '660962082a3f5f2ded609f35',
     userId: 'user_2dii9L385rba2mMqfGHkO39xFDU',

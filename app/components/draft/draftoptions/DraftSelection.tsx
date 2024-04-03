@@ -5,8 +5,8 @@ import { useContext } from 'react'
 
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
-import { DraftList } from '@/app/resources/types/dbdocuments'
 import { WeaveContextType } from '@/app/resources/types/contexts'
+import { DraftList } from '@/app/resources/types/dbdocuments'
 export function DraftSelection(params: { userDrafts: DraftList, setVisibility: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const { userDrafts, setVisibility } = params

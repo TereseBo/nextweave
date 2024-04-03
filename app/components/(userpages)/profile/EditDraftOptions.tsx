@@ -1,4 +1,4 @@
-import { DraftHeader } from "../DraftHeader";
+import { DraftHeader } from '../DraftHeader';
 
 
 export function EditDraftOptions(){

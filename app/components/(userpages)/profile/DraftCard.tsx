@@ -1,6 +1,8 @@
 'use client'
 import './draftcard.scss'
+
 import {useState} from 'react'
+
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
 

@@ -5,6 +5,7 @@ import {
 } from '@clerk/nextjs';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+
 import { WeaveProviderWrapper } from './resources/contexts/WeaveProviderWrapper';
 const inter = Inter({ subsets: ['latin'] });
 
