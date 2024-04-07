@@ -1,23 +1,19 @@
+//This component renders a draft which can de edited. It's visibility is toggled by props
 'use client'
 import './editdraftform.scss'
-
-import {useState} from 'react'
 
 import { ColorPicker } from '@/app/components/draft/colorpicker/Colorpicker'
 import { Draft } from '@/app/components/draft/draft/Draft'
 
-import { DraftHeader } from './DraftHeader'
-export function EditDraftForm(params:{resource:any}){
+export function EditDraftForm(params: { resource: any, open: boolean }) {
 
-    //const [thing, setThing]=useState(params.resource)
-return(
-    <div className='edit-draft-container'>
-    <div className='edit-draft'>
-    <ColorPicker />
-    <DraftHeader text={`You are now editing draft ${'hrj'}`}/>
-    <Draft />
-    </div>
-    </div>
-)
+    return (
+        <div className={params.open ? 'edit-draft-container' : 'hidden'}>
+            <div className='edit-draft'>
+                <ColorPicker />
+                <Draft />
+            </div >
+        </div>
+    )
 
 }

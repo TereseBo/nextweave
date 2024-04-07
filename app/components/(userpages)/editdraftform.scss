@@ -1,25 +1,20 @@
-@use '@/app/resources/style/variables.scss' as v;
-@use '@/app/resources/style/mixins.scss' as m;
-
 .edit-draft-container {
-
-   
-    position: absolute;
-    background-color: v.$base-color;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    //opacity: 0.5;
 
     margin-left: auto;
     margin-right: auto;
+
     .edit-draft {
-        position: relative;
-       opacity: 1.0;
-       background-color: aqua;
-       z-index: 6500;
-        padding: 2rem;
+
+        .draft {
+            padding: 1rem 0 0 0;
+        }
+
+        padding: 1rem 1rem 0 1rem;
         width: fit-content;
-       
+        margin: auto;
     }
+}
+
+.hidden {
+    display: none;
 }

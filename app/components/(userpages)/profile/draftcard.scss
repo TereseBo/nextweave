@@ -1,22 +1,29 @@
-.draft-card{
+.draft-card {
 
-    .draft-info-container{
+    .draft-info-container {
 
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        
-        
     }
 
-    .action-container{
+    .action-container {
 
         display: flex;
         flex-direction: row;
-        gap:1rem;
+        gap: 1rem;
         justify-content: space-evenly;
+    }
+}
 
+#draft-card-container {
+    .spacer {
+        position: relative;
+        bottom: -5rem;
+        margin: 1.5rem;
     }
 
-
+    &:has(> .spacer) {
+        margin-bottom: -1.5rem;
+    }
 }
