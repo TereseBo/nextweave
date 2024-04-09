@@ -17,7 +17,7 @@ export function DbSaveWeave() {
 
         const weaveObject = createWeaveObject(warpGrid, treadleGrid, tieUpGrid)
         console.log(weaveObject)
-        const body = { values: { weaveObject, name: 'Three' } }
+        const body = { values: { weaveObject} }
         fetch(`/api/${userId}/draft`, {
             method: 'POST',
             headers: {

@@ -1,0 +1,27 @@
+@use '@/app/resources/style/variables.scss' as v;
+@use '@/app/resources/style/mixins.scss' as m;
+
+.card {
+    @include m.text-area;
+    @include m.rounded-corners;
+    align-items: center;
+    padding: v.$threadspace;
+    width: fit-content;
+    
+
+    button{
+        @include m.small-button ;
+    }
+    
+    .vertical {
+        @include m.flexColumn;
+        margin: 0;
+        //align-items:center;
+        
+    }
+
+    .horizontal {
+        @include m.flexRow
+    }
+
+}

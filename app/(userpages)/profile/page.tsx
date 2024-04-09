@@ -1,9 +1,13 @@
-export default function Profile() {
+//This is where the user can see and handle their drafts
 
-    //TODO:After implementing login, register and usercontent, reroute accordingly.
+import { UserDraftDisplay } from '@/app/components/(userpages)/profile/UserDraftDisplay'
+
+export default function ProfilePage() {
     return (
-      <main className={'main'}>
-        <p>You reached profilepage</p>
-      </main>
+        <>
+            <div id='profile-page'>
+                <UserDraftDisplay />
+            </div>
+        </>
     )
-  }
+}

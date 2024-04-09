@@ -1,0 +1,23 @@
+@use '@/app/resources/style/variables.scss' as v;
+@use '@/app/resources/style/mixins.scss' as m;
+
+header {
+    margin-bottom: 2rem;
+    .userpagemenu-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding: 0.5rem;
+
+        .icon-button{
+            @include m.small-button;
+        }
+
+        .back_arrow_icon {
+            height: 1rem;
+            width: auto;
+
+        }
+    }
+}
