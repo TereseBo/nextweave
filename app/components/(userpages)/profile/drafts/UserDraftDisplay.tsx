@@ -3,7 +3,7 @@ import './userdraftdisplay.scss'
 
 import { useContext,useState } from 'react'
 
-import { DraftCard } from '@/app/components/(userpages)/profile/DraftCard'
+import { DraftCard } from '@/app/components/(userpages)/profile/drafts/DraftCard'
 import { UserContext } from '@/app/resources/contexts/usercontext'
 import { UserContextType } from '@/app/resources/types/contexts'
 import { DraftList } from '@/app/resources/types/dbdocuments'

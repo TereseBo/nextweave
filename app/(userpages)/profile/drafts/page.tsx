@@ -2,12 +2,10 @@
 
 import { UserDraftDisplay } from '@/app/components/(userpages)/profile/drafts/UserDraftDisplay'
 
-export default function ProfilePage() {
+export default function DraftPage() {
     return (
-        <>
             <div id='profile-page'>
                 <UserDraftDisplay />
             </div>
-        </>
     )
 }
