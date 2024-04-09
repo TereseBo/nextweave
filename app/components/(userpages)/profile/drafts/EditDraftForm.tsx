@@ -4,6 +4,7 @@ import './editdraftform.scss'
 
 import { ColorPicker } from '@/app/components/draft/colorpicker/Colorpicker'
 import { Draft } from '@/app/components/draft/draft/Draft'
+import { StateDraft } from '@/app/components/draft/draft/StateDraft'
 
 export function EditDraftForm(params: { resource: any, open: boolean }) {
 
@@ -12,6 +13,7 @@ export function EditDraftForm(params: { resource: any, open: boolean }) {
             <div className='edit-draft'>
                 <ColorPicker />
                 <Draft />
+               <StateDraft weaveObj={{...params.resource.weave}}/>
             </div >
         </div>
     )
