@@ -5,6 +5,8 @@ import { createContext, useEffect, useState } from 'react'
 import { readWeaveObject } from '@/app/components/draft/weaveObjHandler/set/readWeaveObject'
 import { defaultColor, defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
 import { resizeGrid } from '@/app/resources/functions/resizeGrid'
+
+import { WeaveContextType } from '../types/contexts'
 //exports
 export const WeaveContext = createContext<WeaveContextType | null>(null)
 

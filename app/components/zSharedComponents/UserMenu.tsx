@@ -10,9 +10,11 @@ import { usePathname } from 'next/navigation'
 export function UserMenu() {
     const { isSignedIn } = useAuth()
     const pathname = usePathname()
+
     return (
         <div className='usermenu-container'>
-            {isSignedIn ? <Link className="icon" href={'/profile'}>Profile</Link> : (pathname !== '/sign-in' ? <Link className="icon" href="/sign-in">Sign in</Link> : null)}
+            
+            {isSignedIn ?  <Link className="icon" href={'/profile'}>Profile</Link>: (pathname !== '/sign-in' ? <Link className="icon" href="/sign-in">Sign in</Link> : null)}
             
             < UserButton afterSignOutUrl='/weaver' />
         </div>

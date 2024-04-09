@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 import { createWeaveObject } from '../../weaveObjHandler/get/createWeaveObject'
 

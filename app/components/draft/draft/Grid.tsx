@@ -7,6 +7,7 @@ import { ReactElement, useContext } from 'react'
 
 import { Row } from '@/app/components/draft/draft/Row'
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 import { CellProps } from './Cell'
 

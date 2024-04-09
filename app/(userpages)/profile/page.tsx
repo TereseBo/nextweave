@@ -1,13 +1,6 @@
 //This is where the user can see and handle their drafts
-
-import { UserDraftDisplay } from '@/app/components/(userpages)/profile/UserDraftDisplay'
+import { redirect } from 'next/navigation'
 
 export default function ProfilePage() {
-    return (
-        <>
-            <div id='profile-page'>
-                <UserDraftDisplay />
-            </div>
-        </>
-    )
+    redirect('/profile/drafts')
 }

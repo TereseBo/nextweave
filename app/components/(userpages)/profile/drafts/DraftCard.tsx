@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react'
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
 
-import { EditDraftForm } from '../EditDraftForm'
+import { EditDraftForm } from './EditDraftForm'
 //TODO:Add typing
 //TODO: Remove draft states and replace with accual drafts
 
