@@ -18,7 +18,7 @@ export default function ProfileBaseLayout({
 
 
         userId ? setUser(userId) : setUser(null)
-    }, )
+    },)
 
     return (
         <>
