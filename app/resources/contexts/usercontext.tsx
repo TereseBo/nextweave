@@ -1,24 +1,36 @@
 //Context handling information and calculations between different parts (aka treadles, shafts, tieups) of the draft and calculates the weave.
 //dependencies
 import { createContext, useEffect, useState } from 'react'
-import { useAuth } from '@clerk/nextjs'
+
+import { UserContextType } from '@/app/resources/types/contexts'
 
 import { DraftList, LoomList, ReedList } from '../types/dbdocuments'
 
 export const UserContext = createContext<UserContextType | null>(null)
 export function UserProvider({ children }: { children: React.ReactElement | React.ReactElement[] }) {
 
-    const [user, setUser] = useState(useAuth())
+    const [user, setUser] = useState<string | null>(null)
     const [drafts, setDrafts] = useState<DraftList | null>(null)
     const [looms, setLooms] = useState<LoomList | null>(null)
     const [reeds, setReeds] = useState<ReedList | null>(null)
 
     useEffect(() => {
-        if (user.userId) {
-            getDrafts(user.userId)
+        console.log('Im running use3effect')
+        function clearResources() {
+            setDrafts(null)
+            //setLooms(null)
+            //setReeds(null)
         }
 
-    }, [user.userId])
+        function getResources(userId: string) {
+            getDrafts(userId)
+
+        }
+
+        user ? getResources(user) : clearResources()
+
+
+    }, [user])
 
     async function getDrafts(userId: string) {
         try {
@@ -34,9 +46,11 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         }
     }
 
+
+
     return (
 
-        <UserContext.Provider value={{}}>
+        <UserContext.Provider value={{ setUser, drafts }}>
             {children}
         </UserContext.Provider>
     )
