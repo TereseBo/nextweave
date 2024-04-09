@@ -5,6 +5,7 @@ import { useContext, useState } from 'react'
 
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 import { readWeaveObject } from '../../weaveObjHandler/set/readWeaveObject'
 

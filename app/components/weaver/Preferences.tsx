@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 export function Preferences() {
 
