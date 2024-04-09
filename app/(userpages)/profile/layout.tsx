@@ -1,4 +1,4 @@
-//Contains common layout for userpages, including contextprovider for user-assets from DB
+//This layout provides the userId from clerc to the usercontext shared by userpages
 'use client'
 
 import { useContext, useEffect } from 'react'
@@ -15,15 +15,12 @@ export default function ProfileBaseLayout({
 
     const { userId } = useAuth()
     useEffect(() => {
-
-
         userId ? setUser(userId) : setUser(null)
     },)
 
     return (
         <>
             {children}
-
         </>
     )
 }

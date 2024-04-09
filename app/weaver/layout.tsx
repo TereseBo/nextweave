@@ -7,7 +7,7 @@ export default function WeaverBaseLayout({
 }) {
     return (
         <>
-            <main>  {children}</main>
+            {children}
             <footer></footer>
         </>
 
