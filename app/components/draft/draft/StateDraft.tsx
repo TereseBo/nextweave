@@ -11,9 +11,6 @@ import { Weave } from './Weave'
 
 export function StateDraft(props: { weaveObj: WeaveObject}){
 
-    console.log(props.weaveObj.shafts)
-    console.log(props.weaveObj)
-
     const[treadleGrid, setTreadleGrid]=useState<grid>([['']])
     const [ tieUpGrid, setTieUpGrid]=useState<grid>([['']])
     const [warpGrid, setWarpGrid]=useState<grid>([['']])
