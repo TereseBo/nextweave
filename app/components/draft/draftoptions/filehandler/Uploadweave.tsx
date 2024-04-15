@@ -24,7 +24,7 @@ export function Uploadweave() {
                         const obj: WeaveObject = JSON.parse(fileContents);
                         let newGrids = readWeaveObject(obj)
 
-                        updateGrid('tieup', newGrids.tieupGrid)
+                        updateGrid('tieup', newGrids.tieUpGrid)
                         updateGrid('warp', newGrids.warpGrid)
                         updateGrid('weft', newGrids.treadleGrid)
                     } catch (error) {
