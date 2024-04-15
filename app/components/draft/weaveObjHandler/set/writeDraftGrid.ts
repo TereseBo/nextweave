@@ -56,11 +56,9 @@ export function createWeave(grids: GridSet, draftHeight: number, draftWidth: num
 
     //Create empty grid
     let grid = createGrid(draftWidth, draftHeight)
-    console.log(grid[0] == grid[1])
 
     grid.forEach((row: color[], y: number) => {
-        console.log('initial draftrow')
-        console.log(row)
+
         let weftColor = getWeftColor(y, treadleGrid)
 
 
@@ -91,8 +89,6 @@ export function createWeave(grids: GridSet, draftHeight: number, draftWidth: num
                 }
             }
         })
-        console.log('final draftrow')
-        console.log(row)
     })
     return grid
 
