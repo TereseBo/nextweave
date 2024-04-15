@@ -12,8 +12,7 @@ export function EditDraftForm(params: { resource: any, open: boolean }) {
         <div className={params.open ? 'edit-draft-container' : 'hidden'}>
             <div className='edit-draft'>
                 <ColorPicker />
-                <Draft />
-               <StateDraft weaveObj={{...params.resource.weave}}/>
+                <StateDraft weaveObj={{ ...params.resource.weave }} />
             </div >
         </div>
     )
