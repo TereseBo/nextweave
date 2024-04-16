@@ -5,11 +5,11 @@ import { ObjectId } from 'mongodb'
 import { NextResponse } from 'next/server'
 
 import { dbConnection } from '@/app/resources/db/mongodb'
-import { Draft } from '@/app/resources/types/dbdocuments'
+
 export async function GET(
     req: Request,
     { params }: { params: { userId: string, id:string } }) {
-    //Fetches one weave for the user
+    //Fetches one weave for the user by _id
     const {userId, id}  = params
 
     const _id= new ObjectId(id)
@@ -80,6 +80,7 @@ export async function PATCH(
     const {userId, id}  = params
 
     const _id= new ObjectId(id)
+    console.log(_id)
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
     }
@@ -91,14 +92,16 @@ export async function PATCH(
             const { weaveObject, publicStatus } = body.values
             let updates = { weave: weaveObject, updated: Date.now(), public: publicStatus }
         
-        let dbResponse = await db.collection('drafts').updateOne({ _id , userId },{$set:{updates}})
+        let dbResponse = await db.collection('drafts').updateOne({ _id , userId },{$set:{weave: weaveObject, updated: Date.now(), public: publicStatus}})
+        console.log('Response in patch toute')
         console.log(dbResponse)
 
-        if (dbResponse.modifiedCount==1) {
-            return new NextResponse('No weave to update found', { status: 200 });
-        }
+        if (dbResponse.modifiedCount!==1) {
+            return new NextResponse('No weave to update found', { status: 204 });
+        }else{
 
         return NextResponse.json( 'Weave updated', { status: 200 });
+        }
 
     } catch (error) {
         console.log('api/draft/GET', error);

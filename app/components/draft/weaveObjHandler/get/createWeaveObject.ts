@@ -1,8 +1,10 @@
+
 import { collectTieup } from './collectTieup'
 import { collectWarp } from './collectWarp'
 import { collectWeft } from './collectWeft'
 
-export function createWeaveObject(warpGrid: grid | undefined, weftGrid: grid | undefined, tieupGrid: grid| undefined) {
+export function createWeaveObject(warpGrid: grid | undefined, weftGrid: grid | undefined, tieupGrid: grid| undefined)
+:WeaveObject {
     const shafts = collectWarp(warpGrid)
     const treadling = collectWeft(weftGrid)
     const tieup = collectTieup(tieupGrid)

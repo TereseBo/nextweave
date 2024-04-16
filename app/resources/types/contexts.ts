@@ -30,6 +30,7 @@ export type WeaveContextType = {
 }
 
 export type UserContextType = {
+    user:string|null,
     setUser: (newValue: string | null) => void,
     drafts: DraftList | null
 

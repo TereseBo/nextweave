@@ -50,7 +50,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
 
     return (
 
-        <UserContext.Provider value={{ setUser, drafts }}>
+        <UserContext.Provider value={{ user, setUser, drafts }}>
             {children}
         </UserContext.Provider>
     )
