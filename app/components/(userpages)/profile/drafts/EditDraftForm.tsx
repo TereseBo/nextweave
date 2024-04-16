@@ -7,11 +7,10 @@ import { Draft } from '@/app/components/draft/draft/Draft'
 import { StateDraft } from '@/app/components/draft/draft/StateDraft'
 
 export function EditDraftForm(params: { resource: any, open: boolean }) {
-
+//TODO:Move colorpixker style to relevant place
     return (
         <div className={params.open ? 'edit-draft-container' : 'hidden'}>
             <div className='edit-draft'>
-                <ColorPicker />
                 <StateDraft weaveObj={{ ...params.resource.weave }} />
             </div >
         </div>

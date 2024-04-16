@@ -1,0 +1,64 @@
+@use '@/app/resources/style/mixins.scss' as m;
+@use '@/app/resources/style/variables.scss' as v;
+
+.edit-draft {
+
+    .form-container {
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        label {
+            font-size: 0.8rem;
+        }
+
+        h3 {
+            margin: 0 0 0.3rem 0;
+            padding: 0;
+        }
+
+        .colorpick-form {
+            @include m.rounded-corners;
+            border: v.$thick-border;
+            @include m.text-area;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            align-items: center;
+            margin: 0px;
+            width: 100%;
+
+            .color-container {
+                display: flex;
+                flex-direction: row;
+                justify-items: center;
+                gap: 1rem;
+
+                .color-box {
+                    box-sizing: border-box;
+
+                    input#current-color {
+                        &[type=color] {
+                            width: 2.6rem;
+                            height: 2rem;
+                            padding: 0;
+                            border: 0;
+                            margin: -0.3rem;
+                            box-sizing: border-box;
+                            background-color: inherit;
+                        }
+                    }
+
+                    .previous-colors {
+                        display: flex;
+                        justify-content: center;
+                        gap: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
