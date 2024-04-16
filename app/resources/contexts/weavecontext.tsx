@@ -119,7 +119,7 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
 
     let newGrids = readWeaveObject(weaveObj)
 
-    updateGrid('tieup', newGrids.tieupGrid)
+    updateGrid('tieup', newGrids.tieUpGrid)
     updateGrid('warp', newGrids.warpGrid)
     updateGrid('weft', newGrids.treadleGrid)
   }

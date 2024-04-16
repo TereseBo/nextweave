@@ -8,12 +8,14 @@ export function readWeft(weft: TreadlingDescription, height: number) {
     let width = weft.count || defaultTreadles
     let weftGrid: grid = createGrid(width, height)
 
+    //If grid has not been filled in, return an empty grid of correct size
     if (weft.pattern == null || !(weft.pattern.length > 0)) {
         return weftGrid
     }
 
     let colors = weft.colors
-
+    
+    //Fill the grid
     weft.pattern.forEach((treadle, index) => {
         let currentColor = defaultWeftColor
         if (colors) {

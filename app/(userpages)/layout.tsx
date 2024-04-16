@@ -22,10 +22,10 @@ export default function ProfileBaseLayout({
             <UserProviderWrapper>
                 <>
                     <UserPageHeader />
-                    <main className='userpages-layout'>
+                    <div className='userpages-layout'>
                         <Aside />
                         {children}
-                    </main>
+                    </div>
                     <footer></footer>
                 </>
             </UserProviderWrapper>

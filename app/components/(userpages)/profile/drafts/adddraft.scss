@@ -1,0 +1,21 @@
+@use '@/app/resources/style/variables.scss' as v;
+@use '@/app/resources/style/mixins.scss' as m;
+
+.new-draft-container{
+    @include m.flexColumn;
+    @include m.rounded-corners;
+    border: v.$thick-border;
+    background-color: aqua;
+    position: absolute;
+    top: 0px;
+    align-self: center;
+    margin-top:3rem;
+    margin-left:5rem;
+    margin-right:5rem;
+   
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    padding:1rem;
+    
+}

@@ -21,7 +21,7 @@ export function DraftPreview(params: { weaveObj: WeaveObject }) {
     //Trim since preview cant contain the full width
     let shortTreadleGrid = newGrids.treadleGrid.slice(-11, -1)
     let shortWarpGrid = newGrids.warpGrid.map(row => { return row.slice(-11, -1) })
-    let tieUpGrid = newGrids.tieupGrid
+    let tieUpGrid = newGrids.tieUpGrid
 
     //Returns the color if present for the beat
     function getWeftColor(y: number) {

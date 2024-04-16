@@ -1,6 +1,6 @@
 //Context handling information and calculations between different parts (aka treadles, shafts, tieups) of the draft and calculates the weave.
 //dependencies
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 import { UserContextType } from '@/app/resources/types/contexts'
 
@@ -56,3 +56,13 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     )
 }
 
+
+export function useUserContext(){
+    const context = useContext(UserContext);
+   
+    if (!context) {
+      throw new Error('Usercontext must be used inside the userpages');
+    }
+   
+    return context;
+  };
