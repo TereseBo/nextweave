@@ -17,7 +17,7 @@ export function AddDraft() {
     return (
         <>
             <div className={open ? 'new-draft-container' : 'hidden'} onMouseLeave={closeForm}>
-                <EditDraftForm open={true} resource={'none'} />
+                <EditDraftForm open={true} resource={'none'} closeForm={closeForm}/>
                 <SecondaryMenu>
                     <DbSaveWeave />
                 </SecondaryMenu>
