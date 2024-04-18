@@ -8,12 +8,12 @@ export function updateGrid(grid:grid, cellId: string, color: color)/* : (grid: g
         return gridCopy
     }
 
-    console.log(gridCopy[y][x])
     let newColor = color
     //Tieup allways has black fill
     if (gridType == 'tieup') {
         newColor = '#000000'
     } 
+    
     //If warp, clear other cells in column.
     if (gridType == 'warp') {
         const shafts = gridCopy.length
@@ -23,6 +23,7 @@ export function updateGrid(grid:grid, cellId: string, color: color)/* : (grid: g
             }
         }
     }
+
     //If weft, clear other cells in row.
     if (gridType == 'treadle') {
         const treadles = gridCopy[0].length

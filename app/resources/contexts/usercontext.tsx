@@ -1,5 +1,4 @@
-//Context handling information and calculations between different parts (aka treadles, shafts, tieups) of the draft and calculates the weave.
-//dependencies
+//Context handling information on the user and their resources
 import { createContext, useContext, useEffect, useState } from 'react'
 
 import { UserContextType } from '@/app/resources/types/contexts'
@@ -15,7 +14,6 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     const [reeds, setReeds] = useState<ReedList | null>(null)
 
     useEffect(() => {
-        console.log('Im running use3effect')
         function clearResources() {
             setDrafts(null)
             //setLooms(null)
@@ -24,11 +22,9 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
 
         function getResources(userId: string) {
             getDrafts(userId)
-
         }
 
         user ? getResources(user) : clearResources()
-
 
     }, [user])
 
@@ -46,17 +42,15 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         }
     }
 
-
-
     return (
 
-        <UserContext.Provider value={{ setUser, drafts }}>
+        <UserContext.Provider value={{ user, setUser, drafts }}>
             {children}
         </UserContext.Provider>
     )
 }
 
-
+//Hook to use the usercontext
 export function useUserContext(){
     const context = useContext(UserContext);
    
