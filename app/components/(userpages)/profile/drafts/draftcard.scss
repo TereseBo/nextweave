@@ -8,3 +8,16 @@
     }
 }
 
+#draft-card-container {
+    .spacer {
+        position: relative;
+        bottom: -5rem;
+        margin: 1.5rem;
+        background-color: chartreuse;
+    }
+
+    &:has(> .spacer) {
+        margin-bottom: -1.5rem;
+    }
+}
+
