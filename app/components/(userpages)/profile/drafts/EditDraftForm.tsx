@@ -55,7 +55,7 @@ export function EditDraftForm(params: { resource: any, open: boolean }) {
     }
 
     return (
-        <div className={params.open ? 'edit-draft-container' : 'hidden'}>
+        <div className={open ? 'edit-draft-container' : 'hidden'}>
             <div className='edit-draft'>
                 <StateDraft weaveObj={{ ...params.resource.weave }} updateObj={updateObj} />
             </div >

@@ -6,29 +6,17 @@ import { useEffect, useRef, useState } from 'react'
 
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
-import { useUserContext } from '@/app/resources/contexts/usercontext'
 
 import { EditDraftForm } from './EditDraftForm'
 //TODO:Add typing
-//TODO: Remove draft states and replace with accual drafts
 
 export function DraftCard(params: { draft: any }) {
 
-    const { weave}= params.draft
-    const draftId=params.draft._id
-    const { user } = useUserContext()
     const [open, setIsOpen] = useState(false);
     const openForm = () => setIsOpen(true);
     const closeForm = () => setIsOpen(false);
     const { draft } = params
-    const [updatedWeaveObj, setUpdatedWeaveObj] = useState<WeaveObject>({ ...weave })
-    const bottomRef = useRef<HTMLDivElement>(null);
-    const setNewWeaveObj=(obj:WeaveObject)=>setUpdatedWeaveObj(obj)
-
-
-
-
-    
+    const bottomRef = useRef<HTMLDivElement>(null);  
 
     //Use effect scrolls to bottom of card and then some when it's size is changed due to open/close of the drafteditor
     useEffect(() => {
@@ -40,8 +28,7 @@ export function DraftCard(params: { draft: any }) {
                     inline: 'nearest'
                 })
         }
-    },
-        [open])
+    },[open])
 
     return (
         <div id='draft-card-container'>
