@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { StateDraft } from '@/app/components/draft/draft/StateDraft'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
-export function EditDraftForm(params: { resource: any, open: boolean}) {
+export function EditDraftForm(params: { resource: any, open: boolean }) {
 
     const { open, resource } = params
     const draftId = resource._id
@@ -15,7 +15,7 @@ export function EditDraftForm(params: { resource: any, open: boolean}) {
     //TODO:Move colorpixker style to relevant place
 
     const [updatedWeaveObj, setUpdatedWeaveObj] = useState<WeaveObject>(JSON.parse(JSON.stringify({ ...resource.weave })))
-    const updateObj=(neObj:WeaveObject)=>{setUpdatedWeaveObj(neObj)}
+    const updateObj = (neObj: WeaveObject) => { setUpdatedWeaveObj(neObj) }
 
     //TODO: replace user with acctual id
     async function editDraft(e: any) {
@@ -41,10 +41,19 @@ export function EditDraftForm(params: { resource: any, open: boolean}) {
     }
 
     function deleteDraft(e: any) {
-        //TODO: Add functionality
-      
+
+        fetch(`/api/${user}/draft/${draftId}`, { method: 'DELETE' })
+        .then(function (response) {
+
+            if (response.status == 200) {
+                //TODO:Update draft in usderContext to match
+                alert('Draft deleted!')
+            } else {
+                alert('Ops, could not delete the draft')
+            }
+        })
     }
-    
+
     return (
         <div className={params.open ? 'edit-draft-container' : 'hidden'}>
             <div className='edit-draft'>
