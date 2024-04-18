@@ -16,16 +16,10 @@ export function EditDraftForm(params: { resource: any, open: boolean}) {
 
     const [updatedWeaveObj, setUpdatedWeaveObj] = useState<WeaveObject>(JSON.parse(JSON.stringify({ ...resource.weave })))
     const updateObj=(neObj:WeaveObject)=>{setUpdatedWeaveObj(neObj)}
-    //Get the id of a draft
-    function getResourceId(e: any) {
-        let fullIdentifier = e.target.id
-        let id = fullIdentifier.split('-').slice(-1)[0]
-        return id
-    }
+
     //TODO: replace user with acctual id
     async function editDraft(e: any) {
-        console.log('running edit draft')
-        const id = getResourceId(e)
+
         const weaveObject = updatedWeaveObj
         //TODO: Add components to toggle public status
         const body = { values: { weaveObject, public: false } }
@@ -36,7 +30,7 @@ export function EditDraftForm(params: { resource: any, open: boolean}) {
             },
             body: JSON.stringify(body),
         }).then(function (response) {
-            console.log(response)
+
             if (response.status == 200) {
                 //TODO:Update draft in usderContext to match
                 alert('Draft updated!')
@@ -48,8 +42,9 @@ export function EditDraftForm(params: { resource: any, open: boolean}) {
 
     function deleteDraft(e: any) {
         //TODO: Add functionality
-        const id = getResourceId(e)
+      
     }
+    
     return (
         <div className={params.open ? 'edit-draft-container' : 'hidden'}>
             <div className='edit-draft'>

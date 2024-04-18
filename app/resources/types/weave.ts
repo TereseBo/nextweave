@@ -18,7 +18,7 @@ type WeaveObject = {
     shafts: ShaftDescription
     ,
     treadling: TreadlingDescription
-    tieup:  number[][]
+    tieup:  number[][]|[number[]]
     ,
     threads: null | number
 }
