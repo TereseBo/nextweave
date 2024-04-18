@@ -1,21 +1,23 @@
 @use '@/app/resources/style/variables.scss' as v;
 @use '@/app/resources/style/mixins.scss' as m;
 
-.new-draft-container{
-    @include m.flexColumn;
-    @include m.rounded-corners;
-    border: v.$thick-border;
-    background-color: aqua;
+.buffer {
     position: absolute;
     top: 0px;
-    align-self: center;
-    margin-top:3rem;
-    margin-left:5rem;
-    margin-right:5rem;
-   
-    display: flex;
-    flex-direction: column;
-    gap:1rem;
-    padding:1rem;
-    
+    padding-top: 3rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom:5rem;
+
+    .new-draft-container {
+
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+
+        .draft {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
 }
