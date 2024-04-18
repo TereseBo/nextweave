@@ -18,6 +18,7 @@ export function DraftCard(params: { draft: any }) {
     const { draft } = params
     const bottomRef = useRef<HTMLDivElement>(null);  
 
+    //TODO: Fix scroll
     //Use effect scrolls to bottom of card and then some when it's size is changed due to open/close of the drafteditor
     useEffect(() => {
         if (bottomRef.current) {

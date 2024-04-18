@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 import { UserContextType } from '@/app/resources/types/contexts'
 
-import { DraftList, LoomList, ReedList } from '../types/dbdocuments'
+import { DraftList, LoomList, ReedList, ReformattedDraft } from '../types/dbdocuments'
 
 export const UserContext = createContext<UserContextType | null>(null)
 export function UserProvider({ children }: { children: React.ReactElement | React.ReactElement[] }) {
@@ -28,6 +28,8 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
 
     }, [user])
 
+
+
     async function getDrafts(userId: string) {
         try {
             let response = await fetch(`/api/${userId}/drafts`)
@@ -42,21 +44,53 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         }
     }
 
+    //Accepts a draftId and and updated weave to replace the weave in the draftlist
+    function updateDraft(_id: string, weave: WeaveObject): void {
+
+        if (!drafts) {
+            return
+        }
+        const draftsCopy: DraftList = JSON.parse(JSON.stringify(drafts))
+        const newDrafts: DraftList = draftsCopy.map(draft => {
+
+            if (draft._id == _id) {
+                console.log('id:s matched')
+                let updatedDraft: ReformattedDraft = JSON.parse(JSON.stringify(draft))
+                let copiedUpdate: WeaveObject = JSON.parse(JSON.stringify(weave))
+                updatedDraft = Object.assign(updatedDraft, copiedUpdate)
+                return updatedDraft
+            } else {
+                return draft
+            }
+        })
+
+        setDrafts(newDrafts)
+    }
+
+    function removeDraft(_id: string): void {
+        if (!drafts) {
+            return
+        }
+        const draftsCopy: DraftList = JSON.parse(JSON.stringify(drafts))
+        const filteredCopy: DraftList = draftsCopy.filter((draft) => draft._id !== _id);
+        setDrafts(filteredCopy)
+    }
+
     return (
 
-        <UserContext.Provider value={{ user, setUser, drafts }}>
+        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft }}>
             {children}
         </UserContext.Provider>
     )
 }
 
 //Hook to use the usercontext
-export function useUserContext(){
+export function useUserContext() {
     const context = useContext(UserContext);
-   
+
     if (!context) {
-      throw new Error('Usercontext must be used inside the userpages');
+        throw new Error('Usercontext must be used inside the userpages');
     }
-   
+
     return context;
-  };
+};
