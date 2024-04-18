@@ -36,7 +36,7 @@ export function DraftCard(params: { draft: any }) {
                 <div >
                     <div className='vertical draft-card' >
 
-                        {open ? <EditDraftForm open={open} resource={draft} /> : <DraftPreview weaveObj={draft?.weave} />}
+                        {open ? <EditDraftForm open={open} resource={draft} closeForm={closeForm}/> : <DraftPreview weaveObj={draft?.weave} />}
                         <div className='draft-info-container'>
                             <p> Treadles:<span>{draft?.weave.treadling?.count || '-'}</span></p>
                             <p>  Shafts:<span>{draft?.weave.shafts?.count || '-'}</span></p>

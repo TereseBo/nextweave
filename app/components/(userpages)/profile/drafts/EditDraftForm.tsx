@@ -7,9 +7,9 @@ import { useState } from 'react'
 import { StateDraft } from '@/app/components/draft/draft/StateDraft'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
-export function EditDraftForm(params: { resource: any, open: boolean }) {
+export function EditDraftForm(params: { resource: any, open: boolean, closeForm:()=>void }) {
 
-    const { open, resource } = params
+    const { open, resource, closeForm } = params
     const draftId = resource._id
     const { user } = useUserContext()
     //TODO:Move colorpixker style to relevant place
@@ -34,6 +34,7 @@ export function EditDraftForm(params: { resource: any, open: boolean }) {
             if (response.status == 200) {
                 //TODO:Update draft in usderContext to match
                 alert('Draft updated!')
+                closeForm()
             } else {
                 alert('Ops, the draft could not be updated')
             }
@@ -48,6 +49,7 @@ export function EditDraftForm(params: { resource: any, open: boolean }) {
             if (response.status == 200) {
                 //TODO:Update draft in usderContext to match
                 alert('Draft deleted!')
+                closeForm()
             } else {
                 alert('Ops, could not delete the draft')
             }
