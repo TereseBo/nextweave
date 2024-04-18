@@ -1,10 +1,7 @@
 @use '@/app/resources/style/mixins.scss' as m;
 @use '@/app/resources/style/variables.scss' as v;
 
-.edit-draft {
-
     .form-container {
-
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -61,4 +58,3 @@
             }
         }
     }
-}
