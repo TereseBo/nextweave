@@ -7,22 +7,21 @@ import { useState } from 'react'
 import { StateDraft } from '@/app/components/draft/draft/StateDraft'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
-export function EditDraftForm(params: { resource: any, open: boolean, closeForm:()=>void }) {
-
+export function EditDraftForm(params: { resource: any, open: boolean, closeForm: () => void }) {
+    
     const { open, resource, closeForm } = params
     const draftId = resource._id
-    const { user } = useUserContext()
+    const { user, updateDraft, removeDraft } = useUserContext()
     //TODO:Move colorpixker style to relevant place
 
     const [updatedWeaveObj, setUpdatedWeaveObj] = useState<WeaveObject>(JSON.parse(JSON.stringify({ ...resource.weave })))
     const updateObj = (neObj: WeaveObject) => { setUpdatedWeaveObj(neObj) }
 
-    //TODO: replace user with acctual id
+    //Submitts edition to DB and updates draftList in context
     async function editDraft(e: any) {
 
-        const weaveObject = updatedWeaveObj
         //TODO: Add components to toggle public status
-        const body = { values: { weaveObject, public: false } }
+        const body = { values: { weaveObject: updatedWeaveObj, public: false } }
         fetch(`/api/${user}/draft/${draftId}`, {
             method: 'PATCH',
             headers: {
@@ -33,6 +32,7 @@ export function EditDraftForm(params: { resource: any, open: boolean, closeForm:
 
             if (response.status == 200) {
                 //TODO:Update draft in usderContext to match
+                updateDraft(draftId, { weave: updatedWeaveObj, public: false })
                 alert('Draft updated!')
                 closeForm()
             } else {
@@ -41,21 +41,23 @@ export function EditDraftForm(params: { resource: any, open: boolean, closeForm:
         })
     }
 
+    //Deletes draft from DB and updates draftlist in context
     function deleteDraft(e: any) {
 
         fetch(`/api/${user}/draft/${draftId}`, { method: 'DELETE' })
-        .then(function (response) {
+            .then(function (response) {
 
-            if (response.status == 200) {
-                //TODO:Update draft in usderContext to match
-                alert('Draft deleted!')
-                closeForm()
-            } else {
-                alert('Ops, could not delete the draft')
-            }
-        })
+                if (response.status == 200) {
+                    //TODO:Update draft in usderContext to match
+                    removeDraft(draftId)
+                    alert('Draft deleted!')
+                    closeForm()
+                } else {
+                    alert('Ops, could not delete the draft')
+                }
+            })
     }
-
+    //TODO:Fix broken styling of buttons
     return (
         <div className={open ? 'edit-draft-container' : 'hidden'}>
             <div className='edit-draft'>

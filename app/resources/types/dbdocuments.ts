@@ -29,9 +29,9 @@ interface Reed extends mongoDB.Document {
 type rD1 = Omit<Draft, 'created'> & { created: string };
 type ReformattedDraft = Omit<Draft, 'updated'> & { updated: string };
 
-type DraftList =    [ReformattedDraft?]
-type LoomList=[Loom]
-type ReedList=[Reed]
+type DraftList = ReformattedDraft[]
+type LoomList=Loom[]
+type ReedList=Reed[]
 
 
 
