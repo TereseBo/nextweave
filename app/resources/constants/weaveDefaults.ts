@@ -6,5 +6,8 @@ const defaultColor='#000000'
 const defaultWeftColor='#0313fc'
 const defaultWarpColor='#878787'
 
-export {defaultColor,defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles, defaultWarpColor, defaultWeftColor}
+const loomTypes:LoomType[]=['Countermarch', 'Counterbalance', 'Jack loom', 'Rigid heddle','Draw loom']
+const loomMakers:string[]=['Glimåkra', 'Schacht']
+
+export {defaultColor,defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles, defaultWarpColor, defaultWeftColor, loomMakers,loomTypes}
 
