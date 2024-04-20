@@ -1,9 +1,14 @@
-//This is where the user can see and handle their reeds
+//This is where the user can see and handle their looms
 
-export default function ProfilePage() {
+import { AddReed } from '@/app/components/(userpages)/profile/reeds/AddReed'
+import { UserReedDisplay } from '@/app/components/(userpages)/profile/reeds/UserReedDisplay'
+
+
+export default function LoomPage() {
     return (
             <div id='profile-page'>
-                Reed page is under construction
+                <UserReedDisplay/>
+                <AddReed/>
             </div>
     )
 }
