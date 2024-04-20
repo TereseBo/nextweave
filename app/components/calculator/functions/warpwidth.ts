@@ -3,7 +3,7 @@ import { isZeroish } from './isZeroish'
 import { calculateEpcFromReed } from './reed'
 import { roundToTwoDec } from './roundToTwo'
 
-export function calculateWarpWidth(target: string, value: number, warpin: WarpWidthData, reedin: Reed) {
+export function calculateWarpWidth(target: string, value: number, warpin: WarpWidthData, reedin: ReedData): { warp:WarpWidthData, reed:ReedData } {
 
     const warp = JSON.parse(JSON.stringify(warpin))
     const reed = JSON.parse(JSON.stringify(reedin))

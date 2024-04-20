@@ -3,7 +3,7 @@ import { isZeroish } from './isZeroish';
 
 
 
-export function reedMatch(warp: WarpWidthData, reed: Reed,) {
+export function reedMatch(warp: WarpWidthData, reed: ReedData,):boolean {
     let match = true
     let density = reed.dents / reed.section
     if (warp.epc % density) {
