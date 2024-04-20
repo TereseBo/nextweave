@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 import { UserContextType } from '@/app/resources/types/contexts'
 
-import { DraftList, LoomList, ReedList, ReformattedDraft } from '../types/dbdocuments'
+import { DraftList, LoomList,  ReformattedDraft } from '../types/dbdocuments'
 
 export const UserContext = createContext<UserContextType | null>(null)
 export function UserProvider({ children }: { children: React.ReactElement | React.ReactElement[] }) {
@@ -16,12 +16,13 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     useEffect(() => {
         function clearResources() {
             setDrafts(null)
-            //setLooms(null)
-            //setReeds(null)
+            setLooms(null)
+            setReeds(null)
         }
 
         function getResources(userId: string) {
             getDrafts(userId)
+            getReeds(userId)
         }
 
         user ? getResources(user) : clearResources()
@@ -76,9 +77,57 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         setDrafts(filteredCopy)
     }
 
+        //Functions handling reeds:
+    //Fetches all reeds registered by a user
+    async function getReeds(userId: string) {
+        try {
+            let response = await fetch(`/api/${userId}/reeds`)
+
+            if (response.status == 200) {
+                const body = await response.json();
+                const { reedList } = body
+                setLooms(reedList)
+            }
+        } catch (error) {
+            setLooms(null)
+        }
+    }
+
+    //Accepts a reedId and a reed to replace the item in the reedList
+    function updateReed(id: string, updatedReed: Reed): void {
+
+        if (!reeds) {
+            return
+        }
+        const reedsCopy: ReedList = JSON.parse(JSON.stringify(looms))
+        const newReeds: ReedList = reedsCopy.map(reed => {
+
+            if (reed.id == id) {
+                console.log('id:s matched')
+                let replacementReed:any = JSON.parse(JSON.stringify(updatedReed))
+                replacementReed.id=id
+                return replacementReed as Reed
+            } else {
+                return reed
+            }
+        })
+
+        setReeds(newReeds)
+    }
+
+    //Removes a reed from reedList by Id
+    function removeReed(id: string): void {
+        if (!reeds) {
+            return
+        }
+        const reedsCopy: ReedList = JSON.parse(JSON.stringify(reeds))
+        const filteredCopy: ReedList = reedsCopy.filter((reed) => reed.id !== id);
+        setReeds(filteredCopy)
+    }
+
     return (
 
-        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft }}>
+        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, reeds, updateReed, removeReed }}>
             {children}
         </UserContext.Provider>
     )

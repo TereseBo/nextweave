@@ -34,6 +34,10 @@ export type UserContextType = {
     setUser: (newValue: string | null) => void,
     drafts: DraftList | null,
     updateDraft:(_id:string, ...updates:any)=>void,
-    removeDraft:(_id:string)=>void
+    removeDraft:(_id:string)=>void,
+    reeds:ReedList|null,
+    updateReed:(_id:string, updatedReed:Reed)=>void,
+    removeReed:(_id:string)=>void,
+
 
 }
