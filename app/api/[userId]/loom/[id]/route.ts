@@ -1,4 +1,4 @@
-//Route for actions on single weaves owned by a user as specified by user and weave Id
+//Route for actions on single looms owned by a user as specified by user and loom Id
 import { Db } from 'mongodb'
 import { ObjectId } from 'mongodb'
 import { NextResponse } from 'next/server'
@@ -74,7 +74,7 @@ export async function DELETE(
         }
 
     } catch (error) {
-        console.log('api/draft/GET', error);
+        console.log('api/loom/DELETE', error);
         return new NextResponse(
             'Ooops, something went very wrong on the server',
             { status: 500 }
@@ -106,10 +106,10 @@ export async function PUT(
         console.log(dbResponse)
 
         if (dbResponse.modifiedCount !== 1) {
-            return new NextResponse('No weave to update found', { status: 200 });
+            return new NextResponse('No loom to update found', { status: 200 });
         } else {
 
-            return NextResponse.json('Weave updated', { status: 200 });
+            return NextResponse.json('Loom updated', { status: 200 });
         }
 
     } catch (error) {

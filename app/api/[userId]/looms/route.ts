@@ -1,5 +1,5 @@
 
-//Route for actions on single weaves owned by a user
+//Route for actions on multiple looms owned by a user
 import { Db } from 'mongodb'
 import { NextResponse } from 'next/server'
 
