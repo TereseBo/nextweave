@@ -17,7 +17,7 @@ export function EditLoomForm(params: { loom: Loom }) {
     const loomId = loom.id
     //Is editing is initalized depending on if the lomm is represented in db(has an id), otherwise toggled on click
     const [isEditing, setisEditing] = useState<boolean>(loomId === undefined)
-    const { user } = useUserContext()
+    const { user, updateLooms, removeLoom } = useUserContext()
 
     const startEdit = () => { setisEditing(true) }
     const endEdit = () => { setisEditing(false) }
@@ -40,11 +40,10 @@ export function EditLoomForm(params: { loom: Loom }) {
 
     //Keeps the form and state values in sync for all loom properties
     function onChangeHandler(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
-        console.log(e.target)
-        console.log(e.target.value)
+
         let value: string | number = e.target.value
-        console.log(editedLoom)
-        isNaN(Number(e.target.value)) ? value = e.target.value : value = Number(e.target.value)
+        
+        e.target.type!=='number'? value = value : value = Number(value)
         setEditedLoom(prevValue => {
             const updatedValue = { ...prevValue, [e.target.id]: value }
             return updatedValue
@@ -53,13 +52,14 @@ export function EditLoomForm(params: { loom: Loom }) {
 
     //Submitts edition to DB and updates LoomList in context
     async function editLoom(e: React.MouseEvent<HTMLElement>) {
-        if (!validateFormData) {
+        if (!validateFormData || loomId=== undefined) {
             return
         }
 
         const body = { values: { loom: editedLoom } }
+
         fetch(`/api/${user}/loom/${loomId}`, {
-            method: loomId === undefined ? 'POST' : 'PUT',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -69,6 +69,7 @@ export function EditLoomForm(params: { loom: Loom }) {
             if (response.status == 200) {
                 //TODO:Update loom in usderContext to match
                 endEdit()
+                updateLooms(loomId, editedLoom)
                 alert('Loom updated!')
             } else {
                 alert('Ops, the loom could not be updated')
@@ -76,14 +77,46 @@ export function EditLoomForm(params: { loom: Loom }) {
         })
     }
 
+     //Posts Loom to DB and updates LoomList in context
+    async function addLoom(e: React.MouseEvent<HTMLElement>) {
+        if (!validateFormData) {
+            return
+        }
+
+        const body = { values: { loom: editedLoom } }
+
+        fetch(`/api/${user}/loom/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        }).then(function (response) {
+
+            if (response.status == 201) {
+                //TODO:Update loom in usderContext to match
+                endEdit()
+                updateLooms(loomId, editedLoom)
+                
+                alert('Loom saved!')
+            } else {
+                alert('Ops, the loom could not be saved')
+            }
+        })
+    }
+
     //Deletes loom from DB and updates loomlist in context
     function deleteLoom() {
+        if(loomId===undefined){
+            return
+        }
 
         fetch(`/api/${user}/loom/${loomId}`, { method: 'DELETE' })
             .then(function (response) {
 
                 if (response.status == 200) {
                     //TODO:Update loom in usderContext to match
+                    removeLoom(loomId)
                     alert('Loom deleted!')
                 } else {
                     alert('Ops, could not delete the loom')
@@ -96,15 +129,15 @@ export function EditLoomForm(params: { loom: Loom }) {
             <form className='loom-form'>
                 <Formsection>
                     <label>Shafts:</label>
-                    <input name="shafts" id="shafts" type='number' min='1' max='36' value={editedLoom.shafts} onChange={(e) => { onChangeHandler(e) }}>{ }</input>
+                    <input name="shafts" id="shafts" type='number' min='1' max='36' value={editedLoom.shafts.toString()} onChange={(e) => { onChangeHandler(e) }}>{ }</input>
                 </Formsection>
                 <Formsection>
                     <label>Treadles:</label>
-                    <input name="treadles" id="treadles" type='number' min={1} max={36} value={editedLoom.treadles} onChange={(e) => { onChangeHandler(e) }}></input>
+                    <input name="treadles" id="treadles" type='number' min={1} max={36} value={editedLoom.treadles.toString()} onChange={(e) => { onChangeHandler(e) }}></input>
                 </Formsection>
                 <Formsection>
                     <label>Type:</label>
-                    <select name="type" id="type" value={editedLoom.type} onChange={(e) => { onChangeHandler(e) }}>
+                    <select name="type" id="type" value={editedLoom.type.toString()} onChange={(e) => { onChangeHandler(e) }}>
                         <option value={''}></option>
                         {loomTypes.map(type => {
                             return (<option key={type} value={type}>{type}</option>)
@@ -113,12 +146,15 @@ export function EditLoomForm(params: { loom: Loom }) {
                 </Formsection>
                 <Formsection>
                     <label>Make:</label>
-                    <input name="brand" id="brand" type='text' maxLength={20} size={15} value={editedLoom.brand} onChange={(e) => { onChangeHandler(e) }}></input>
+                    <input name="brand" id="brand" type='text' maxLength={20} size={15} value={editedLoom.brand.toString()} onChange={(e) => { onChangeHandler(e) }}></input>
                 </Formsection>
             </form>
             <div className='action-container'>
-                <>{isEditing ? <button type='button' onClick={editLoom}>Save</button> : <button type='button' onClick={startEdit}>Edit</button>}
-                    <button className='icon-button' onClick={deleteLoom}>Delete</button></>
+                <>
+                    {isEditing ? <><button type='button' onClick={loom.id == undefined ? addLoom : editLoom}>Save</button>{isEditing && loomId ? <button type='button' onClick={endEdit}>Stop Editing</button> : null}</> : <button type='button' onClick={startEdit}>Edit</button>}
+                    <button className='icon-button' onClick={deleteLoom}>Delete</button>
+
+                </>
             </div>
         </>
     )

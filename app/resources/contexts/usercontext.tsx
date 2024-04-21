@@ -51,6 +51,11 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         if (!drafts) {
             return
         }
+
+        if(user && (!drafts.find(draft=>{draft.id===_id}))){
+            getDrafts(user)
+            return
+        }
         const draftsCopy: DraftList = JSON.parse(JSON.stringify(drafts))
         const newDrafts: DraftList = draftsCopy.map(draft => {
 
@@ -94,11 +99,17 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     }
 
     //Accepts a loomId and a loom to replace the item in the loomList
-    function updateLoom(id: string, updatedLoom: Loom): void {
+    function updateLooms(id: string|undefined, updatedLoom: Loom): void {
 
         if (!looms) {
             return
         }
+
+        if(user && (!id || !looms.find(loom=>{loom.id===id})) ){
+            getLooms(user)
+            return
+        }
+        
         const loomsCopy: LoomList = JSON.parse(JSON.stringify(looms))
         const newLooms: LoomList = loomsCopy.map(loom => {
 
@@ -111,6 +122,8 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
                 return loom
             }
         })
+
+
 
         setLooms(newLooms)
     }
@@ -128,7 +141,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
 
     return (
 
-        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, looms, updateLoom, removeLoom, }}>
+        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, looms, updateLooms, removeLoom, }}>
             {children}
         </UserContext.Provider>
     )

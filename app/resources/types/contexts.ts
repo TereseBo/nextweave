@@ -41,7 +41,7 @@ export type UserContextType = {
     removeDraft: (_id: string) => void
 
     looms: LoomList | null,
-    updateLoom:(id: string, updatedLoom:Loom)=> void,
+    updateLooms:(id: string|undefined, updatedLoom:Loom)=> void,
     removeLoom:(id: string) => void
 
 }

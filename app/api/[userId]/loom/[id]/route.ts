@@ -101,7 +101,7 @@ export async function PUT(
         const { loom } = body.values
         const { shafts, treadles, brand, type }:Loom=loom
 
-        let dbResponse = await db.collection('looms').replaceOne({ _id, userId },  { $set:{shafts, treadles, brand, type} } )
+        let dbResponse = await db.collection('looms').updateOne({ _id, userId },  { $set:{shafts, treadles, brand, type} } )
         console.log('Response in patch LOOM route')
         console.log(dbResponse)
 
