@@ -126,18 +126,18 @@ export function EditLoomForm(params: { loom: Loom }) {
     //TODO:Disable and style inputs when not editing and add styling for non-valid values
     return (
         <>
-            <form className='loom-form'>
+            <form className={isEditing?'loom-form': 'view-only-form'} >
                 <Formsection>
                     <label>Shafts:</label>
-                    <input name="shafts" id="shafts" type='number' min='1' max='36' value={editedLoom.shafts.toString()} onChange={(e) => { onChangeHandler(e) }}>{ }</input>
+                    <input name="shafts" id="shafts" type='number' min='1' max='36' value={editedLoom.shafts.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>{ }</input>
                 </Formsection>
                 <Formsection>
                     <label>Treadles:</label>
-                    <input name="treadles" id="treadles" type='number' min={1} max={36} value={editedLoom.treadles.toString()} onChange={(e) => { onChangeHandler(e) }}></input>
+                    <input name="treadles" id="treadles" type='number' min={1} max={36} value={editedLoom.treadles.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}></input>
                 </Formsection>
                 <Formsection>
                     <label>Type:</label>
-                    <select name="type" id="type" value={editedLoom.type.toString()} onChange={(e) => { onChangeHandler(e) }}>
+                    <select name="type" id="type" value={editedLoom.type.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>
                         <option value={''}></option>
                         {loomTypes.map(type => {
                             return (<option key={type} value={type}>{type}</option>)
@@ -146,7 +146,7 @@ export function EditLoomForm(params: { loom: Loom }) {
                 </Formsection>
                 <Formsection>
                     <label>Make:</label>
-                    <input name="brand" id="brand" type='text' maxLength={20} size={15} value={editedLoom.brand.toString()} onChange={(e) => { onChangeHandler(e) }}></input>
+                    <input name="brand" id="brand" type='text' maxLength={25} size={15} value={editedLoom.brand.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}></input>
                 </Formsection>
             </form>
             <div className='action-container'>
