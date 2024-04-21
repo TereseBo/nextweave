@@ -76,7 +76,7 @@ export function EditLoomForm(params: { loom: Loom }) {
         })
     }
 
-    //Deletes draft from DB and updates draftlist in context
+    //Deletes loom from DB and updates loomlist in context
     function deleteLoom() {
 
         fetch(`/api/${user}/loom/${loomId}`, { method: 'DELETE' })

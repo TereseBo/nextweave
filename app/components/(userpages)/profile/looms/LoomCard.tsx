@@ -2,8 +2,6 @@
 'use client'
 import './loomcard.scss'
 
-import { useEffect, useRef, useState } from 'react'
-
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 
 import { EditLoomForm } from './EditLoomForm'

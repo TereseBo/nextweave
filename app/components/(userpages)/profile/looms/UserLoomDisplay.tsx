@@ -12,7 +12,7 @@ export function UserLoomDisplay() {
     return (
         <>
             {looms ? 
-            <div className='userdrafts'>
+            <div className='user-looms'>
                 {looms.map(loom => {
                     if (!loom) return (null)
                     else {
