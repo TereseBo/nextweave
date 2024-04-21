@@ -120,7 +120,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         if (!looms) {
             return
         }
-        const loomsCopy: LoomList = JSON.parse(JSON.stringify(drafts))
+        const loomsCopy: LoomList = JSON.parse(JSON.stringify(looms))
         const filteredCopy: LoomList = loomsCopy.filter((loom) => loom.id !== id);
         setLooms(filteredCopy)
     }
