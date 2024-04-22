@@ -21,10 +21,11 @@
             margin-bottom: 5rem;
         }
 
-        &:has(> .buffer) {
-            .card-list {
-                opacity: 0.3;
-            }
+
+    }
+    &:has(> .buffer) {
+        .card-list {
+            opacity: 0.3;
         }
     }
 
