@@ -5,6 +5,7 @@ import './loomcard.scss'
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 
 import { EditLoomForm } from './EditLoomForm'
+import { LoomGrid } from './LoomGrid'
 
 //TODO:Add typing
 
@@ -16,6 +17,7 @@ export function LoomCard(params: { loom: Loom }) {
         <DisplayCard >
 
             <div className='horizontal loom-card' >
+                <LoomGrid treadles={loom.treadles} shafts={loom.shafts}/>
                 <EditLoomForm loom={loom} />
 
             </div>
