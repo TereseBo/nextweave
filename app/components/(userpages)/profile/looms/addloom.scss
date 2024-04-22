@@ -1,0 +1,19 @@
+#looms-page {
+    .buffer {
+        position: fixed;
+        bottom:50%;
+        margin-top: 3rem;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        margin-bottom: 5rem;
+    }
+}
+
+#looms-page:has(> .buffer) {
+    #user-looms-list {
+        //position:relative;
+
+        opacity: 0.3;
+    }
+
+}

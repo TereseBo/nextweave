@@ -11,3 +11,14 @@
     align-items:center;
     flex-grow: 1;
 }
+
+.card-list {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}

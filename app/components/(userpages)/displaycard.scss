@@ -16,11 +16,33 @@
     .vertical {
         @include m.flexColumn;
         margin: 0;
+
+        .action-container {
+
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: center;
+        }
         
     }
 
     .horizontal {
-        @include m.flexRow
+        @include m.flexRow;
+        .action-container {
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+    }
+
+    form{
+        border:none;
+        padding:0rem;
+        margin:0rem;
     }
 
 }
