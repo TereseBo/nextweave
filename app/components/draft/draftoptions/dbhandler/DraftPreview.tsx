@@ -1,10 +1,11 @@
 //This component renders a 10x10 minidraft from a fullsize weaveobject
+'use client'
 import './draftpreview.scss';
 
 import { useEffect, useState } from 'react'
 
-import { Grid } from '@/app/components/draft/draft/Grid'
 import { readWeaveObject } from '@/app/components/draft/weaveObjHandler/set/readWeaveObject'
+import { PreviewGrid } from '@/app/components/zSharedComponents/PreviewGrid';
 
 
 export function DraftPreview(params: { weaveObj: WeaveObject }) {
@@ -20,7 +21,7 @@ export function DraftPreview(params: { weaveObj: WeaveObject }) {
     //Trim since preview cant contain the full width
     let shortTreadleGrid = newGrids.treadleGrid.slice(-11, -1)
     let shortWarpGrid = newGrids.warpGrid.map(row => { return row.slice(-11, -1) })
-    let tieUpGrid = newGrids.tieupGrid
+    let tieUpGrid = newGrids.tieUpGrid
 
     //Returns the color if present for the beat
     function getWeftColor(y: number) {
@@ -112,7 +113,7 @@ export function DraftPreview(params: { weaveObj: WeaveObject }) {
 
   return (
     <div className="preview-container">
-      <Grid content={previewGrid} type='preview' />
+      <PreviewGrid content={previewGrid} type='preview' />
     </div>
   )
 

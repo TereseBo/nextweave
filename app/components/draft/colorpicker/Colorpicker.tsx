@@ -6,6 +6,7 @@ import { useContext } from 'react'
 
 import { Colorinput } from '@/app/components/zSharedComponents/Colorinput'
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 import { PreviousColor } from './Previouscolor'
 

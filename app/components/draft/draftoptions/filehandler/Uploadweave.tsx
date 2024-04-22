@@ -5,6 +5,7 @@ import { useContext, useState } from 'react'
 
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 import { readWeaveObject } from '../../weaveObjHandler/set/readWeaveObject'
 
@@ -23,7 +24,7 @@ export function Uploadweave() {
                         const obj: WeaveObject = JSON.parse(fileContents);
                         let newGrids = readWeaveObject(obj)
 
-                        updateGrid('tieup', newGrids.tieupGrid)
+                        updateGrid('tieup', newGrids.tieUpGrid)
                         updateGrid('warp', newGrids.warpGrid)
                         updateGrid('weft', newGrids.treadleGrid)
                     } catch (error) {

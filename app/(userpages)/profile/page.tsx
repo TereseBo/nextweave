@@ -1,9 +1,6 @@
-export default function Profile() {
+//This is where the user can see and handle their drafts
+import { redirect } from 'next/navigation'
 
-    //TODO:After implementing login, register and usercontent, reroute accordingly.
-    return (
-      <main className={'main'}>
-        <p>You reached profilepage</p>
-      </main>
-    )
-  }
+export default function ProfilePage() {
+    redirect('/profile/drafts')
+}

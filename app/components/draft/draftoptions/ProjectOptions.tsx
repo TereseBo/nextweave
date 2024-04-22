@@ -12,6 +12,7 @@ import { Yarnlist } from '@/app/components/draft/forms/Yarnlist'
 import { SecondaryMenu } from '@/app/components/zSharedComponents/SecondaryMeny'
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 export function ProjectOptions() {
     //State controls if yarnlist and warpeidth form are to be seen in the draftpage

@@ -1,0 +1,71 @@
+.userpages-layout {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  //  flex-grow: 1;
+
+    &:not(#draft-page) {
+        .buffer {
+            position: fixed;
+            bottom: 50%;
+            margin-top: 3rem;
+            margin-left: 5rem;
+            margin-right: 5rem;
+            margin-bottom: 5rem;
+        }
+
+
+    }
+    &:has(> .buffer) {
+        .card-list {
+            opacity: 0.3;
+        }
+    }
+
+    .card-list {
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .view-only-form {
+
+        input,
+        select {
+            background-color: inherit;
+            border: none;
+    
+        }
+    
+        select {
+            //Removal of dropdown arrow for select
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            text-indent: 1px;
+            text-overflow: '';
+            margin: 0 0.2rem 0 0.2rem;
+            padding: 0.2rem 0.2rem 0 0.2rem;
+        }
+    }
+    
+    .loom-form, .reed-form{
+        input,
+        select {
+            background-color: white;
+        }
+    
+    }
+}

@@ -1,4 +1,4 @@
-const weaveObject = {
+const weaveObjectTemplate = {
     shafts: {
         count: null,
         pattern: [],
@@ -26,4 +26,4 @@ const weaveObject = {
     threads: null
 }
 
-export {weaveObject}
+export {weaveObjectTemplate}

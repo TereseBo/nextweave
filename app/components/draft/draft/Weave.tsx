@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Grid } from '@/app/components/draft/draft/Grid'
 import { WeaveContext } from '@/app/resources/contexts/weavecontext'
 import { resizeGrid } from '@/app/resources/functions/resizeGrid'
+import { WeaveContextType } from '@/app/resources/types/contexts'
 
 export function Weave() {
   const { draftHeight, draftWidth, treadleGrid, shafts, tieUpGrid, warpGrid } = useContext(WeaveContext) as WeaveContextType
