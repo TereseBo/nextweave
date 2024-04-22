@@ -3,7 +3,7 @@
 
 import { useState } from 'react'
 
-import { templateReed} from '@/app/resources/constants/weaveDefaults'
+import { templateReed } from '@/app/resources/constants/weaveDefaults'
 
 import { ReedCard } from './ReedCard'
 
@@ -18,9 +18,9 @@ export function AddReed() {
         <>
             <div className={open ? 'buffer' : 'hidden'}>
                 {/* TODO: ADD Hide/show of card */}
-             <ReedCard reed={templateReed} closeForm={closeForm}/>
+                <ReedCard reed={templateReed} closeForm={closeForm} />
             </div>
-            {open? <button onClick={closeForm}>Close card</button>:<button onClick={openForm}>Create reed</button>}
+            {open ? <button onClick={closeForm}>Close card</button> : <button onClick={openForm}>Create reed</button>}
         </>
     )
 }

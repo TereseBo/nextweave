@@ -7,9 +7,7 @@ import { Formsection } from '@/app/components/calculator/Formsection'
 import { reedUnits } from '@/app/resources/constants/weaveDefaults'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
-
 export function EditReedForm(params: { reed: Reed, closeForm: (() => void) | null }) {
-
 
     const { reed, closeForm } = params
     const [editedReed, setEditedReed] = useState<Reed>({ ...reed })
@@ -94,7 +92,6 @@ export function EditReedForm(params: { reed: Reed, closeForm: (() => void) | nul
         }).then(function (response) {
 
             if (response.status == 201) {
-                endEdit()
                 setEditedReed({ ...reed })
                 updateReeds(reedId, editedReed)
                 if (closeForm) {
@@ -132,10 +129,10 @@ export function EditReedForm(params: { reed: Reed, closeForm: (() => void) | nul
             <form className={isEditing ? 'reed-form' : 'view-only-form'}>
                 <Formsection>
                     <label>Reed:</label>
-                    <input type="number" id="dents" name="dents" min="1" max="100" value={editedReed.dents.toString()} onChange={(e) => onChangeHandler} disabled={!isEditing} />
+                    <input type="number" id="dents" name="dents" min="1" max="100" value={editedReed.dents.toString()} onChange={(e) => onChangeHandler(e)} disabled={!isEditing} />
                     /
-                    <input type="number" id="section" name="section" min="1" max="100" value={editedReed.section.toString()} onChange={(e) => onChangeHandler} disabled={!isEditing} />
-                    <select name="unit" id="unit" value={editedReed.unit} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>
+                    <input type="number" id="section" name="section" min="1" max="100" value={editedReed.section.toString()} onChange={(e) => onChangeHandler(e)} disabled={!isEditing} />
+                    <select name="unit" id="unit" value={editedReed.unit.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>
                         <option value={''}></option>
                         {reedUnits.map(type => {
                             return (<option key={type} value={type}>{type}</option>)
@@ -152,7 +149,7 @@ export function EditReedForm(params: { reed: Reed, closeForm: (() => void) | nul
                     {isEditing ? <button type='button' onClick={reed.id == undefined ? addReed : editReed}>Save</button> : null}
                     {!isEditing && reedId ? <button type='button' onClick={startEdit}>Edit</button> : null}
                     {reedId ? <button className='icon-button' onClick={deleteReed}>Delete</button> : null}
-                    {isEditing && reedId ? <><button type='button' onClick={endEdit}>Stop Editing</button> </> : null}
+                    {isEditing && reedId ? <><button type='button' onClick={endEdit}>Lock</button> </> : null}
                     {closeForm ? <button className='icon-button' onClick={closeForm}>Close</button> : null}
                 </>
             </div>

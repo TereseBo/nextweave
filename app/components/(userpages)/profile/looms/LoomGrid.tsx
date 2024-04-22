@@ -15,7 +15,7 @@ export function LoomGrid(props: { shafts: number, treadles: number }) {
         for (let i = 0; i < shafts; i++) {
             let fillEnd = i + 1
 
-            //ESpecifically handles small grids 
+            //Specifically handles small grids 
             if (treadles < 3) {
                 fillEnd = i
             }
@@ -26,33 +26,25 @@ export function LoomGrid(props: { shafts: number, treadles: number }) {
                 if (j >= treadles) {
                     const currentRowColoredIndex = imageGrid[i].findIndex((color) => color != '')
                     const previourRowColoredIndex = imageGrid[i - 1].findIndex((color) => color != '')
-                    console.log(currentRowColoredIndex)
-                    console.log(previourRowColoredIndex)
                     currentRowColoredIndex == -1 && previourRowColoredIndex == 0 ? j = 1 : j = 0
 
                     fillEnd = 0
-
                 }
                 if (j < treadles) {
                     imageGrid[i][j] = defaultColor
                 }
-
             }
 
             //Handles when treadles are more than shafts
             if (shafts < treadles) {
                 const start = shafts + i + 1
-                for (let k = start; k < treadles ; k++) {
+                for (let k = start; k < treadles; k++) {
 
                     if (k < treadles) {
-                        const currentRowColoredIndex = imageGrid[i].findLastIndex((color) => color != '')
                         const previourRowColoredIndex = i > 0 ? imageGrid[i - 1].findLastIndex((color) => color != '') : imageGrid[shafts - 1].findLastIndex((color) => color)
-                        console.log(currentRowColoredIndex)
-                        console.log(previourRowColoredIndex)
                         previourRowColoredIndex == k ? imageGrid[i][k + 1] = defaultColor : imageGrid[i][k] = defaultColor
-
                     }
-                    k = k + shafts -1
+                    k = k + shafts - 1
                 }
             }
         }

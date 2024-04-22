@@ -146,7 +146,6 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         console.log('Getting reeds')
         try {
             let response = await fetch(`/api/${userId}/reeds`)
-            console.log(response)
 
             if (response.status == 200) {
                 const body = await response.json();
