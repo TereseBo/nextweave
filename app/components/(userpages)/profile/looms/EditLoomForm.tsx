@@ -21,7 +21,6 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
 
     const startEdit = () => { setisEditing(true) }
     const endEdit = () => {
-        setEditedLoom({ ...loom })
         setisEditing(false)
     }
 
@@ -97,6 +96,7 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
 
             if (response.status == 201) {
                 endEdit()
+                setEditedLoom({ ...loom })
                 updateLooms(loomId, editedLoom)
                 if (closeForm) {
                     closeForm()
