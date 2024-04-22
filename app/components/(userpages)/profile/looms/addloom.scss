@@ -4,7 +4,13 @@
     padding-top: 3rem;
     padding-left: 5rem;
     padding-right: 5rem;
-    padding-bottom:5rem;
+    padding-bottom: 5rem;
+}
 
+#looms-page:has(> .buffer) {
+    #user-looms-list {
+
+        opacity: 0.3;
+    }
 
 }

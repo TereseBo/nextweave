@@ -6,7 +6,7 @@ import { UserLoomDisplay } from '@/app/components/(userpages)/profile/looms/User
 
 export default function LoomPage() {
     return (
-            <div id='profile-page'>
+            <div className='profile-page' id='looms-page'>
                 <UserLoomDisplay/>
                 <AddLoom/>
             </div>

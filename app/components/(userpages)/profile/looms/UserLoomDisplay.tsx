@@ -1,6 +1,5 @@
 //This component is a container for loomcards and represents the main content of the profile/looms
 'use client'
-import './userloomdisplay.scss'
 
 import { LoomCard } from '@/app/components/(userpages)/profile/looms/LoomCard'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
@@ -12,7 +11,7 @@ export function UserLoomDisplay() {
     return (
         <>
             {looms ? 
-            <div className='user-looms'>
+            <div className='card-list' id='user-looms-list'>
                 {looms.map(loom => {
                     if (!loom) return (null)
                     else {

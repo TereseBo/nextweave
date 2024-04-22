@@ -26,7 +26,7 @@ export function AddLoom() {
             <div  className={open ? 'buffer' : 'hidden'} onMouseLeave={closeForm}>
              <LoomCard loom={templateLoom}/>
             </div>
-            <button onClick={openForm}>Create new loom</button>
+            {open?  <button onClick={closeForm}>Close card</button>:<button onClick={openForm}>Create new loom</button>}
         </>
     )
 }
