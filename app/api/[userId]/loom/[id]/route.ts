@@ -102,8 +102,6 @@ export async function PUT(
         const { shafts, treadles, brand, type }:Loom=loom
 
         let dbResponse = await db.collection('looms').updateOne({ _id, userId },  { $set:{shafts, treadles, brand, type} } )
-        console.log('Response in patch LOOM route')
-        console.log(dbResponse)
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No loom to update found', { status: 200 });

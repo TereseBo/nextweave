@@ -25,7 +25,7 @@ export async function GET(
             return NextResponse.json(null, { status: 200 });
         }
 
-        //Convert the LoomDocument to a Loom before sending to frontend
+        //Convert the ReedDocument to a Reed before sending to frontend
         const stringId = dbResponse._id.toString()
         const reed: Reed = {
             id: stringId,
@@ -34,7 +34,6 @@ export async function GET(
             unit: dbResponse.unit,
             length: dbResponse.length,
         }
-
 
         return NextResponse.json({ reed: reed }, { status: 200 });
 
@@ -61,10 +60,6 @@ export async function DELETE(
     try {
         const db = await dbConnection() as Db
         let dbResponse = await db.collection('reeds').deleteOne({ _id, userId })
-        console.log(dbResponse)
-
-        console.log('Response in delete reed route')
-        console.log(dbResponse)
 
         if (dbResponse.deletedCount !== 1) {
             return new NextResponse('No reed to delete found', { status: 200 });
@@ -85,11 +80,11 @@ export async function DELETE(
 export async function PUT(
     req: Request,
     { params }: { params: { userId: string, id: string } }) {
-    //Updates one loom for the user
+    //Updates one reed for the user
     const { userId, id } = params
 
     const _id = new ObjectId(id)
-    console.log(_id)
+
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
     }
@@ -101,22 +96,21 @@ export async function PUT(
         const { reed } = body.values
         const { dents, section, unit, length}:Reed=reed
 
-        let dbResponse = await db.collection('looms').replaceOne({ _id, userId },  { $set:{dents, section, unit, length} } )
-        console.log('Response in PUT reed route')
-        console.log(dbResponse)
+        let dbResponse = await db.collection('reeds').updateOne({ _id, userId },  { $set:{dents, section, unit, length} } )
 
         if (dbResponse.modifiedCount !== 1) {
-            return new NextResponse('No weave to update found', { status: 200 });
+            return new NextResponse('No reed to update found', { status: 200 });
         } else {
 
-            return NextResponse.json('Weave updated', { status: 200 });
+            return NextResponse.json('Reed updated', { status: 200 });
         }
 
     } catch (error) {
-        console.log('api/Loom/PUT', error);
+        console.log('api/reed/PUT', error);
         return new NextResponse(
             'Ooops, something went very wrong on the server',
             { status: 500 }
         );
     }
 }
+

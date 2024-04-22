@@ -33,11 +33,9 @@ export async function GET(
                     type: loomDocument.type,
                 }
                 return loom
-
             })
         }
 
-        console.log(loomList)
         return NextResponse.json({ loomList }, { status: 200 });
 
     } catch (error) {
