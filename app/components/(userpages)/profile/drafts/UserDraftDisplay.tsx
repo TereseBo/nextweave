@@ -1,6 +1,5 @@
 //This component is a container for draftcards and represents the main content of the profile/drafts
 'use client'
-import './userdraftdisplay.scss'
 
 import { DraftCard } from '@/app/components/(userpages)/profile/drafts/DraftCard'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
@@ -12,7 +11,7 @@ export function UserDraftDisplay() {
     return (
         <>
             {drafts ? 
-            <div className='userdrafts'>
+            <div className='card-list'>
                 {drafts.map(draft => {
                     if (!draft) return (null)
                     else {

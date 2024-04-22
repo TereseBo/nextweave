@@ -10,13 +10,16 @@ interface Draft extends mongoDB.Document {
     public: Boolean
 }
 
-interface Loom extends mongoDB.Document {
+interface LoomDocument extends mongoDB.Document {
     _id?: ObjectId,
     userId: string,
     shafts: number,
     treadles: number,
-    name: string,
+    brand: string,
+    type:LoomType,
+
 }
+
 
 interface Reed extends mongoDB.Document {
     _id?: ObjectId,
@@ -26,13 +29,20 @@ interface Reed extends mongoDB.Document {
     unit: 'cm' | 'in',
     length: number
 }
+
+
+
+
 type rD1 = Omit<Draft, 'created'> & { created: string };
 type ReformattedDraft = Omit<Draft, 'updated'> & { updated: string };
 
+
+type ReformattedLoomDocument = Omit<LoomDocument, '_id'> & { _id: string };
+
 type DraftList = ReformattedDraft[]
-type LoomList=Loom[]
+type LoomDocumentList=LoomDocument[]
 type ReedList=Reed[]
 
 
 
-export type { Draft, DraftList, Loom, LoomList, Reed, ReedList, ReformattedDraft }
+export type { Draft, DraftList, LoomDocument, LoomDocumentList, Reed, ReedList, ReformattedDraft}

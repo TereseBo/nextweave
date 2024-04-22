@@ -1,5 +1,6 @@
 import { DraftList } from './dbdocuments'
 
+
 export type WeaveContextType = {
     treadleGrid: grid | undefined,
     warpGrid: grid | undefined,
@@ -30,11 +31,22 @@ export type WeaveContextType = {
 }
 
 export type UserContextType = {
-    user:string|null,
+    //User
+    user: string | null,
     setUser: (newValue: string | null) => void,
+
+    //Resources owned by the user
+    //Drafts
     drafts: DraftList | null,
-    updateDraft:(_id:string, ...updates:any)=>void,
-    removeDraft:(_id:string)=>void,
+    updateDraft: (_id: string, ...updates: any) => void,
+    removeDraft: (_id: string) => void
+
+    //Looms
+    looms: LoomList | null,
+    updateLooms:(id: string|undefined, updatedLoom:Loom)=> void,
+    removeLoom:(id: string) => void,
+
+    //Reeds
     reeds:ReedList|null,
     updateReed:(_id:string, updatedReed:Reed)=>void,
     removeReed:(_id:string)=>void,
