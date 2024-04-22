@@ -37,10 +37,9 @@ export function EditReedForm(params: { reed: Reed, closeForm: (() => void) | nul
 
     //Keeps the form and state values in sync for all reed properties
     function onChangeHandler(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
-        console.log(e.target)
-        console.log(e.target.value)
+
         let value: string | number = e.target.value
-        console.log(editedReed)
+   
         e.target.type !== 'number' ? value = value : value = Number(value)
         setEditedReed(prevValue => {
             const updatedValue = { ...prevValue, [e.target.id]: value }

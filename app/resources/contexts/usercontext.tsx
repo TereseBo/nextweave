@@ -61,7 +61,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         const newDrafts: DraftList = draftsCopy.map(draft => {
 
             if (draft._id == _id) {
-                console.log('id:s matched')
+
                 let updatedDraft: ReformattedDraft = JSON.parse(JSON.stringify(draft))
                 let copiedUpdate: WeaveObject = JSON.parse(JSON.stringify(weave))
                 updatedDraft = Object.assign(updatedDraft, copiedUpdate)
@@ -115,7 +115,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         const newLooms: LoomList = loomsCopy.map(loom => {
 
             if (loom.id == id) {
-                console.log('id:s matched')
+   
                 let replacementLoom:any = JSON.parse(JSON.stringify(updatedLoom))
                 replacementLoom.id=id
                 return replacementLoom as Loom
@@ -143,7 +143,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     //Functions handling reeds:
     //Fetches all reeds registered by a user
     async function getReeds(userId: string) {
-        console.log('Getting reeds')
+   
         try {
             let response = await fetch(`/api/${userId}/reeds`)
 
@@ -172,7 +172,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         const newReeds: ReedList = reedsCopy.map(reed => {
 
             if (reed.id == id) {
-                console.log('id:s matched')
+
                 let replacementReed:any = JSON.parse(JSON.stringify(updatedReed))
                 replacementReed.id=id
                 return replacementReed as Reed
