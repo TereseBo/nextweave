@@ -30,5 +30,5 @@ const templateReed: Reed = {
     length: 100
 }
 
-export {defaultColor,defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles, defaultWarpColor, defaultWeftColor, loomTypes, templateLoom, reedUnits, templateReed}
+export {defaultColor,defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles, defaultWarpColor, defaultWeftColor, loomTypes, reedUnits, templateLoom, templateReed}
 
