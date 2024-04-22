@@ -15,7 +15,7 @@ export function UserLoomDisplay() {
                 {looms.map(loom => {
                     if (!loom) return (null)
                     else {
-                        return (<LoomCard key={loom.id} loom={loom} />)
+                        return (<LoomCard key={loom.id} loom={loom} closeForm={null}/>)
                     }
                 })}
             </div> : <div>Loading looms</div>}

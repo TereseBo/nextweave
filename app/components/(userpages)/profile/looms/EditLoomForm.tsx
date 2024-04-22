@@ -9,18 +9,21 @@ import { loomTypes } from '@/app/resources/constants/weaveDefaults'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
 
-export function EditLoomForm(params: { loom: Loom }) {
+export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | null }) {
 
 
-    const { loom } = params
+    const { loom, closeForm } = params
     const [editedLoom, setEditedLoom] = useState<Loom>({ ...loom })
     const loomId = loom.id
-    //Is editing is initalized depending on if the lomm is represented in db(has an id), otherwise toggled on click
+    //Is editing is initalized depending on if the loom is represented in db(has an id), otherwise toggled on click
     const [isEditing, setisEditing] = useState<boolean>(loomId === undefined)
     const { user, updateLooms, removeLoom } = useUserContext()
 
     const startEdit = () => { setisEditing(true) }
-    const endEdit = () => { setisEditing(false) }
+    const endEdit = () => {
+        setEditedLoom({ ...loom })
+        setisEditing(false)
+    }
 
     //Validation of the content in editedLoomState, is to be used before submission of data to DB
     function validateFormData() {
@@ -42,8 +45,8 @@ export function EditLoomForm(params: { loom: Loom }) {
     function onChangeHandler(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
 
         let value: string | number = e.target.value
-        
-        e.target.type!=='number'? value = value : value = Number(value)
+
+        e.target.type !== 'number' ? value = value : value = Number(value)
         setEditedLoom(prevValue => {
             const updatedValue = { ...prevValue, [e.target.id]: value }
             return updatedValue
@@ -52,7 +55,7 @@ export function EditLoomForm(params: { loom: Loom }) {
 
     //Submitts edition to DB and updates LoomList in context
     async function editLoom(e: React.MouseEvent<HTMLElement>) {
-        if (!validateFormData || loomId=== undefined) {
+        if (!validateFormData || loomId === undefined) {
             return
         }
 
@@ -67,7 +70,6 @@ export function EditLoomForm(params: { loom: Loom }) {
         }).then(function (response) {
 
             if (response.status == 200) {
-                //TODO:Update loom in usderContext to match
                 endEdit()
                 updateLooms(loomId, editedLoom)
                 alert('Loom updated!')
@@ -77,7 +79,7 @@ export function EditLoomForm(params: { loom: Loom }) {
         })
     }
 
-     //Posts Loom to DB and updates LoomList in context
+    //Posts Loom to DB and updates LoomList in context
     async function addLoom(e: React.MouseEvent<HTMLElement>) {
         if (!validateFormData) {
             return
@@ -94,10 +96,12 @@ export function EditLoomForm(params: { loom: Loom }) {
         }).then(function (response) {
 
             if (response.status == 201) {
-                //TODO:Update loom in usderContext to match
                 endEdit()
                 updateLooms(loomId, editedLoom)
-                
+                if (closeForm) {
+                    closeForm()
+                }
+
                 alert('Loom saved!')
             } else {
                 alert('Ops, the loom could not be saved')
@@ -107,7 +111,7 @@ export function EditLoomForm(params: { loom: Loom }) {
 
     //Deletes loom from DB and updates loomlist in context
     function deleteLoom() {
-        if(loomId===undefined){
+        if (loomId === undefined) {
             return
         }
 
@@ -115,7 +119,6 @@ export function EditLoomForm(params: { loom: Loom }) {
             .then(function (response) {
 
                 if (response.status == 200) {
-                    //TODO:Update loom in usderContext to match
                     removeLoom(loomId)
                     alert('Loom deleted!')
                 } else {
@@ -123,10 +126,10 @@ export function EditLoomForm(params: { loom: Loom }) {
                 }
             })
     }
-    //TODO:Disable and style inputs when not editing and add styling for non-valid values
+    //TODO:Improve styling
     return (
         <>
-            <form className={isEditing?'loom-form': 'view-only-form'} >
+            <form className={isEditing ? 'loom-form' : 'view-only-form'} >
                 <Formsection>
                     <label>Shafts:</label>
                     <input name="shafts" id="shafts" type='number' min='1' max='36' value={editedLoom.shafts.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>{ }</input>
@@ -151,9 +154,11 @@ export function EditLoomForm(params: { loom: Loom }) {
             </form>
             <div className='action-container'>
                 <>
-                    {isEditing ? <><button type='button' onClick={loom.id == undefined ? addLoom : editLoom}>Save</button>{isEditing && loomId ? <button type='button' onClick={endEdit}>Stop Editing</button> : null}</> : <button type='button' onClick={startEdit}>Edit</button>}
-                    <button className='icon-button' onClick={deleteLoom}>Delete</button>
-
+                    {isEditing ? <button type='button' onClick={loom.id == undefined ? addLoom : editLoom}>Save</button> : null}
+                    {!isEditing && loomId ? <button type='button' onClick={startEdit}>Edit</button> : null}
+                    {loomId ? <button className='icon-button' onClick={deleteLoom}>Delete</button> : null}
+                    {isEditing && loomId ? <><button type='button' onClick={endEdit}>Stop Editing</button> </> : null}
+                    {closeForm ? <button className='icon-button' onClick={closeForm}>Close</button> : null}
                 </>
             </div>
         </>

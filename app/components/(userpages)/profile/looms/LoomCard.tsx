@@ -9,8 +9,8 @@ import { LoomGrid } from './LoomGrid'
 
 //TODO:Add typing
 
-export function LoomCard(params: { loom: Loom }) {
-    const { loom } = params
+export function LoomCard(params: { loom: Loom, closeForm:(()=>void)|null }) {
+    const { loom, closeForm } = params
 
     return (
 
@@ -18,7 +18,7 @@ export function LoomCard(params: { loom: Loom }) {
 
             <div className='horizontal loom-card' >
                 <LoomGrid treadles={loom.treadles} shafts={loom.shafts}/>
-                <EditLoomForm loom={loom} />
+                <EditLoomForm loom={loom} closeForm={closeForm} />
 
             </div>
 
