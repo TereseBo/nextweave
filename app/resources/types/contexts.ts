@@ -48,7 +48,7 @@ export type UserContextType = {
 
     //Reeds
     reeds:ReedList|null,
-    updateReed:(_id:string, updatedReed:Reed)=>void,
+    updateReeds:(_id:string|undefined, updatedReed:Reed)=>void,
     removeReed:(_id:string)=>void,
 
 

@@ -6,17 +6,16 @@ import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 
 import { EditReedForm } from './EditReedForm'
 
-//TODO:Add typing
 
-export function ReedCard(params: { reed: Reed }) {
-    const { reed } = params
+export function ReedCard(params: { reed: Reed, closeForm:(()=>void)|null }) {
+    const { reed, closeForm } = params
 
     return (
 
         <DisplayCard >
 
             <div className='horizontal loom-card' >
-                <EditReedForm reed={reed} />
+                <EditReedForm reed={reed} closeForm={closeForm} />
 
             </div>
 

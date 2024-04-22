@@ -16,11 +16,11 @@ export function AddReed() {
 
     return (
         <>
-            <div className={open ? 'buffer' : 'hidden'} onMouseLeave={closeForm}>
+            <div className={open ? 'buffer' : 'hidden'}>
                 {/* TODO: ADD Hide/show of card */}
-             <ReedCard reed={templateReed}/>
+             <ReedCard reed={templateReed} closeForm={closeForm}/>
             </div>
-            <button onClick={openForm}>Create new loom</button>
+            {open? <button onClick={closeForm}>Close card</button>:<button onClick={openForm}>Create reed</button>}
         </>
     )
 }

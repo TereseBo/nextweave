@@ -140,26 +140,33 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     }
 
 
-        //Functions handling reeds:
+    //Functions handling reeds:
     //Fetches all reeds registered by a user
     async function getReeds(userId: string) {
+        console.log('Getting reeds')
         try {
             let response = await fetch(`/api/${userId}/reeds`)
+            console.log(response)
 
             if (response.status == 200) {
                 const body = await response.json();
                 const { reedList } = body
-                setLooms(reedList)
+                setReeds(reedList)
             }
         } catch (error) {
-            setLooms(null)
+            setReeds(null)
+            console.log(error)
         }
     }
 
     //Accepts a reedId and a reed to replace the item in the reedList
-    function updateReed(id: string, updatedReed: Reed): void {
+    function updateReeds(id: string|undefined, updatedReed: Reed): void {
 
         if (!reeds) {
+            return
+        }
+        if(user && (!id || !reeds.find(loom=>{loom.id===id})) ){
+            getReeds(user)
             return
         }
         const reedsCopy: ReedList = JSON.parse(JSON.stringify(looms))
@@ -190,7 +197,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
 
     return (
 
-        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, looms, updateLooms, removeLoom,, reeds, updateReed, removeReed }}>
+        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, looms, updateLooms, removeLoom, reeds, updateReeds, removeReed }}>
             {children}
         </UserContext.Provider>
     )
