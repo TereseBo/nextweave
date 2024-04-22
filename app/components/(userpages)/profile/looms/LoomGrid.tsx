@@ -13,15 +13,15 @@ export function LoomGrid(props: { shafts: number, treadles: number }) {
         const imageGrid = createGrid(treadles, shafts)
 
         for (let i = 0; i < shafts; i++) {
-            let bob = i + 1
+            let fillEnd = i + 1
 
             //ESpecifically handles small grids 
             if (treadles < 3) {
-                bob = i
+                fillEnd = i
             }
 
             //Handles when shafts are more or equal to treadles
-            for (let j = i; j <= bob; j++) {
+            for (let j = i; j <= fillEnd; j++) {
 
                 if (j >= treadles) {
                     const currentRowColoredIndex = imageGrid[i].findIndex((color) => color != '')
@@ -30,7 +30,7 @@ export function LoomGrid(props: { shafts: number, treadles: number }) {
                     console.log(previourRowColoredIndex)
                     currentRowColoredIndex == -1 && previourRowColoredIndex == 0 ? j = 1 : j = 0
 
-                    bob = 0
+                    fillEnd = 0
 
                 }
                 if (j < treadles) {
@@ -41,9 +41,8 @@ export function LoomGrid(props: { shafts: number, treadles: number }) {
 
             //Handles when treadles are more than shafts
             if (shafts < treadles) {
-                bob = shafts + i + 1
                 const start = shafts + i + 1
-                for (let k = shafts + i + 1; k < treadles ; k++) {
+                for (let k = start; k < treadles ; k++) {
 
                     if (k < treadles) {
                         const currentRowColoredIndex = imageGrid[i].findLastIndex((color) => color != '')
@@ -54,19 +53,12 @@ export function LoomGrid(props: { shafts: number, treadles: number }) {
 
                     }
                     k = k + shafts -1
-
                 }
             }
-
-
         }
-
-
         setContent(imageGrid)
-        console.log('running grid useefect')
 
     }, [treadles, shafts])
-
 
     return (
         <>
