@@ -61,11 +61,11 @@ export function LoomGrid(props: { shafts: number, treadles: number }) {
     }, [treadles, shafts])
 
     return (
-        <>
+        <div className='preview-container'>
             {
                 (content != null) ?
                     <Grid_contained content={content} setContent={null} type='tie-up' /> : null
             }
-        </>
+        </div>
     )
 }
