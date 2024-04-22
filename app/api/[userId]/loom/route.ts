@@ -1,4 +1,3 @@
-
 //Route used to POST a loom
 import { Db } from 'mongodb'
 import { NextResponse } from 'next/server'
@@ -8,7 +7,7 @@ import { LoomDocument } from '@/app/resources/types/dbdocuments'
 
 
 
-//Inserts a Draft in the draft collection
+//Inserts a Loom in the loom collection
 export async function POST(
     req: Request,
     { params }: { params: { userId: string } }
@@ -23,7 +22,6 @@ export async function POST(
 
         let newDocument:LoomDocument  = { userId, shafts, treadles, brand, type}
         let dbResponse = await db.collection('looms').insertOne(newDocument)
-        console.log(dbResponse)
 
         return NextResponse.json({createdId:dbResponse.insertedId.toString()}, { status: 201 });
     } catch (error) {

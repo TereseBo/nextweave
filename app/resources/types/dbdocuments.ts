@@ -21,7 +21,7 @@ interface LoomDocument extends mongoDB.Document {
 }
 
 
-interface Reed extends mongoDB.Document {
+interface ReedDocument extends mongoDB.Document {
     _id?: ObjectId,
     userId: string,
     dents: number,
@@ -30,19 +30,13 @@ interface Reed extends mongoDB.Document {
     length: number
 }
 
-
-
-
 type rD1 = Omit<Draft, 'created'> & { created: string };
 type ReformattedDraft = Omit<Draft, 'updated'> & { updated: string };
 
-
-type ReformattedLoomDocument = Omit<LoomDocument, '_id'> & { _id: string };
-
 type DraftList = ReformattedDraft[]
 type LoomDocumentList=LoomDocument[]
-type ReedList=Reed[]
+type ReedDocumentList=Reed[]
 
 
 
-export type { Draft, DraftList, LoomDocument, LoomDocumentList, Reed, ReedList, ReformattedDraft}
+export type { Draft, DraftList, LoomDocument, LoomDocumentList, ReedDocument, ReedDocumentList, ReformattedDraft}

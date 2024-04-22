@@ -4,7 +4,7 @@ import { UserDraftDisplay } from '@/app/components/(userpages)/profile/drafts/Us
 
 export default function DraftPage() {
     return (
-            <div className='profile-page'>
+            <div className='profile-page' id='draft-page'>
                 <UserDraftDisplay />
                 <AddDraft/>
             </div>

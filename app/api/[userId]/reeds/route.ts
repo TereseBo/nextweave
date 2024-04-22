@@ -1,5 +1,4 @@
-
-//Route for actions on multiple looms owned by a user
+//Route for actions on multiple reeds owned by a user
 import { Db } from 'mongodb'
 import { NextResponse } from 'next/server'
 
@@ -9,7 +8,7 @@ import { dbConnection } from '@/app/resources/db/mongodb'
 export async function GET(
     req: Request,
     { params }: { params: { userId: string } }) {
-    //Fetches all looms for the user
+    //Fetches all reeds for the user
     const userId = params.userId
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
@@ -17,33 +16,34 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('looms').find({ userId: userId }).toArray()
+        let dbResponse = await db.collection('reeds').find({ userId: userId }).toArray()
 
-        let loomList:LoomList=[]
+        let reedList:ReedList=[]
 
-        //Convert from documents to Looms
+        //Convert from documents to Reeds
         if (dbResponse.length > 0) {
-            loomList = dbResponse.map(loomDocument => {
+            reedList = dbResponse.map(loomDocument => {
                 const stringId = loomDocument._id.toString()
-                const loom: Loom = {
+                const reed: Reed = {
                     id: stringId,
-                    shafts: loomDocument.shafts,
-                    treadles: loomDocument.treadles,
-                    brand: loomDocument.brand,
-                    type: loomDocument.type,
+                    dents: loomDocument.dents,
+                    section: loomDocument.section,
+                    unit: loomDocument.unit,
+                    length: loomDocument.length,
                 }
-                return loom
+                return reed
+
             })
         }
 
-        return NextResponse.json({ loomList }, { status: 200 });
+        console.log(reedList)
+        return NextResponse.json({ reedList }, { status: 200 });
 
     } catch (error) {
-        console.log('api/looms/GET', error);
+        console.log('api/reeds/GET', error);
         return new NextResponse(
             'Ooops, something went very wrong on the server',
             { status: 500 }
         );
     }
 }
-

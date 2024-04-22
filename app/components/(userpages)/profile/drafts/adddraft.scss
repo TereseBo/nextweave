@@ -1,23 +1,25 @@
 @use '@/app/resources/style/variables.scss' as v;
 @use '@/app/resources/style/mixins.scss' as m;
 
-.buffer {
-    position: absolute;
-    top: 0px;
-    padding-top: 3rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    padding-bottom:5rem;
+#draft-page {
+    .buffer {
+        position: absolute;
+        top: 0px;
+        padding-top: 3rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        padding-bottom: 5rem;
 
-    .new-draft-container {
+        .new-draft-container {
 
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
 
-        .draft {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            .draft {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
         }
     }
 }

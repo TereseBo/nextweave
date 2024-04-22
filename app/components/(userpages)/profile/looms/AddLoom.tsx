@@ -1,10 +1,9 @@
 //Component is a container for the card used to edit/delete/add loom to DB
 'use client'
-import './addloom.scss'
 
 import { useState } from 'react'
 
-import {  templateLoom} from '@/app/resources/constants/weaveDefaults'
+import { templateLoom } from '@/app/resources/constants/weaveDefaults'
 
 import { LoomCard } from './LoomCard'
 
@@ -17,10 +16,10 @@ export function AddLoom() {
 
     return (
         <>
-            <div  className={open ? 'buffer' : 'hidden'} >
-             <LoomCard loom={templateLoom} closeForm={closeForm}/>
+            <div className={open ? 'buffer' : 'hidden'} >
+                <LoomCard loom={templateLoom} closeForm={closeForm} />
             </div>
-            {open?  <button onClick={closeForm}>Close card</button>:<button onClick={openForm}>Create new loom</button>}
+            {open ? <button onClick={closeForm}>Close card</button> : <button onClick={openForm}>Create new loom</button>}
         </>
     )
 }

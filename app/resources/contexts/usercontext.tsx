@@ -11,18 +11,19 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     const [user, setUser] = useState<string | null>(null)
     const [drafts, setDrafts] = useState<DraftList | null>(null)
     const [looms, setLooms] = useState<LoomList | null>(null)
-    //const [reeds, setReeds] = useState<ReedList | null>(null)
+    const [reeds, setReeds] = useState<ReedList | null>(null)
 
     useEffect(() => {
         function clearResources() {
             setDrafts(null)
             setLooms(null)
-            //setReeds(null)
+            setReeds(null)
         }
 
         function getResources(userId: string) {
             getDrafts(userId)
             getLooms(userId)
+            getReeds(userId)
         }
 
         user ? getResources(user) : clearResources()
@@ -60,7 +61,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         const newDrafts: DraftList = draftsCopy.map(draft => {
 
             if (draft._id == _id) {
-                console.log('id:s matched')
+
                 let updatedDraft: ReformattedDraft = JSON.parse(JSON.stringify(draft))
                 let copiedUpdate: WeaveObject = JSON.parse(JSON.stringify(weave))
                 updatedDraft = Object.assign(updatedDraft, copiedUpdate)
@@ -114,7 +115,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         const newLooms: LoomList = loomsCopy.map(loom => {
 
             if (loom.id == id) {
-                console.log('id:s matched')
+   
                 let replacementLoom:any = JSON.parse(JSON.stringify(updatedLoom))
                 replacementLoom.id=id
                 return replacementLoom as Loom
@@ -139,9 +140,63 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     }
 
 
+    //Functions handling reeds:
+    //Fetches all reeds registered by a user
+    async function getReeds(userId: string) {
+   
+        try {
+            let response = await fetch(`/api/${userId}/reeds`)
+
+            if (response.status == 200) {
+                const body = await response.json();
+                const { reedList } = body
+                setReeds(reedList)
+            }
+        } catch (error) {
+            setReeds(null)
+            console.log(error)
+        }
+    }
+
+    //Accepts a reedId and a reed to replace the item in the reedList
+    function updateReeds(id: string|undefined, updatedReed: Reed): void {
+
+        if (!reeds) {
+            return
+        }
+        if(user && (!id || !reeds.find(loom=>{loom.id===id})) ){
+            getReeds(user)
+            return
+        }
+        const reedsCopy: ReedList = JSON.parse(JSON.stringify(looms))
+        const newReeds: ReedList = reedsCopy.map(reed => {
+
+            if (reed.id == id) {
+
+                let replacementReed:any = JSON.parse(JSON.stringify(updatedReed))
+                replacementReed.id=id
+                return replacementReed as Reed
+            } else {
+                return reed
+            }
+        })
+
+        setReeds(newReeds)
+    }
+
+    //Removes a reed from reedList by Id
+    function removeReed(id: string): void {
+        if (!reeds) {
+            return
+        }
+        const reedsCopy: ReedList = JSON.parse(JSON.stringify(reeds))
+        const filteredCopy: ReedList = reedsCopy.filter((reed) => reed.id !== id);
+        setReeds(filteredCopy)
+    }
+
     return (
 
-        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, looms, updateLooms, removeLoom, }}>
+        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, looms, updateLooms, removeLoom, reeds, updateReeds, removeReed }}>
             {children}
         </UserContext.Provider>
     )

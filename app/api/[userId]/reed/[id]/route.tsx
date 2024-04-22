@@ -1,4 +1,4 @@
-//Route for actions on single looms owned by a user as specified by user and loom Id
+//Route for actions on single reeds owned by a user as specified by user and objectId
 import { Db } from 'mongodb'
 import { ObjectId } from 'mongodb'
 import { NextResponse } from 'next/server'
@@ -8,7 +8,7 @@ import { dbConnection } from '@/app/resources/db/mongodb'
 export async function GET(
     req: Request,
     { params }: { params: { userId: string, id: string } }) {
-    //Fetches one loom for the user by _id
+    //Fetches one reed for the user by _id
     const { userId, id } = params
 
     const _id = new ObjectId(id)
@@ -18,28 +18,27 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('looms').findOne({ _id, userId })
+        let dbResponse = await db.collection('reeds').findOne({ _id, userId })
 
         //Return empty if no content is found in DB
         if (!dbResponse) {
             return NextResponse.json(null, { status: 200 });
         }
 
-        //Convert the LoomDocument to a Loom before sending to frontend
+        //Convert the ReedDocument to a Reed before sending to frontend
         const stringId = dbResponse._id.toString()
-        const loom: Loom = {
+        const reed: Reed = {
             id: stringId,
-            shafts: dbResponse.shafts,
-            treadles: dbResponse.treadles,
-            brand: dbResponse.brand,
-            type: dbResponse.type,
+            dents: dbResponse.dents,
+            section: dbResponse.section,
+            unit: dbResponse.unit,
+            length: dbResponse.length,
         }
 
-
-        return NextResponse.json({ loom: loom }, { status: 200 });
+        return NextResponse.json({ reed: reed }, { status: 200 });
 
     } catch (error) {
-        console.log('api/loom/GET', error);
+        console.log('api/reed/GET', error);
         return new NextResponse(
             'Ooops, something went very wrong on the server',
             { status: 500 }
@@ -50,7 +49,7 @@ export async function GET(
 export async function DELETE(
     req: Request,
     { params }: { params: { userId: string, id: string } }) {
-    //Deletes one loom for the user by id
+    //Deletes one reed for the user by id
     const { userId, id } = params
 
     const _id = new ObjectId(id)
@@ -60,21 +59,17 @@ export async function DELETE(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('looms').deleteOne({ _id, userId })
-        console.log(dbResponse)
-
-        console.log('Response in delete toute')
-        console.log(dbResponse)
+        let dbResponse = await db.collection('reeds').deleteOne({ _id, userId })
 
         if (dbResponse.deletedCount !== 1) {
-            return new NextResponse('No loom to delete found', { status: 200 });
+            return new NextResponse('No reed to delete found', { status: 200 });
         } else {
 
-            return NextResponse.json('Loom updated', { status: 200 });
+            return NextResponse.json('Reed deleted', { status: 200 });
         }
 
     } catch (error) {
-        console.log('api/loom/DELETE', error);
+        console.log('api/draft/GET', error);
         return new NextResponse(
             'Ooops, something went very wrong on the server',
             { status: 500 }
@@ -85,11 +80,11 @@ export async function DELETE(
 export async function PUT(
     req: Request,
     { params }: { params: { userId: string, id: string } }) {
-    //Updates one loom for the user
+    //Updates one reed for the user
     const { userId, id } = params
 
     const _id = new ObjectId(id)
-    console.log(_id)
+
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
     }
@@ -98,23 +93,24 @@ export async function PUT(
 
         const db = await dbConnection() as Db
         const body = await req.json();
-        const { loom } = body.values
-        const { shafts, treadles, brand, type }:Loom=loom
+        const { reed } = body.values
+        const { dents, section, unit, length}:Reed=reed
 
-        let dbResponse = await db.collection('looms').updateOne({ _id, userId },  { $set:{shafts, treadles, brand, type} } )
+        let dbResponse = await db.collection('reeds').updateOne({ _id, userId },  { $set:{dents, section, unit, length} } )
 
         if (dbResponse.modifiedCount !== 1) {
-            return new NextResponse('No loom to update found', { status: 200 });
+            return new NextResponse('No reed to update found', { status: 200 });
         } else {
 
-            return NextResponse.json('Loom updated', { status: 200 });
+            return NextResponse.json('Reed updated', { status: 200 });
         }
 
     } catch (error) {
-        console.log('api/Loom/PUT', error);
+        console.log('api/reed/PUT', error);
         return new NextResponse(
             'Ooops, something went very wrong on the server',
             { status: 500 }
         );
     }
 }
+
