@@ -6,7 +6,7 @@ import { UserReedDisplay } from '@/app/components/(userpages)/profile/reeds/User
 
 export default function LoomPage() {
     return (
-            <div id='profile-page'>
+            <div className='profile-page'>
                 <UserReedDisplay/>
                 <AddReed/>
             </div>
