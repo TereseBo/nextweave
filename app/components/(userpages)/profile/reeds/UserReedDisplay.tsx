@@ -1,6 +1,5 @@
 //This component is a container for reedcards and represents the main content of the profile/looms
 'use client'
-import './userloomdisplay.scss'
 
 import { ReedCard } from '@/app/components/(userpages)/profile/reeds/ReedCard'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
@@ -12,14 +11,14 @@ export function UserReedDisplay() {
     return (
         <>
             {reeds? 
-            <div className='userdrafts'>
+            <div className='card-list' id='user-reeds-list'>
                 {reeds.map(reed => {
                     if (!reed) return (null)
                     else {
-                        return (<ReedCard key={reed.id} reed={reed} />)
+                        return (<ReedCard key={reed.id} reed={reed} closeForm={null} />)
                     }
                 })}
-            </div> : <div>Loading looms</div>}
+            </div> : <div>Loading reeds</div>}
 
 
             {reeds&& reeds.length==0 ? 

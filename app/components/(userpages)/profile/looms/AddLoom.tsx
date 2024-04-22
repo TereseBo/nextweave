@@ -1,6 +1,5 @@
 //Component is a container for the card used to edit/delete/add loom to DB
 'use client'
-import './addloom.scss'
 
 import { useState } from 'react'
 

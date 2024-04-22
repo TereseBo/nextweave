@@ -1,24 +1,41 @@
-.userpages-layout{
+.userpages-layout {
     padding: 2rem;
     display: flex;
     flex-direction: row;
-    gap:1rem;
+    gap: 1rem;
 }
 
-.profile-page{
+.profile-page {
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     flex-grow: 1;
-}
 
-.card-list {
-    padding: 2rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
+    &:not(#draft-page) {
+        .buffer {
+            position: fixed;
+            bottom: 50%;
+            margin-top: 3rem;
+            margin-left: 5rem;
+            margin-right: 5rem;
+            margin-bottom: 5rem;
+        }
+
+        &:has(> .buffer) {
+            .card-list {
+                opacity: 0.3;
+            }
+        }
+    }
+
+    .card-list {
+        padding: 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+    }
 }
