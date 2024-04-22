@@ -38,4 +38,33 @@
         align-items: flex-start;
         width: 100%;
     }
+
+    .view-only-form {
+
+        input,
+        select {
+            background-color: inherit;
+            border: none;
+    
+        }
+    
+        select {
+            //Removal of dropdown arrow for select
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            text-indent: 1px;
+            text-overflow: '';
+            margin: 0 0.2rem 0 0.2rem;
+            padding: 0.2rem 0.2rem 0 0.2rem;
+        }
+    }
+    
+    .loom-form, .reed-form{
+        input,
+        select {
+            background-color: white;
+        }
+    
+    }
 }

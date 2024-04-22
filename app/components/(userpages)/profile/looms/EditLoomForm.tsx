@@ -1,6 +1,5 @@
 //This component contains tye logic to sen POST, PUT, DELETE requests on single looms by a user
 'use client'
-import './editloomform.scss'
 
 import { useState } from 'react'
 
@@ -8,9 +7,7 @@ import { Formsection } from '@/app/components/calculator/Formsection'
 import { loomTypes } from '@/app/resources/constants/weaveDefaults'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
-
 export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | null }) {
-
 
     const { loom, closeForm } = params
     const [editedLoom, setEditedLoom] = useState<Loom>({ ...loom })
@@ -95,7 +92,7 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
         }).then(function (response) {
 
             if (response.status == 201) {
-                endEdit()
+
                 setEditedLoom({ ...loom })
                 updateLooms(loomId, editedLoom)
                 if (closeForm) {
@@ -157,7 +154,7 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
                     {isEditing ? <button type='button' onClick={loom.id == undefined ? addLoom : editLoom}>Save</button> : null}
                     {!isEditing && loomId ? <button type='button' onClick={startEdit}>Edit</button> : null}
                     {loomId ? <button className='icon-button' onClick={deleteLoom}>Delete</button> : null}
-                    {isEditing && loomId ? <><button type='button' onClick={endEdit}>Stop Editing</button> </> : null}
+                    {isEditing && loomId ? <><button type='button' onClick={endEdit}>Lock</button> </> : null}
                     {closeForm ? <button className='icon-button' onClick={closeForm}>Close</button> : null}
                 </>
             </div>
