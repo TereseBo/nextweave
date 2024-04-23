@@ -2,7 +2,7 @@ import './reedimg.scss'
 
 export function ReedImg(props: { reed: Reed }) {
 
-    const { dents, section, unit, length } = props.reed
+    const { dents, section, unit } = props.reed
     
     let slitSize = 1 / (dents / section)
     let bar=0.2
@@ -11,10 +11,7 @@ export function ReedImg(props: { reed: Reed }) {
     repeats = repeats > 1 ? Math.floor(repeats) : Math.ceil(repeats)
     const keys = new Array(repeats).fill('')
 
-    const slitComponets = keys.map((item, index) => {
-        
-        return <div key={index} className={`slit ${unit}`} style={{ width: `${slitSize}rem` }} />
-    })
+    const slitComponets = keys.map((item, index) => {return <div key={index} className={`slit ${unit}`} style={{ width: `${slitSize}rem` }} />})
 
     return (
 
@@ -23,7 +20,5 @@ export function ReedImg(props: { reed: Reed }) {
                 {slitComponets}
             </div>
         </div >
-
     )
-
 }

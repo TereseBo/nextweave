@@ -1,4 +1,4 @@
-//This component contains tye logic to sen POST, PUT, DELETE requests on single reeds by a user
+//This component contains tye logic to PUT and DELETE requests on single reeds by a user
 'use client'
 
 import { useState } from 'react'

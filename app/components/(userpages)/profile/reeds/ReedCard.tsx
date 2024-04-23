@@ -1,5 +1,4 @@
-
-//This component is a card for presenting a loom and also contains the logic to update/delete it.
+//This component is a card for presenting a ree contains the components to update/delete it.
 'use client'
 
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
@@ -14,13 +13,10 @@ export function ReedCard(params: { reed: Reed, closeForm:(()=>void)|null }) {
     return (
 
         <DisplayCard >
-
             <div className='vertical loom-card' >
                 <ReedImg reed={reed}/>
                 <EditReedForm reed={reed} closeForm={closeForm} />
-
             </div>
-
         </DisplayCard>
 
     )

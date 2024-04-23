@@ -10,12 +10,8 @@
     padding-left:0.2rem;
     padding-right:0.2rem;
 
-    $slits:calc($threadspace*0.30);
-    $slitsmarg:calc(($threadspace - $slits ) /2);
-
-
     .slit-container{
-        margin:$slits;
+        margin:0.30rem;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
