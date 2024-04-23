@@ -5,6 +5,7 @@
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 
 import { EditReedForm } from './EditReedForm'
+import { ReedImg } from './ReedImg'
 
 
 export function ReedCard(params: { reed: Reed, closeForm:(()=>void)|null }) {
@@ -14,7 +15,8 @@ export function ReedCard(params: { reed: Reed, closeForm:(()=>void)|null }) {
 
         <DisplayCard >
 
-            <div className='horizontal loom-card' >
+            <div className='vertical loom-card' >
+                <ReedImg reed={reed}/>
                 <EditReedForm reed={reed} closeForm={closeForm} />
 
             </div>

@@ -1,0 +1,33 @@
+@use '@/app/resources/style/variables.scss' as v;
+
+.reed-img{
+    max-width:100%;
+    $threadspace:1rem;
+    
+
+    background-color: v.$metal-color;
+    border-radius: 5px 5px 5px 5px;
+    padding-left:0.2rem;
+    padding-right:0.2rem;
+
+    $slits:calc($threadspace*0.30);
+    $slitsmarg:calc(($threadspace - $slits ) /2);
+
+
+    .slit-container{
+        margin:$slits;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
+        
+       
+        background-color: v.$metal-color;
+        }
+ 
+        .slit{
+            height: calc($threadspace*2) ;
+           background-color: v.$secondary-color;
+            
+    }
+}
