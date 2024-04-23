@@ -4,7 +4,7 @@ export function DbOptions() {
 
     return (
         <>
-            <DbSaveWeave />
+            <DbSaveWeave afterSave={null}/>
             <DbLoadWeave />
         </>
     )
