@@ -6,8 +6,7 @@ import './grid.scss';
 import { ReactElement, SetStateAction, useContext } from 'react'
 
 import { Row } from '@/app/components/draft/draft/Row'
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
-import { WeaveContextType } from '@/app/resources/types/contexts'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { updateGrid } from '../weaveGridHandler/updateGrid';
 import { CellProps } from './Cell'
@@ -23,7 +22,7 @@ interface Grid extends HTMLDivElement {
 }
 export function Grid_contained(props: { content: grid, type: string, setContent: ((value: SetStateAction<grid>) => void) | null }): ReactElement<Grid> {
 
-    const { currentColor } = useContext(WeaveContext) as WeaveContextType
+    const { currentColor } = useWeaveContext()
 
     //On click, update backgroundcolor
     function clickhandlerWrapper(e: React.MouseEvent<CellProps>) {

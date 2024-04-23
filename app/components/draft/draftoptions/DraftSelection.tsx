@@ -4,14 +4,13 @@ import './draftselection.scss' //The styling is heavy on this component in order
 import { useContext } from 'react'
 
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
-import { WeaveContextType } from '@/app/resources/types/contexts'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 import { DraftList } from '@/app/resources/types/dbdocuments'
 
 export function DraftSelection(params: { userDrafts: DraftList, setVisibility: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const { userDrafts, setVisibility } = params
-    const { upSetGrids } = useContext(WeaveContext) as WeaveContextType
+    const { upSetGrids } = useWeaveContext()
 
     //Click on a draft in the preview list updates the draft displayed in the draftpage 
     function loadDraft(e: React.MouseEvent<HTMLElement>): void {

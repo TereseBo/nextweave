@@ -4,12 +4,11 @@ import './preferences.scss'
 import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
-import { WeaveContextType } from '@/app/resources/types/contexts'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 
 export function Preferences() {
 
-    const { treadles, setTreadles, shafts, setShafts } = useContext(WeaveContext) as WeaveContextType
+    const { treadles, setTreadles, shafts, setShafts } = useWeaveContext()
     const router = useRouter()
     function updateTreadle(e: React.ChangeEvent<HTMLInputElement>): void {
         setTreadles(+e.target.value)
