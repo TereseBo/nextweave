@@ -1,11 +1,8 @@
 //This component renders a list of drafts from the DB, including a generated preview.
 import './draftselection.scss' //The styling is heavy on this component in order to render as desired
 
-import { useContext } from 'react'
-
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
-import { DraftList } from '@/app/resources/types/dbdocuments'
 
 export function DraftSelection(params: { userDrafts: DraftList, setVisibility: React.Dispatch<React.SetStateAction<boolean>> }) {
 
@@ -16,7 +13,7 @@ export function DraftSelection(params: { userDrafts: DraftList, setVisibility: R
     function loadDraft(e: React.MouseEvent<HTMLElement>): void {
         const chosenDraftId = e.currentTarget.id
 
-        const chosenDraft = userDrafts.find(draft => (draft?._id == chosenDraftId))
+        const chosenDraft = userDrafts.find(draft => (draft?.id == chosenDraftId))
         const weaveObject = chosenDraft?.weave
 
         if (weaveObject) {
@@ -40,13 +37,13 @@ export function DraftSelection(params: { userDrafts: DraftList, setVisibility: R
                             if (!draft) return (<div key={Math.random()}>Could not load draft</div>)
                             else {
                                 return (
-                                    <div key={draft._id} id={draft._id} className='draft-select-option' onClick={loadDraft}>
+                                    <div key={draft.id} id={draft.id} className='draft-select-option' onClick={loadDraft}>
                                         <div className='bob'>
                                             <DraftPreview weaveObj={draft?.weave} />
                                             <div className='draft-info-container'>
-                                                <p> Treadles:<span>{draft?.weave.treadling?.count || '-'}</span></p>
-                                                <p>  Shafts:<span>{draft?.weave.shafts?.count || '-'}</span></p>
-                                                <p className='date'>  {draft?.updated}</p>
+                                                <p> Treadles:<span>{draft.weave.treadling?.count || '-'}</span></p>
+                                                <p>  Shafts:<span>{draft.weave.shafts?.count || '-'}</span></p>
+                                                <p className='date'>  {draft.updateDate}</p>
                                             </div>
                                         </div>
                                     </div>)
