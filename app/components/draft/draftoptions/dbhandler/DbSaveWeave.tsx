@@ -1,15 +1,13 @@
 //This component saves a draft to the DB
 
-import { useContext } from 'react'
 import { useAuth } from '@clerk/nextjs'
 
 import { createWeaveObject } from '@/app/components/draft/weaveObjHandler/get/createWeaveObject'
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
-import { WeaveContextType } from '@/app/resources/types/contexts'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 
-export function DbSaveWeave() {
-    const { treadleGrid, tieUpGrid, warpGrid } = useContext(WeaveContext) as WeaveContextType
-
+export function DbSaveWeave(props: { afterSave: (() => void) | null }) {
+    const { treadleGrid, tieUpGrid, warpGrid } = useWeaveContext()
+    const { afterSave } = props
     //TODO: Add validation to ensure empty draft is not saved
 
     const { userId } = useAuth()
@@ -18,7 +16,7 @@ export function DbSaveWeave() {
 
         const weaveObject = createWeaveObject(warpGrid, treadleGrid, tieUpGrid)
         console.log(weaveObject)
-        const body = { values: { weaveObject} }
+        const body = { values: { weaveObject } }
         fetch(`/api/${userId}/draft`, {
             method: 'POST',
             headers: {
@@ -28,6 +26,7 @@ export function DbSaveWeave() {
         }).then(function (response) {
             console.log(response)
             if (response.status == 201) {
+                if (afterSave) { afterSave() }
                 alert('Draft saved!')
             } else {
                 alert('Ops, the draft could not be saved')

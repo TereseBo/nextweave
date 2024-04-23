@@ -1,15 +1,13 @@
-
-//Route for actions on single weaves owned by a user
+//Route for actions on single Drafts owned by a user
 import { Db } from 'mongodb'
 import { NextResponse } from 'next/server'
 
 import { dbConnection } from '@/app/resources/db/mongodb'
-import { Draft } from '@/app/resources/types/dbdocuments'
 
 export async function GET(
     req: Request,
     { params }: { params: { userId: string } }) {
-    //Fetches one weave for the user
+    //Fetches one draft for the user
     const userId = params.userId
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
@@ -18,20 +16,26 @@ export async function GET(
     try {
         const db = await dbConnection() as Db
         let dbResponse = await db.collection('drafts').find({ userId: userId }).toArray()
-        
 
-        if (!dbResponse) {
-            return new NextResponse('You have no saved weaves', { status: 204 });
+        let draftList: DraftList = []
+
+        if (dbResponse.length > 0) {
+            draftList = dbResponse.map(draftDocument => {
+                const stringId = draftDocument._id.toString()
+                let creationDate = new Date(draftDocument.created).toDateString()
+                let updateDate = new Date(draftDocument.updated).toDateString()
+
+                const draft: Draft = {
+                    id:stringId,
+                    weave:JSON.parse(JSON.stringify(draftDocument.weave)),
+                    creationDate: creationDate,
+                    updateDate: updateDate,
+                    public:draftDocument.public
+                }
+                return draft
+            })
         }
 
-        dbResponse.map(draft => {
-           let creationDate=new Date( draft.created ).toDateString()
-           let updateDate=new Date( draft.updated ).toDateString()
-           draft.created=creationDate
-           draft.updated=updateDate
-            
-        })
-        const draftList =dbResponse
         console.log(draftList)
         return NextResponse.json({ draftList }, { status: 200 });
 

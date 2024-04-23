@@ -15,7 +15,7 @@ export function UserDraftDisplay() {
                 {drafts.map(draft => {
                     if (!draft) return (null)
                     else {
-                        return (<DraftCard key={draft._id} draft={draft} />)
+                        return (<DraftCard key={draft.id} draft={draft} />)
                     }
                 })}
             </div> : <div>Loading drafts</div>}

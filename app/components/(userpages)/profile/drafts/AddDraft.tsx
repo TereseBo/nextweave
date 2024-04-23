@@ -7,6 +7,8 @@ import { ColorPicker } from '@/app/components/draft/colorpicker/Colorpicker'
 import { Draft } from '@/app/components/draft/draft/Draft'
 import { DbSaveWeave } from '@/app/components/draft/draftoptions/dbhandler/DbSaveWeave'
 import { SecondaryMenu } from '@/app/components/zSharedComponents/SecondaryMeny'
+import { useUserContext } from '@/app/resources/contexts/usercontext'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { DisplayCard } from '../../DisplayCard'
 
@@ -16,15 +18,25 @@ export function AddDraft() {
     const openForm = () => setIsOpen(true);
     const closeForm = () => setIsOpen(false);
 
+    const { user, getDrafts } = useUserContext()
+    const { emptyGrids } = useWeaveContext()
+    const syncDrafts = () => {
+        if (user) { getDrafts(user) }
+        closeForm()
+        emptyGrids()
+    }
+
+
     return (
         <>
-            <div className={open ? 'buffer' : 'hidden'} onMouseLeave={closeForm}>
+            <div className={open ? 'buffer' : 'hidden'} >
                 <DisplayCard>
                     <div className='new-draft-container'>
                         <ColorPicker />
                         <Draft />
                         <SecondaryMenu>
-                            <DbSaveWeave />
+                            <DbSaveWeave afterSave={syncDrafts} />
+                            <button onClick={closeForm}>Close</button>
                         </SecondaryMenu>
                     </div>
                 </DisplayCard>

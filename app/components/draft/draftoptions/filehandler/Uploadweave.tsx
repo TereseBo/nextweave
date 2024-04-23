@@ -3,14 +3,13 @@ import './uploadweave.scss'
 
 import { useContext, useState } from 'react'
 
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
-import { WeaveContextType } from '@/app/resources/types/contexts'
 
 import { readWeaveObject } from '../../weaveObjHandler/set/readWeaveObject'
 
 export function Uploadweave() {
-    const { updateGrid } = useContext(WeaveContext) as WeaveContextType
+    const { updateGrid } = useWeaveContext()
     const [displayInput, setDisplayInput] = useState<boolean>(false)
 
     function upLoadHandler(e: React.ChangeEvent<HTMLInputElement>): void {
