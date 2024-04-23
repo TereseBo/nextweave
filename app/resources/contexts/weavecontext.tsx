@@ -1,6 +1,6 @@
 //Context handling information and calculations between different parts (aka treadles, shafts, tieups) of the draft and calculates the weave.
 //dependencies
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useContext,useEffect, useState } from 'react'
 
 import { readWeaveObject } from '@/app/components/draft/weaveObjHandler/set/readWeaveObject'
 import { defaultColor, defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
@@ -8,7 +8,7 @@ import { resizeGrid } from '@/app/resources/functions/resizeGrid'
 
 import { WeaveContextType } from '../types/contexts'
 //exports
-export const WeaveContext = createContext<WeaveContextType | null>(null)
+const WeaveContext = createContext<WeaveContextType | null>(null)
 
 export function WeaveProvider({ children }: { children: React.ReactElement | React.ReactElement[] }) {
   //States used in grid creation
@@ -182,4 +182,17 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
     </WeaveContext.Provider>
   )
 }
+
+
+//Hook to use the weavecontext
+export function useWeaveContext() {
+  const context = useContext(WeaveContext);
+
+  if (!context) {
+      throw new Error('Weavecontext must be used inside weaver');
+  }
+
+  return context;
+};
+
 

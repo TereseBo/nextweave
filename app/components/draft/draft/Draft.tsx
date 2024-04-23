@@ -4,13 +4,13 @@ import { useContext, useEffect } from 'react'
 
 import { Grid } from '@/app/components/draft/draft/Grid'
 import { Errormsg } from '@/app/components/zSharedComponents/Errormsg'
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
-import { WeaveContextType } from '@/app/resources/types/contexts'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { Weave } from './Weave'
+
 export function Draft() {
 
-    const { treadleGrid, warpGrid, tieUpGrid, initiateGrids } = useContext(WeaveContext) as WeaveContextType
+    const { treadleGrid, warpGrid, tieUpGrid, initiateGrids } = useWeaveContext()
 
     useEffect(() => {
         initiateGrids()

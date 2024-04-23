@@ -10,16 +10,16 @@ import { DbOptions } from '@/app/components/draft/draftoptions/DbOptions'
 import { FileOptions } from '@/app/components/draft/draftoptions/FileOptions'
 import { Yarnlist } from '@/app/components/draft/forms/Yarnlist'
 import { SecondaryMenu } from '@/app/components/zSharedComponents/SecondaryMeny'
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
-import { WeaveContextType } from '@/app/resources/types/contexts'
+
 
 export function ProjectOptions() {
     //State controls if yarnlist and warpeidth form are to be seen in the draftpage
     const [displayYarn, setDisplayYarn] = useState(false)
     const [displayWarp, setDisplayWarp] = useState(false)
 
-    const { weftColors, warpColors } = useContext(WeaveContext) as WeaveContextType
+    const { weftColors, warpColors } = useWeaveContext()
 
     const bottomRef = useRef<HTMLDivElement>(null);
 

@@ -5,8 +5,7 @@ import './colorpicker_contained.scss'
 import { SetStateAction,useContext, useEffect, useState } from 'react'
 
 import { Colorinput } from '@/app/components/zSharedComponents/Colorinput'
-import { WeaveContext } from '@/app/resources/contexts/weavecontext'
-import { WeaveContextType } from '@/app/resources/types/contexts'
+import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { replaceColorInGrid } from '../weaveGridHandler/replaceColorInGrid'
 import { PreviousColor } from './Previouscolor'
@@ -18,7 +17,7 @@ export function ColorPicker_contained(props: { warpGrid: grid, updateWarpGrid:(v
     const [warpColors, setWarpColors] = useState<colorCollection>([])
     const [weftColors, setWeftColors] = useState<colorCollection>([])
 
-    const { currentColor, setCurrentColor, colorChange } = useContext(WeaveContext) as WeaveContextType
+    const { currentColor, setCurrentColor } = useWeaveContext()
 
     //Keeps the state for warpcolors on updated
     useEffect(() => {
