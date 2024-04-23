@@ -7,10 +7,10 @@ import { useState } from 'react'
 import { StateDraft } from '@/app/components/draft/draft/StateDraft'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
-export function EditDraftForm(params: { resource: any, open: boolean, closeForm: () => void }) {
-    
+export function EditDraftForm(params: { resource: Draft, open: boolean, closeForm: () => void }) {
+
     const { open, resource, closeForm } = params
-    const draftId = resource._id
+    const draftId = resource.id
     const { user, updateDraft, removeDraft } = useUserContext()
     //TODO:Move colorpixker style to relevant place
 
@@ -18,7 +18,10 @@ export function EditDraftForm(params: { resource: any, open: boolean, closeForm:
     const updateObj = (neObj: WeaveObject) => { setUpdatedWeaveObj(neObj) }
 
     //Submitts edition to DB and updates draftList in context
-    async function editDraft(e: any) {
+    async function editDraft(e:  React.MouseEvent<HTMLElement>) {
+        if (draftId === undefined) {
+            return
+        }
 
         //TODO: Add components to toggle public status
         const body = { values: { weaveObject: updatedWeaveObj, public: false } }
@@ -42,7 +45,10 @@ export function EditDraftForm(params: { resource: any, open: boolean, closeForm:
     }
 
     //Deletes draft from DB and updates draftlist in context
-    function deleteDraft(e: any) {
+    function deleteDraft(e:  React.MouseEvent<HTMLElement>) {
+        if (draftId === undefined) {
+            return
+        }
 
         fetch(`/api/${user}/draft/${draftId}`, { method: 'DELETE' })
             .then(function (response) {

@@ -22,11 +22,6 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
   const [treadleGrid, setTreadleGrid] = useState<grid>()
   const [tieUpGrid, setTieUpGrid] = useState<grid>()
 
-  //For tracking color sequence in the warp
-  const [warpingSequence, setWarpingSequence] = useState<colorCollection>([])
-  //For tracking which shaft to tread
-  const [sleySequence, setSleySequence] = useState<number[]>([])
-
 
   const [warpColors, setWarpColors] = useState<colorCollection>([])
   const [weftColors, setWeftColors] = useState<colorCollection>([])
@@ -46,6 +41,12 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
     if (!warpGrid) setWarpGrid(new Array(shafts).fill(new Array(draftWidth).fill('', 0)))
     if (!treadleGrid) setTreadleGrid(new Array(draftHeight).fill(new Array(treadles).fill('', 0)))
     if (!tieUpGrid) setTieUpGrid(new Array(shafts).fill(new Array(treadles).fill('', 0)))
+  }
+
+  function emptyGrids() {
+     setWarpGrid(new Array(shafts).fill(new Array(draftWidth).fill('', 0)))
+     setTreadleGrid(new Array(draftHeight).fill(new Array(treadles).fill('', 0)))
+     setTieUpGrid(new Array(shafts).fill(new Array(treadles).fill('', 0)))
   }
 
   //Keeps the state for warpcolors on updated
@@ -177,7 +178,7 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
 
   return (
 
-    <WeaveContext.Provider value={{ updateGrid, setShafts, setTreadles, treadles, initiateGrids, draftHeight, draftWidth, treadleGrid, warpGrid, tieUpGrid, updateCell, shafts, warpColors, weftColors, currentColor, setCurrentColor, colorChange, upSetGrids }}>
+    <WeaveContext.Provider value={{ updateGrid, setShafts, setTreadles, treadles, initiateGrids, draftHeight, draftWidth, treadleGrid, warpGrid, tieUpGrid, updateCell, shafts, warpColors, weftColors, currentColor, setCurrentColor, colorChange, upSetGrids, emptyGrids }}>
       {children}
     </WeaveContext.Provider>
   )

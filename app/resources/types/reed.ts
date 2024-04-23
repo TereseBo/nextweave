@@ -1,10 +1,8 @@
-//Information on reed and it's  threading
+//Information on reed as returned from the server
 type Reed = {
     id:string|undefined,
     dents: number,
     section: number,
-    // tph:number,
-    //tpd:number,
     unit: ReedUnit ,
     length: number
 }
