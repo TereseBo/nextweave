@@ -3,8 +3,6 @@
 import { useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 
-import { DraftList } from '@/app/resources/types/dbdocuments'
-
 import { DraftSelection } from '../DraftSelection'
 
 export function DbLoadWeave() {
