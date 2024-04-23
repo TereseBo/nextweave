@@ -3,8 +3,6 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 import { UserContextType } from '@/app/resources/types/contexts'
 
-import { DraftList, ReformattedDraft} from '../types/dbdocuments'
-
 export const UserContext = createContext<UserContextType | null>(null)
 export function UserProvider({ children }: { children: React.ReactElement | React.ReactElement[] }) {
 
@@ -60,9 +58,9 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
         const draftsCopy: DraftList = JSON.parse(JSON.stringify(drafts))
         const newDrafts: DraftList = draftsCopy.map(draft => {
 
-            if (draft._id == _id) {
+            if (draft.id == _id) {
 
-                let updatedDraft: ReformattedDraft = JSON.parse(JSON.stringify(draft))
+                let updatedDraft: Draft = JSON.parse(JSON.stringify(draft))
                 let copiedUpdate: WeaveObject = JSON.parse(JSON.stringify(weave))
                 updatedDraft = Object.assign(updatedDraft, copiedUpdate)
                 return updatedDraft
@@ -79,7 +77,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
             return
         }
         const draftsCopy: DraftList = JSON.parse(JSON.stringify(drafts))
-        const filteredCopy: DraftList = draftsCopy.filter((draft) => draft._id !== _id);
+        const filteredCopy: DraftList = draftsCopy.filter((draft) => draft.id !== _id);
         setDrafts(filteredCopy)
     }
 
@@ -196,7 +194,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
 
     return (
 
-        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, looms, updateLooms, removeLoom, reeds, updateReeds, removeReed }}>
+        <UserContext.Provider value={{ user, setUser, drafts, updateDraft, removeDraft, getDrafts, looms, updateLooms, removeLoom, reeds, updateReeds, removeReed }}>
             {children}
         </UserContext.Provider>
     )
