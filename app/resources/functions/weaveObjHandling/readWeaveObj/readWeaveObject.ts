@@ -1,6 +1,6 @@
 import { defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
 
-import { createGrid } from '../utils'
+import { createGrid } from '../../utils'
 import { readTieup } from './readTieup'
 import { readWarp } from './readWarp'
 import { readWeft } from './readWeft'
