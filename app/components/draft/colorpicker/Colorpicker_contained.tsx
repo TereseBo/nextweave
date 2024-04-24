@@ -6,8 +6,8 @@ import { SetStateAction, useContext, useEffect, useState } from 'react'
 
 import { Colorinput } from '@/app/components/zSharedComponents/Colorinput'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
+import { replaceColorInGrid } from '@/app/resources/functions/gridHandling/replaceColorInGrid'
 
-import { replaceColorInGrid } from '../weaveGridHandler/replaceColorInGrid'
 import { PreviousColor } from './Previouscolor'
 export function ColorPicker_contained(props: { warpGrid: grid, updateWarpGrid: (value: SetStateAction<grid>) => void, treadleGrid: grid, updateTreadleGrid: (value: SetStateAction<grid>) => void }) {
 
