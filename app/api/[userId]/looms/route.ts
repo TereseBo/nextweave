@@ -11,9 +11,14 @@ export async function GET(
     { params }: { params: { userId: string } }) {
     //Fetches all looms for the user
     const userId = params.userId
-    if (!userId) {
+    console.log('params')
+        console.log(params)
+        console.log('userId')
+    console.log(userId)
+    if(!userId){
         return new NextResponse('Unauthorized', { status: 401 });
     }
+    
 
     try {
         const db = await dbConnection() as Db
