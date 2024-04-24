@@ -1,4 +1,4 @@
-import { Preferences } from '@/app/components/weaver/Preferences'
+import { Preferences } from '@/app/components/Preferences'
 import { Header } from '@/app/components/zSharedComponents/Header'
 export default function WeaverPage() {
     return (
