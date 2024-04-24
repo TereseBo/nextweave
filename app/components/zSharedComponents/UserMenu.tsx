@@ -14,7 +14,7 @@ export function UserMenu() {
     return (
         <div className='usermenu-container'>
             
-            {isSignedIn ?  <Link className="icon" href={'/profile'}>Profile</Link>: (pathname !== '/sign-in' ? <Link className="icon" href="/sign-in">Sign in</Link> : null)}
+            {isSignedIn ?  <Link className="icon" href={'/weaver/profile'}>Profile</Link>: (pathname !== '/sign-in' ? <Link className="icon" href="/sign-in">Sign in</Link> : null)}
             
             < UserButton afterSignOutUrl='/weaver' />
         </div>
