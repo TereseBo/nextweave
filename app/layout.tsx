@@ -25,8 +25,8 @@ export default function RootLayout({
     <html lang="en">
       <ClerkProvider>
         <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <WeaveProviderWrapper>
-          <main className="grow">{children}</main>
+          <WeaveProviderWrapper>
+            <main className="grow">{children}</main>
           </WeaveProviderWrapper>
         </body>
       </ClerkProvider>

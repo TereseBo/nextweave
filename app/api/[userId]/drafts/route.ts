@@ -26,11 +26,11 @@ export async function GET(
                 let updateDate = new Date(draftDocument.updated).toDateString()
 
                 const draft: Draft = {
-                    id:stringId,
-                    weave:JSON.parse(JSON.stringify(draftDocument.weave)),
+                    id: stringId,
+                    weave: JSON.parse(JSON.stringify(draftDocument.weave)),
                     creationDate: creationDate,
                     updateDate: updateDate,
-                    public:draftDocument.public
+                    public: draftDocument.public
                 }
                 return draft
             })

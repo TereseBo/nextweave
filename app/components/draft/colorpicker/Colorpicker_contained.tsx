@@ -2,14 +2,14 @@
 //Previous colors can be picked again by click and replaced in the draft by changeing
 import './colorpicker_contained.scss'
 
-import { SetStateAction,useContext, useEffect, useState } from 'react'
+import { SetStateAction, useContext, useEffect, useState } from 'react'
 
 import { Colorinput } from '@/app/components/zSharedComponents/Colorinput'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 
 import { replaceColorInGrid } from '../weaveGridHandler/replaceColorInGrid'
 import { PreviousColor } from './Previouscolor'
-export function ColorPicker_contained(props: { warpGrid: grid, updateWarpGrid:(value: SetStateAction<grid>) => void , treadleGrid: grid, updateTreadleGrid:(value: SetStateAction<grid>) => void }) {
+export function ColorPicker_contained(props: { warpGrid: grid, updateWarpGrid: (value: SetStateAction<grid>) => void, treadleGrid: grid, updateTreadleGrid: (value: SetStateAction<grid>) => void }) {
 
     //TODO: Update styling of duplicated components before removal of the old ones
     const { warpGrid, treadleGrid, updateTreadleGrid, updateWarpGrid } = props
@@ -60,7 +60,7 @@ export function ColorPicker_contained(props: { warpGrid: grid, updateWarpGrid:(v
         const color = target.value
         const colorInputId = target.id
         const [gridName, previousColor] = colorInputId.split('-') as [gridName, color]
-        updateWarpGrid( prevValue=>replaceColorInGrid(prevValue, previousColor, color))
+        updateWarpGrid(prevValue => replaceColorInGrid(prevValue, previousColor, color))
     }
     //Replaces all instances of a color in the weft with a new value
     function updateWeftColor(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -68,7 +68,7 @@ export function ColorPicker_contained(props: { warpGrid: grid, updateWarpGrid:(v
         const color = target.value
         const colorInputId = target.id
         const [gridName, previousColor] = colorInputId.split('-') as [gridName, color]
-        updateTreadleGrid( prevValue=>replaceColorInGrid(prevValue, previousColor, color))
+        updateTreadleGrid(prevValue => replaceColorInGrid(prevValue, previousColor, color))
     }
 
     return (

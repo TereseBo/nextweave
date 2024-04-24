@@ -99,9 +99,9 @@ export async function PUT(
         const db = await dbConnection() as Db
         const body = await req.json();
         const { loom } = body.values
-        const { shafts, treadles, brand, type }:Loom=loom
+        const { shafts, treadles, brand, type }: Loom = loom
 
-        let dbResponse = await db.collection('looms').updateOne({ _id, userId },  { $set:{shafts, treadles, brand, type} } )
+        let dbResponse = await db.collection('looms').updateOne({ _id, userId }, { $set: { shafts, treadles, brand, type } })
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No loom to update found', { status: 200 });

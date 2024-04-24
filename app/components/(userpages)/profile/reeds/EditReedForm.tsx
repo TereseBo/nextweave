@@ -39,7 +39,7 @@ export function EditReedForm(params: { reed: Reed, closeForm: (() => void) | nul
     function onChangeHandler(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
 
         let value: string | number = e.target.value
-   
+
         e.target.type !== 'number' ? value = value : value = Number(value)
         setEditedReed(prevValue => {
             const updatedValue = { ...prevValue, [e.target.id]: value }

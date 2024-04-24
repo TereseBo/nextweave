@@ -2,14 +2,9 @@
 'use client'
 import './layout.scss'
 
-import { useContext } from 'react'
-import { useAuth } from '@clerk/nextjs'
-
+import { Aside } from '@/app/components/(userpages)/profile/aside'
 import { UserPageHeader } from '@/app/components/(userpages)/profile/UserPageHeader'
-
-import { Aside } from '../components/(userpages)/profile/aside'
-import { UserContext } from '../resources/contexts/usercontext'
-import { UserProviderWrapper } from '../resources/contexts/UserProviderWrapper'
+import { UserProviderWrapper } from '@/app/resources/contexts/UserProviderWrapper'
 
 export default function ProfileBaseLayout({
     children,

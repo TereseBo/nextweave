@@ -52,7 +52,7 @@ export function ProjectOptions() {
             <SecondaryMenu>
                 {displayYarn ? <button onClick={yarnClickhandler}>Hide yarn list</button> : <button onClick={yarnClickhandler}>Add yarn list</button>}
                 {displayWarp ? <button onClick={warpClickhandler}>Hide warp info</button> : <button onClick={warpClickhandler}>Add warp info</button>}
-            
+
                 {/* Save options */}
                 {isSignedIn ? <DbOptions /> : <FileOptions />}
 

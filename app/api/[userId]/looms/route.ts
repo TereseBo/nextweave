@@ -19,7 +19,7 @@ export async function GET(
         const db = await dbConnection() as Db
         let dbResponse = await db.collection('looms').find({ userId: userId }).toArray()
 
-        let loomList:LoomList=[]
+        let loomList: LoomList = []
 
         //Convert from documents to Looms
         if (dbResponse.length > 0) {

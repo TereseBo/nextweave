@@ -91,7 +91,7 @@ export async function PATCH(
         const db = await dbConnection() as Db
         const body = await req.json();
         const { weaveObject, publicStatus } = body.values
-       
+
         let dbResponse = await db.collection('drafts').updateOne({ _id, userId }, { $set: { weave: weaveObject, updated: Date.now(), public: publicStatus } })
         console.log('Response in patch toute')
         console.log(dbResponse)

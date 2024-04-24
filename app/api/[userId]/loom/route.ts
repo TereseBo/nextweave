@@ -18,12 +18,12 @@ export async function POST(
         const db = await dbConnection() as Db
         const body = await req.json();
         const { loom } = body.values
-        const { shafts, treadles, brand, type }:Loom=loom
+        const { shafts, treadles, brand, type }: Loom = loom
 
-        let newDocument:LoomDocument  = { userId, shafts, treadles, brand, type}
+        let newDocument: LoomDocument = { userId, shafts, treadles, brand, type }
         let dbResponse = await db.collection('looms').insertOne(newDocument)
 
-        return NextResponse.json({createdId:dbResponse.insertedId.toString()}, { status: 201 });
+        return NextResponse.json({ createdId: dbResponse.insertedId.toString() }, { status: 201 });
     } catch (error) {
         console.log('api/[user]/loom', error);
         return new NextResponse(

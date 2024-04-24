@@ -18,7 +18,7 @@ export function EditDraftForm(params: { resource: Draft, open: boolean, closeFor
     const updateObj = (neObj: WeaveObject) => { setUpdatedWeaveObj(neObj) }
 
     //Submitts edition to DB and updates draftList in context
-    async function editDraft(e:  React.MouseEvent<HTMLElement>) {
+    async function editDraft(e: React.MouseEvent<HTMLElement>) {
         if (draftId === undefined) {
             return
         }
@@ -45,7 +45,7 @@ export function EditDraftForm(params: { resource: Draft, open: boolean, closeFor
     }
 
     //Deletes draft from DB and updates draftlist in context
-    function deleteDraft(e:  React.MouseEvent<HTMLElement>) {
+    function deleteDraft(e: React.MouseEvent<HTMLElement>) {
         if (draftId === undefined) {
             return
         }

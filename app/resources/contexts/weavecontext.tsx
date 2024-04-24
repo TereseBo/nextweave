@@ -1,6 +1,6 @@
 //Context handling information and calculations between different parts (aka treadles, shafts, tieups) of the draft and calculates the weave.
 //dependencies
-import { createContext, useContext,useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 import { readWeaveObject } from '@/app/components/draft/weaveObjHandler/set/readWeaveObject'
 import { defaultColor, defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
@@ -44,9 +44,9 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
   }
 
   function emptyGrids() {
-     setWarpGrid(new Array(shafts).fill(new Array(draftWidth).fill('', 0)))
-     setTreadleGrid(new Array(draftHeight).fill(new Array(treadles).fill('', 0)))
-     setTieUpGrid(new Array(shafts).fill(new Array(treadles).fill('', 0)))
+    setWarpGrid(new Array(shafts).fill(new Array(draftWidth).fill('', 0)))
+    setTreadleGrid(new Array(draftHeight).fill(new Array(treadles).fill('', 0)))
+    setTieUpGrid(new Array(shafts).fill(new Array(treadles).fill('', 0)))
   }
 
   //Keeps the state for warpcolors on updated
@@ -190,7 +190,7 @@ export function useWeaveContext() {
   const context = useContext(WeaveContext);
 
   if (!context) {
-      throw new Error('Weavecontext must be used inside weaver');
+    throw new Error('Weavecontext must be used inside weaver');
   }
 
   return context;

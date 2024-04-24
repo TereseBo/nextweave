@@ -18,7 +18,7 @@ export async function GET(
         const db = await dbConnection() as Db
         let dbResponse = await db.collection('reeds').find({ userId: userId }).toArray()
 
-        let reedList:ReedList=[]
+        let reedList: ReedList = []
 
         //Convert from documents to Reeds
         if (dbResponse.length > 0) {

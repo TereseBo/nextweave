@@ -14,7 +14,7 @@ export function readWeft(weft: TreadlingDescription, height: number) {
     }
 
     let colors = weft.colors
-    
+
     //Fill the grid
     weft.pattern.forEach((treadle, index) => {
         let currentColor = defaultWeftColor

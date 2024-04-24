@@ -10,21 +10,21 @@ export function UserDraftDisplay() {
 
     return (
         <>
-            {drafts ? 
-            <div className='card-list'>
-                {drafts.map(draft => {
-                    if (!draft) return (null)
-                    else {
-                        return (<DraftCard key={draft.id} draft={draft} />)
-                    }
-                })}
-            </div> : <div>Loading drafts</div>}
+            {drafts ?
+                <div className='card-list'>
+                    {drafts.map(draft => {
+                        if (!draft) return (null)
+                        else {
+                            return (<DraftCard key={draft.id} draft={draft} />)
+                        }
+                    })}
+                </div> : <div>Loading drafts</div>}
 
-            
-            {drafts && drafts.length==0 ? 
-            <div >
-             You have no drafts to show.
-            </div> : null}
+
+            {drafts && drafts.length == 0 ?
+                <div >
+                    You have no drafts to show.
+                </div> : null}
         </>
     )
 }

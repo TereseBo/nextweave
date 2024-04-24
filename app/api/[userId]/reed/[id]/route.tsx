@@ -94,9 +94,9 @@ export async function PUT(
         const db = await dbConnection() as Db
         const body = await req.json();
         const { reed } = body.values
-        const { dents, section, unit, length}:Reed=reed
+        const { dents, section, unit, length }: Reed = reed
 
-        let dbResponse = await db.collection('reeds').updateOne({ _id, userId },  { $set:{dents, section, unit, length} } )
+        let dbResponse = await db.collection('reeds').updateOne({ _id, userId }, { $set: { dents, section, unit, length } })
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No reed to update found', { status: 200 });

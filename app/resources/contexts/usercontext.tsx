@@ -51,7 +51,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
             return
         }
 
-        if(user && (!drafts.find(draft=>{draft.id===_id}))){
+        if (user && (!drafts.find(draft => { draft.id === _id }))) {
             getDrafts(user)
             return
         }
@@ -98,24 +98,24 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     }
 
     //Accepts a loomId and a loom to replace the item in the loomList
-    function updateLooms(id: string|undefined, updatedLoom: Loom): void {
+    function updateLooms(id: string | undefined, updatedLoom: Loom): void {
 
         if (!looms) {
             return
         }
 
-        if(user && (!id || !looms.find(loom=>{loom.id===id})) ){
+        if (user && (!id || !looms.find(loom => { loom.id === id }))) {
             getLooms(user)
             return
         }
-        
+
         const loomsCopy: LoomList = JSON.parse(JSON.stringify(looms))
         const newLooms: LoomList = loomsCopy.map(loom => {
 
             if (loom.id == id) {
-   
-                let replacementLoom:any = JSON.parse(JSON.stringify(updatedLoom))
-                replacementLoom.id=id
+
+                let replacementLoom: any = JSON.parse(JSON.stringify(updatedLoom))
+                replacementLoom.id = id
                 return replacementLoom as Loom
             } else {
                 return loom
@@ -141,7 +141,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     //Functions handling reeds:
     //Fetches all reeds registered by a user
     async function getReeds(userId: string) {
-   
+
         try {
             let response = await fetch(`/api/${userId}/reeds`)
 
@@ -157,12 +157,12 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     }
 
     //Accepts a reedId and a reed to replace the item in the reedList
-    function updateReeds(id: string|undefined, updatedReed: Reed): void {
+    function updateReeds(id: string | undefined, updatedReed: Reed): void {
 
         if (!reeds) {
             return
         }
-        if(user && (!id || !reeds.find(loom=>{loom.id===id})) ){
+        if (user && (!id || !reeds.find(loom => { loom.id === id }))) {
             getReeds(user)
             return
         }
@@ -171,8 +171,8 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
 
             if (reed.id == id) {
 
-                let replacementReed:any = JSON.parse(JSON.stringify(updatedReed))
-                replacementReed.id=id
+                let replacementReed: any = JSON.parse(JSON.stringify(updatedReed))
+                replacementReed.id = id
                 return replacementReed as Reed
             } else {
                 return reed
