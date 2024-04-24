@@ -1,41 +1,33 @@
-import { getHighest } from '../utils'
+import { getHighest } from '../../utils';
 
-export function collectWarp(warp: grid | undefined) {
+export function collectWeft(weft: grid | undefined) {
 
-    if (!warp) {
-        let shafts: ShaftDescription = {
+    if(!weft){
+        let treadling: TreadlingDescription = {
             count: null,
             pattern: [],
             pattern_repeat: null,
             colors: []
         }
-        return shafts
+        return treadling
     }
 
+    let newColor: color = '';
     let colorPatternTracker = 0;
     let pattern: number[] = [];
     let colors: ColorDescription[] = [];
     let previousColor: color | undefined = undefined;
 
-    let shaft = null;
+    let treadle = null;
+    weft.forEach(row => {
 
-    //Loop grid and translate to weaveObject
-    //Loop every warp column and isolate it for extraction of shaft number and color
-    for (let i = 0; i < warp[0].length; i++) {
-        let currentColumn = []
-
-        for (let j = 0; j < warp.length; j++) {
-            currentColumn.push(warp[j][i])
-        }
-        let newColor = undefined
-        currentColumn.forEach((cell, index) => {
+        row.forEach((cell, index) => {
+            //TODO: Add possibility for dual treadling
             if (cell != '') {
                 newColor = cell
-                shaft = index
-                pattern.push(shaft);
-
+                treadle = index
+                pattern.push(treadle);
                 if (newColor === previousColor) {
-
                     colorPatternTracker++;
                     previousColor = newColor;
 
@@ -47,15 +39,15 @@ export function collectWarp(warp: grid | undefined) {
                 }
             }
         })
-    }
-
-    colors.push({ color: previousColor || '', threads: colorPatternTracker + 1 });
+    })
+    colors.push({ color: previousColor || 'bob', threads: colorPatternTracker + 1 });
     colors.shift()
-    let shafts: ShaftDescription = {
+    let treadling: TreadlingDescription = {
         count: getHighest(pattern),
         pattern: pattern,
         pattern_repeat: null,
         colors: colors
     }
-    return shafts
+    return treadling
+
 }

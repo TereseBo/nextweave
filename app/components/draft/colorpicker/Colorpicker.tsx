@@ -2,8 +2,6 @@
 //Previous colors can be picked again by click and replaced in the draft by changeing
 import './colorpicker.scss'
 
-import { useContext } from 'react'
-
 import { Colorinput } from '@/app/components/zSharedComponents/Colorinput'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 

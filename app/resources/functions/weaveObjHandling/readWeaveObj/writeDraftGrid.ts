@@ -2,7 +2,7 @@
 //This file exports the function to create a weaveGrid from a gridSet. It also contains the required helperfunctions.
 //Returns the color if present for the beat
 
-import { createGrid } from '../utils'
+import { createGrid } from '../../utils'
 
 //Returns the color of a specified beat
 function getWeftColor(y: number, treadleGrid: grid) {
