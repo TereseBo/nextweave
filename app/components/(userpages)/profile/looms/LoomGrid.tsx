@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react'
 
 import { Grid_contained } from '@/app/components/draft/draft/Grid_contained'
-import { createGrid } from '@/app/components/draft/weaveObjHandler/utils'
 import { defaultColor } from '@/app/resources/constants/weaveDefaults'
+import { createGrid } from '@/app/resources/functions/utils'
 export function LoomGrid(props: { shafts: number, treadles: number }) {
 
     const { shafts, treadles } = props

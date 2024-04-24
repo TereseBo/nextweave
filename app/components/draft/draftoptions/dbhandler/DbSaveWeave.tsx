@@ -2,8 +2,8 @@
 
 import { useAuth } from '@clerk/nextjs'
 
-import { createWeaveObject } from '@/app/components/draft/weaveObjHandler/get/createWeaveObject'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
+import { createWeaveObject } from '@/app/resources/functions/weaveObjHandling/createWeaveObj/createWeaveObject'
 
 export function DbSaveWeave(props: { afterSave: (() => void) | null }) {
     const { treadleGrid, tieUpGrid, warpGrid } = useWeaveContext()

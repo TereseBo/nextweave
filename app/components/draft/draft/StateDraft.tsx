@@ -3,12 +3,12 @@ import './draft.scss'
 import {useEffect, useState } from 'react'
 
 import { Grid_contained } from '@/app/components/draft/draft/Grid_contained'
-import { createWeave } from '@/app/components/draft/weaveObjHandler/set/writeDraftGrid'
 import { Errormsg } from '@/app/components/zSharedComponents/Errormsg'
+import { createWeaveObject } from '@/app/resources/functions/weaveObjHandling/createWeaveObj/createWeaveObject'
+import { readWeaveObject } from '@/app/resources/functions/weaveObjHandling/readWeaveObj/readWeaveObject'
+import { createWeave } from '@/app/resources/functions/weaveObjHandling/readWeaveObj/writeDraftGrid'
 
 import { ColorPicker_contained } from '../colorpicker/Colorpicker_contained'
-import { createWeaveObject } from '../weaveObjHandler/get/createWeaveObject'
-import { readWeaveObject } from '../weaveObjHandler/set/readWeaveObject'
 
 export function StateDraft(props: { weaveObj: WeaveObject, updateObj:(value: WeaveObject) => void}) {
 const {updateObj, weaveObj}=props
