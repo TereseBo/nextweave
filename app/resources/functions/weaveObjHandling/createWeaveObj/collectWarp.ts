@@ -1,4 +1,4 @@
-import { getHighest } from '../utils'
+import { getHighest } from '../../utils';
 
 export function collectWarp(warp: grid | undefined) {
 

@@ -1,4 +1,4 @@
-import { getHighest } from '../utils'
+import { getHighest } from '../../utils';
 
 export function collectWeft(weft: grid | undefined) {
 

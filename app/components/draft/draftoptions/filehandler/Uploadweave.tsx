@@ -1,12 +1,11 @@
 //Contains upload button which accepts json and creates a weaveobject provided the right format
 import './uploadweave.scss'
 
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
-
-import { readWeaveObject } from '../../weaveObjHandler/set/readWeaveObject'
+import { readWeaveObject } from '@/app/resources/functions/weaveObjHandling/readWeaveObj/readWeaveObject'
 
 export function Uploadweave() {
     const { updateGrid } = useWeaveContext()

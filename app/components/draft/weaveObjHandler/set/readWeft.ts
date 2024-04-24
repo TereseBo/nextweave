@@ -1,6 +1,5 @@
 import { defaultDraftHeight, defaultTreadles, defaultWeftColor } from '@/app/resources/constants/weaveDefaults'
-
-import { createGrid, getHighest } from '../utils'
+import { createGrid } from '@/app/resources/functions/utils'
 
 
 export function readWeft(weft: TreadlingDescription, height: number) {
