@@ -101,8 +101,9 @@ const config: Config = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
 
-  // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  // modulePathIgnorePatterns: [],
+  // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader.
+  //Used to ignore the folder containing test-data and no tests.
+   modulePathIgnorePatterns: ['test_data'],
 
   // Activates notifications for test results
   // notify: false,
