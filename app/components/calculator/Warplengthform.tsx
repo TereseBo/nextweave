@@ -6,7 +6,7 @@ import './warplengthform.scss'
 
 import { useState } from 'react'
 
-import { calculateNewWarpLength } from '@/app/components/calculator/functions/warplength'
+import { calculateNewWarpLength } from '@/app/resources/functions/calculator/warplength'
 
 import { Formsection } from './Formsection'
 
