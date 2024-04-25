@@ -7,8 +7,8 @@ import { ReactElement, SetStateAction, useContext } from 'react'
 
 import { Row } from '@/app/components/draft/draft/Row'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
+import { updateGrid } from '@/app/resources/functions/gridHandling/updateGrid';
 
-import { updateGrid } from '../weaveGridHandler/updateGrid';
 import { CellProps } from './Cell'
 
 interface CellTarget extends EventTarget {

@@ -2,12 +2,12 @@
 //dependencies
 import { createContext, useContext,useEffect, useState } from 'react'
 
-import { readWeaveObject } from '@/app/components/draft/weaveObjHandler/set/readWeaveObject'
 import { defaultColor, defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles } from '@/app/resources/constants/weaveDefaults'
-import { resizeGrid } from '@/app/resources/functions/resizeGrid'
 
+import { resizeGrid } from '../functions/gridHandling/resizeGrid'
+import { readWeaveObject } from '../functions/weaveObjHandling/readWeaveObj/readWeaveObject'
 import { WeaveContextType } from '../types/contexts'
-//exports
+
 const WeaveContext = createContext<WeaveContextType | null>(null)
 
 export function WeaveProvider({ children }: { children: React.ReactElement | React.ReactElement[] }) {

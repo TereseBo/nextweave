@@ -2,8 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
-
-import { createWeaveObject } from '../../weaveObjHandler/get/createWeaveObject'
+import { createWeaveObject } from '@/app/resources/functions/weaveObjHandling/createWeaveObj/createWeaveObject'
 
 export function Downloadweave() {
     const { treadleGrid, tieUpGrid, warpGrid } = useWeaveContext()

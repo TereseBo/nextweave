@@ -1,11 +1,11 @@
 //This component contains the logic for calculating the weave
 import './weave.scss';
 
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Grid } from '@/app/components/draft/draft/Grid'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
-import { resizeGrid } from '@/app/resources/functions/resizeGrid'
+import { resizeGrid } from '@/app/resources/functions/gridHandling/resizeGrid';
 
 export function Weave() {
   const { draftHeight, draftWidth, treadleGrid, shafts, tieUpGrid, warpGrid } = useWeaveContext()

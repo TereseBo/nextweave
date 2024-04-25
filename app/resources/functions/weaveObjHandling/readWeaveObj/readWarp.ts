@@ -1,6 +1,6 @@
-import { defaultDraftWidth, defaultShafts, defaultWarpColor } from '@/app/resources/constants/weaveDefaults'
+import { defaultShafts, defaultWarpColor } from '@/app/resources/constants/weaveDefaults'
 
-import { createGrid } from '../utils'
+import { createGrid } from '../../utils'
 
 
 export function readWarp(warp: ShaftDescription, width: number) {
@@ -11,15 +11,15 @@ export function readWarp(warp: ShaftDescription, width: number) {
         return warpGrid
     }
 
-    let colors = warp.colors
+    let colorsCopy =JSON.parse(JSON.stringify( warp.colors))
 
     warp.pattern.forEach((thread, index) => {
         let currentColor = defaultWarpColor
-        if (colors) {
-            currentColor = colors[0].color
-            colors[0].threads--
-            if (colors[0].threads = 0) {
-                colors.shift()
+        if (colorsCopy) {
+            currentColor = colorsCopy[0].color
+            colorsCopy[0].threads--
+            if (colorsCopy[0].threads == 0) {
+                colorsCopy.shift()
             }
         }
         warpGrid[thread][index] = currentColor
