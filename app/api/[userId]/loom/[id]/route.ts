@@ -61,10 +61,6 @@ export async function DELETE(
     try {
         const db = await dbConnection() as Db
         let dbResponse = await db.collection('looms').deleteOne({ _id, userId })
-        console.log(dbResponse)
-
-        console.log('Response in delete toute')
-        console.log(dbResponse)
 
         if (dbResponse.deletedCount !== 1) {
             return new NextResponse('No loom to delete found', { status: 200 });
@@ -89,7 +85,7 @@ export async function PUT(
     const { userId, id } = params
 
     const _id = new ObjectId(id)
-    console.log(_id)
+
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
     }

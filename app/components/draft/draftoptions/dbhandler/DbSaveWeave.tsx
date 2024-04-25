@@ -15,7 +15,7 @@ export function DbSaveWeave(props: { afterSave: (() => void) | null }) {
     async function saveWeave() {
 
         const weaveObject = createWeaveObject(warpGrid, treadleGrid, tieUpGrid)
-        console.log(weaveObject)
+
         const body = { values: { weaveObject } }
         fetch(`/api/${userId}/draft`, {
             method: 'POST',
@@ -24,7 +24,7 @@ export function DbSaveWeave(props: { afterSave: (() => void) | null }) {
             },
             body: JSON.stringify(body),
         }).then(function (response) {
-            console.log(response)
+
             if (response.status == 201) {
                 if (afterSave) { afterSave() }
                 alert('Draft saved!')

@@ -36,7 +36,6 @@ export async function GET(
             })
         }
 
-        console.log(draftList)
         return NextResponse.json({ draftList }, { status: 200 });
 
     } catch (error) {

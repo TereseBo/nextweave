@@ -21,7 +21,6 @@ export function ColorPicker({ }) {
     function updateWarpColor(e: React.ChangeEvent<HTMLInputElement>): void {
         let target = e.target as HTMLInputElement
         const value = target.value
-        console.log(target.id)
         const colorInputId = target.id
         colorChange(colorInputId, value)
     }
