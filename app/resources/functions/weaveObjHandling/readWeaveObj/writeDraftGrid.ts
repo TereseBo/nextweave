@@ -72,8 +72,6 @@ export function createWeave(grids: GridSet, draftHeight: number, draftWidth: num
                 warpColor != undefined ? grid[y][x] = warpColor : grid[y][x] = ''
 
             } else {
-                //console.log('there was a weft')
-                // console.log('weftcolor ' + weftColor + ', for row ' + y)
                 if (warpColor) {
 
                     let treadleNr = treadleGrid ? treadleGrid[y].indexOf(weftColor) : undefined

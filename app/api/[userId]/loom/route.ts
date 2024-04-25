@@ -22,7 +22,7 @@ export async function POST(
 
         let newDocument:LoomDocument  = { userId, shafts, treadles, brand, type}
         let dbResponse = await db.collection('looms').insertOne(newDocument)
-
+        
         return NextResponse.json({createdId:dbResponse.insertedId.toString()}, { status: 201 });
     } catch (error) {
         console.log('api/[user]/loom', error);
