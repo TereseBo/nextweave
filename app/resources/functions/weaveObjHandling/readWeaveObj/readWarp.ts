@@ -1,6 +1,5 @@
 import { defaultShafts, defaultWarpColor } from '@/app/resources/constants/weaveDefaults'
-
-import { createGrid } from '../../utils'
+import { createGrid } from '@/app/resources/functions/gridHandling/createGrid'
 
 
 export function readWarp(warp: ShaftDescription, width: number) {
