@@ -1,5 +1,4 @@
-import { calculateWarpEpc, calculateWarpWidth } from '@/app/components/calculator/functions/warpwidth'
-
+import { calculateWarpEpc, calculateWarpWidth } from '@/app/resources/functions/calculator/warpwidth'
 
 describe('Basic calculations on warp width return expected result', () => {
    const testWarp: WarpWidthData = {
