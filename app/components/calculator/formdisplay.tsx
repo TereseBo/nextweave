@@ -1,5 +1,5 @@
-import './formcontainer.scss'
-export function FormContainer({ children,
+import './formdisplay.scss'
+export function FormDisplay({ children,
 }: {
     children: React.ReactNode;
 }) {
