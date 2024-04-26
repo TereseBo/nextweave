@@ -33,7 +33,7 @@ export function ColorPicker({ }) {
     }
 
     return (
-        <div className='form-container'>
+        <div className='colorpick-container'>
             <form id='colorpick-form' >
                 <div>
                     <p>

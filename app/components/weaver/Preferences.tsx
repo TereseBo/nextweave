@@ -1,7 +1,6 @@
 'use client'
 import './preferences.scss'
 
-import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
@@ -25,7 +24,7 @@ export function Preferences() {
     }
 
     return (
-        <div className="form-container" onSubmit={handleSubmit}>
+        <div className="settings-form-container" onSubmit={handleSubmit}>
             <form id="preferences-form">
                 <h3 className="form-header">Loom information</h3>
                 <div>
