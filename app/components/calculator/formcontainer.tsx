@@ -1,3 +1,4 @@
+import './formcontainer.scss'
 export function FormContainer({ children,
 }: {
     children: React.ReactNode;
