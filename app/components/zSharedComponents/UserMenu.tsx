@@ -16,7 +16,7 @@ export function UserMenu() {
 
             {/* {isSignedIn ?  <Link className="icon" href={'/profile'}>Profile</Link>: (pathname !== '/sign-in' ? <Link className="icon" href="/sign-in">Sign in</Link> : null)} */}
             <SignedOut>
-                {pathname !== '/sign-in' ? <SignInButton/>: null}
+                {pathname !== '/sign-in' ? <Link className="icon" href="/sign-in">Sign in</Link> : null}
             </SignedOut>
             <SignedIn>
                 <Link className="icon" href={'/profile'}>Profile</Link>< UserButton afterSignOutUrl='/weaver' />
