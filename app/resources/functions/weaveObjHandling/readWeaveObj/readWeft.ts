@@ -1,11 +1,15 @@
-import { defaultDraftHeight, defaultTreadles, defaultWeftColor } from '@/app/resources/constants/weaveDefaults'
+import { defaultTreadles, defaultWeftColor } from '@/app/resources/constants/weaveDefaults'
+import { lowerGridLimit } from '@/app/resources/constants/weaveDefaults'
 import { createGrid } from '@/app/resources/functions/gridHandling/createGrid'
 
+import { verifyMinValue } from '../../utils'
 
 
 export function readWeft(weft: TreadlingDescription, height: number) {
 
     let width = weft.count || defaultTreadles
+    width= verifyMinValue(width, lowerGridLimit)
+
     let weftGrid: grid = createGrid(width, height)
 
     //If grid has not been filled in, return an empty grid of correct size
