@@ -51,12 +51,6 @@ export async function DELETE(
     try {
         const db = await dbConnection() as Db
         let dbResponse = await db.collection('drafts').deleteOne({ _id, userId })
-        console.log(dbResponse)
-        //
-        //
-
-        console.log('Response in patch toute')
-        console.log(dbResponse)
 
         if (dbResponse.deletedCount !== 1) {
             return new NextResponse('No weave to update found', { status: 204 });
@@ -81,7 +75,7 @@ export async function PATCH(
     const { userId, id } = params
 
     const _id = new ObjectId(id)
-    console.log(_id)
+
     if (!userId) {
         return new NextResponse('Unauthorized', { status: 401 });
     }
@@ -93,8 +87,6 @@ export async function PATCH(
         const { weaveObject, publicStatus } = body.values
        
         let dbResponse = await db.collection('drafts').updateOne({ _id, userId }, { $set: { weave: weaveObject, updated: Date.now(), public: publicStatus } })
-        console.log('Response in patch toute')
-        console.log(dbResponse)
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No weave to update found', { status: 204 });

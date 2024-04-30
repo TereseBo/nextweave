@@ -1,6 +1,5 @@
 import { defaultShafts, defaultWarpColor } from '@/app/resources/constants/weaveDefaults'
-
-import { createGrid } from '../../utils'
+import { createGrid } from '@/app/resources/functions/gridHandling/createGrid'
 
 
 export function readWarp(warp: ShaftDescription, width: number) {
@@ -30,7 +29,7 @@ export function readWarp(warp: ShaftDescription, width: number) {
     let lastIndex = warpGrid[0].length - 1
 
     for (let i = lastIndex; i >= 0; i--) {
-        console.log()
+
         let column: color[] = []
         warpGrid.forEach(row => {
             column.push(row[lastIndex])

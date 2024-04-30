@@ -1,7 +1,7 @@
 @use '@/app/resources/style/mixins.scss' as m;
 @use '@/app/resources/style/variables.scss' as v;
 
-.form-container {
+.settings-form-container {
     display: flex;
     flex-direction: row;
     gap: 1rem;

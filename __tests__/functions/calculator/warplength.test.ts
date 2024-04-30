@@ -1,27 +1,7 @@
-import { calculateNewWarpLength } from '@/app/components/calculator/functions/warplength'
+import { testItems, testWarpLengthData } from '@/__tests__/test_data/warpTestData'
+import { calculateNewWarpLength } from '@/app/resources/functions/calculator/warplength'
 
 describe('Basic calculations on warp width return expected result', () => {
-    const testItems = [
-        {
-            length: 100,
-            firsthem: 10,
-            secondhem: 10,
-        },
-        {
-            length: 100,
-            firsthem: 10,
-            secondhem: 10,
-        }
-    ]
-
-    const testWarp: WarpLengthData = {
-        waste: 50,
-        lash_on: 50,
-        take_up: 10,
-        shrinkage: 10,
-        items: testItems,
-        total: 391
-    }
 
     it('Total from total', () => {
         const expectedItem = {
@@ -29,18 +9,18 @@ describe('Basic calculations on warp width return expected result', () => {
             firsthem: 24,
             secondhem: 24,
         }
-        const warp = calculateNewWarpLength('total', 700, testWarp)
+        const warp = calculateNewWarpLength('total', 700, testWarpLengthData)
 
         //Values expected to change
         expect(warp.total).toBe(700)
-        expect(warp.items.length).toBe(testWarp.items.length)
+        expect(warp.items.length).toBe(testWarpLengthData.items.length)
         expect(warp.items[0]).toStrictEqual(expectedItem)
 
         //Values expectet to remain the same
-        expect(warp.waste).toBe(testWarp.waste)
-        expect(warp.lash_on).toBe(testWarp.lash_on)
-        expect(warp.take_up).toBe(testWarp.take_up)
-        expect(warp.shrinkage).toBe(testWarp.shrinkage)
+        expect(warp.waste).toBe(testWarpLengthData.waste)
+        expect(warp.lash_on).toBe(testWarpLengthData.lash_on)
+        expect(warp.take_up).toBe(testWarpLengthData.take_up)
+        expect(warp.shrinkage).toBe(testWarpLengthData.shrinkage)
     })
 
     it('Total from items', () => {
@@ -49,7 +29,7 @@ describe('Basic calculations on warp width return expected result', () => {
             firsthem: 10,
             secondhem: 10,
         }
-        const warp = calculateNewWarpLength('items', 4, testWarp)
+        const warp = calculateNewWarpLength('items', 4, testWarpLengthData)
 
         //Values expected to change
         expect(warp.total).toBe(439)
@@ -57,10 +37,10 @@ describe('Basic calculations on warp width return expected result', () => {
         expect(warp.items[0]).toStrictEqual(expectedItem)
 
         //Values expectet to remain the same
-        expect(warp.waste).toBe(testWarp.waste)
-        expect(warp.lash_on).toBe(testWarp.lash_on)
-        expect(warp.take_up).toBe(testWarp.take_up)
-        expect(warp.shrinkage).toBe(testWarp.shrinkage)
+        expect(warp.waste).toBe(testWarpLengthData.waste)
+        expect(warp.lash_on).toBe(testWarpLengthData.lash_on)
+        expect(warp.take_up).toBe(testWarpLengthData.take_up)
+        expect(warp.shrinkage).toBe(testWarpLengthData.shrinkage)
     })
 
     it('Total from changed item', () => {
@@ -69,7 +49,7 @@ describe('Basic calculations on warp width return expected result', () => {
             firsthem: testItems[1].firsthem,
             secondhem: testItems[1].secondhem,
         }
-        const warp = calculateNewWarpLength('piece:1:length', 50, testWarp)
+        const warp = calculateNewWarpLength('piece:1:length', 50, testWarpLengthData)
 
         //Values expected to change
         expect(warp.total).toBe(330)
@@ -77,9 +57,9 @@ describe('Basic calculations on warp width return expected result', () => {
         expect(warp.items[1]).toStrictEqual(expectedItem)
 
         //Values expectet to remain the same
-        expect(warp.waste).toBe(testWarp.waste)
-        expect(warp.lash_on).toBe(testWarp.lash_on)
-        expect(warp.take_up).toBe(testWarp.take_up)
-        expect(warp.shrinkage).toBe(testWarp.shrinkage)
+        expect(warp.waste).toBe(testWarpLengthData.waste)
+        expect(warp.lash_on).toBe(testWarpLengthData.lash_on)
+        expect(warp.take_up).toBe(testWarpLengthData.take_up)
+        expect(warp.shrinkage).toBe(testWarpLengthData.shrinkage)
     })
 })

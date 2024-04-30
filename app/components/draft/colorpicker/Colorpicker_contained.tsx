@@ -72,7 +72,7 @@ export function ColorPicker_contained(props: { warpGrid: grid, updateWarpGrid:(v
     }
 
     return (
-        <div className='form-container'>
+        <div className='contained-collorpick-container'>
             <form className='colorpick-form' >
                 <div>
                     <p>

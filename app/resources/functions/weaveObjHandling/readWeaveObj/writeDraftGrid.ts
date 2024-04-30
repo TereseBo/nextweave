@@ -2,7 +2,7 @@
 //This file exports the function to create a weaveGrid from a gridSet. It also contains the required helperfunctions.
 //Returns the color if present for the beat
 
-import { createGrid } from '../../utils'
+import { createGrid } from '@/app/resources/functions/gridHandling/createGrid'
 
 //Returns the color of a specified beat
 function getWeftColor(y: number, treadleGrid: grid) {
@@ -72,8 +72,6 @@ export function createWeave(grids: GridSet, draftHeight: number, draftWidth: num
                 warpColor != undefined ? grid[y][x] = warpColor : grid[y][x] = ''
 
             } else {
-                //console.log('there was a weft')
-                // console.log('weftcolor ' + weftColor + ', for row ' + y)
                 if (warpColor) {
 
                     let treadleNr = treadleGrid ? treadleGrid[y].indexOf(weftColor) : undefined

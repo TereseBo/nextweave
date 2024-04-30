@@ -4,8 +4,8 @@ import './warpwidthform.scss'
 
 import { useState } from 'react'
 
-import { reedMatch } from '@/app/components/calculator/functions/reed'
-import { calculateWarpWidth } from '@/app/components/calculator/functions/warpwidth'
+import { reedMatch } from '@/app/resources/functions/calculator/reed'
+import { calculateWarpWidth } from '@/app/resources/functions/calculator/warpwidth'
 
 import { Formsection } from './Formsection'
 

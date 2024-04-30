@@ -35,8 +35,6 @@ export async function GET(
 
             })
         }
-
-        console.log(reedList)
         return NextResponse.json({ reedList }, { status: 200 });
 
     } catch (error) {

@@ -61,6 +61,7 @@ export async function POST(
         const { weaveObject, name } = body.values
         let newDocument: DraftDocument = { userId, name, weave: weaveObject, created: Date.now(), updated: Date.now(), public: false }
         let dbResponse = await db.collection('drafts').insertOne(newDocument)
+        
         console.log(dbResponse)
 
         return NextResponse.json('Successfully posted WEAVE at route api/weaves/', { status: 201 });

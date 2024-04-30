@@ -5,6 +5,7 @@ const defaultDraftWidth=30
 const defaultColor='#000000'
 const defaultWeftColor='#0313fc'
 const defaultWarpColor='#878787'
+const defaultTieUpColor='#000000'
 
 //Loom defaults
 const loomTypes:LoomType[]=['Countermarch', 'Counterbalance', 'Jack loom', 'Rigid heddle','Draw loom']
@@ -30,5 +31,5 @@ const templateReed: Reed = {
     length: 100
 }
 
-export {defaultColor,defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTreadles, defaultWarpColor, defaultWeftColor, loomTypes, reedUnits, templateLoom, templateReed}
+export {defaultColor,defaultDraftHeight, defaultDraftWidth, defaultShafts, defaultTieUpColor, defaultTreadles, defaultWarpColor, defaultWeftColor, loomTypes, reedUnits, templateLoom, templateReed}
 
