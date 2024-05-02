@@ -1,4 +1,3 @@
-import {lowerGridLimit} from '../../constants/weaveDefaults'
 
 //Function returns true if no color is filled in a grid
 export function isEmptyGrid(grid: grid): boolean {

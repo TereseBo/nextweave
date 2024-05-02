@@ -1,5 +1,5 @@
 import { defaultTreadles, defaultWeftColor } from '@/app/resources/constants/weaveDefaults'
-import { lowerGridLimit } from '@/app/resources/constants/weaveDefaults'
+import { lowerAccessoryGridLimit } from '@/app/resources/constants/weaveDefaults'
 import { createGrid } from '@/app/resources/functions/gridHandling/createGrid'
 
 import { verifyMinValue } from '../../utils'
@@ -8,7 +8,7 @@ import { verifyMinValue } from '../../utils'
 export function readWeft(weft: TreadlingDescription, height: number) {
 
     let width = weft.count || defaultTreadles
-    width= verifyMinValue(width, lowerGridLimit)
+    width= verifyMinValue(width, lowerAccessoryGridLimit)
 
     let weftGrid: grid = createGrid(width, height)
 
