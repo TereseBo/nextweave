@@ -1,9 +1,13 @@
 import { defaultShafts, defaultWarpColor } from '@/app/resources/constants/weaveDefaults'
+import { lowerAccessoryGridLimit } from '@/app/resources/constants/weaveDefaults'
 import { createGrid } from '@/app/resources/functions/gridHandling/createGrid'
 
+import { verifyMinValue } from '../../utils'
 
 export function readWarp(warp: ShaftDescription, width: number) {
     let height = warp.count || defaultShafts
+    height= verifyMinValue(height, lowerAccessoryGridLimit)
+    
     let warpGrid: grid = createGrid(width, height)
 
     if (warp.pattern == null || !(warp.pattern.length > 0)) {

@@ -1,7 +1,12 @@
 //This function returns a new grid of the requested size, retaining the content of the old grid if applicable
+import { lowerAccessoryGridLimit } from '../../constants/weaveDefaults'
+import { verifyMinValue } from '../utils'
 import { createGrid } from './createGrid'
 
 export function resizeGrid(oldGrid: grid | undefined, newHeight: number, newWidth: number): grid {
+
+  newWidth=verifyMinValue(newWidth, lowerAccessoryGridLimit)
+  newHeight=verifyMinValue(newHeight, lowerAccessoryGridLimit)
 
   //Return a new empty grid if no grid was supplied
   if (!oldGrid) {

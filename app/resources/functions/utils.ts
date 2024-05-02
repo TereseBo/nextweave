@@ -5,3 +5,12 @@ export function getHighest(sequence: number[]) {
     }
     return number
 }
+
+//Function accepts a value and lower limits, returns the limit value if value is out of bounds
+export function verifyMinValue(value: number, lowerLimit: number): number {
+
+    let checkedValue = value
+    if (value < lowerLimit) checkedValue = lowerLimit
+
+    return checkedValue
+}
