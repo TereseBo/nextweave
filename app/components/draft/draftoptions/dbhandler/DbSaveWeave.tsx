@@ -3,7 +3,9 @@
 import { useAuth } from '@clerk/nextjs'
 
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
+import { isEmptyDraftData } from '@/app/resources/functions/gridHandling/gridUtils'
 import { createWeaveObject } from '@/app/resources/functions/weaveObjHandling/createWeaveObj/createWeaveObject'
+
 
 export function DbSaveWeave(props: { afterSave: (() => void) | null }) {
     const { treadleGrid, tieUpGrid, warpGrid } = useWeaveContext()
@@ -12,7 +14,22 @@ export function DbSaveWeave(props: { afterSave: (() => void) | null }) {
 
     const { userId } = useAuth()
 
+    function validateGrids() {
+
+        if (!treadleGrid || !warpGrid || !tieUpGrid) return false
+
+        if (isEmptyDraftData({ treadleGrid, warpGrid, tieUpGrid })) {
+            alert('Please fill the grid before saving your draft')
+            return false
+        }
+
+        return true
+
+    }
+
     async function saveWeave() {
+
+        if (!validateGrids()) return
 
         const weaveObject = createWeaveObject(warpGrid, treadleGrid, tieUpGrid)
 

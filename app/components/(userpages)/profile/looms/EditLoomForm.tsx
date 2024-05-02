@@ -4,7 +4,7 @@
 import { useState } from 'react'
 
 import { Formsection } from '@/app/components/calculator/Formsection'
-import { loomTypes } from '@/app/resources/constants/weaveDefaults'
+import { loomTypes, lowerAccessoryGridLimit, upperAccessoryGridLimit } from '@/app/resources/constants/weaveDefaults'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
 export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | null }) {
@@ -25,7 +25,7 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
     function validateFormData() {
         let message = ''
 
-        if (editedLoom.shafts < 2 || editedLoom.shafts > 36 || editedLoom.treadles < 2 || editedLoom.treadles > 36) { message = 'Please enter a number of shafts and treadles between 2 and 36.' }
+        if (editedLoom.shafts < lowerAccessoryGridLimit || editedLoom.shafts > upperAccessoryGridLimit || editedLoom.treadles < lowerAccessoryGridLimit || editedLoom.treadles > upperAccessoryGridLimit) { message = `Please enter a number of shafts and treadles between ${lowerAccessoryGridLimit} and ${upperAccessoryGridLimit}.`}
         if (!loomTypes.includes(editedLoom.type)) { message = 'Please enter a valid type of loom' }
         if (editedLoom.brand.length > 25 || editedLoom.brand.length < 2) { message = 'Please enter a valid maker for your loom.' }
 
