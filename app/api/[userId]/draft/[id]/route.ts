@@ -18,7 +18,7 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('drafts').findOne({ _id, userId })
+        let dbResponse = await db.collection('drafts').findOne({ _id, owner:userId })
 
         if (!dbResponse) {
             return new NextResponse(null, { status: 204 });
@@ -50,7 +50,7 @@ export async function DELETE(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('drafts').deleteOne({ _id, userId })
+        let dbResponse = await db.collection('drafts').deleteOne({ _id, owner:userId })
 
         if (dbResponse.deletedCount !== 1) {
             return new NextResponse('No weave to update found', { status: 204 });
@@ -86,7 +86,7 @@ export async function PATCH(
         const body = await req.json();
         const { weaveObject, publicStatus } = body.values
        
-        let dbResponse = await db.collection('drafts').updateOne({ _id, userId }, { $set: { weave: weaveObject, updated: Date.now(), public: publicStatus } })
+        let dbResponse = await db.collection('drafts').updateOne({ _id, owner:userId }, { $set: { weave: weaveObject, updated: Date.now(), public: publicStatus } })
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No weave to update found', { status: 204 });

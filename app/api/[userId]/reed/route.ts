@@ -20,7 +20,7 @@ export async function POST(
         const { reed } = body.values
         const { dents, section, unit, length }: Reed = reed
 
-        let newDocument: ReedDocument = { userId, dents, section, unit, length }
+        let newDocument: ReedDocument = { owner:userId, dents, section, unit, length }
         let dbResponse = await db.collection('reeds').insertOne(newDocument)
 
         return NextResponse.json({ createdId: dbResponse.insertedId.toString() }, { status: 201 });

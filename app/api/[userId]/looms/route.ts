@@ -17,7 +17,7 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('looms').find({ userId: userId }).toArray()
+        let dbResponse = await db.collection('looms').find({ owner: userId }).toArray()
 
         let loomList:LoomList=[]
 

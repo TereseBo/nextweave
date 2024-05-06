@@ -18,7 +18,7 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('reeds').findOne({ _id, userId })
+        let dbResponse = await db.collection('reeds').findOne({ _id, owner:userId })
 
         //Return empty if no content is found in DB
         if (!dbResponse) {
@@ -59,7 +59,7 @@ export async function DELETE(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('reeds').deleteOne({ _id, userId })
+        let dbResponse = await db.collection('reeds').deleteOne({ _id, owner:userId })
 
         if (dbResponse.deletedCount !== 1) {
             return new NextResponse('No reed to delete found', { status: 200 });
@@ -96,7 +96,7 @@ export async function PUT(
         const { reed } = body.values
         const { dents, section, unit, length}:Reed=reed
 
-        let dbResponse = await db.collection('reeds').updateOne({ _id, userId },  { $set:{dents, section, unit, length} } )
+        let dbResponse = await db.collection('reeds').updateOne({ _id, owner:userId },  { $set:{dents, section, unit, length} } )
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No reed to update found', { status: 200 });

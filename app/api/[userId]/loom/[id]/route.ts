@@ -18,7 +18,7 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('looms').findOne({ _id, userId })
+        let dbResponse = await db.collection('looms').findOne({ _id, owner:userId })
 
         //Return empty if no content is found in DB
         if (!dbResponse) {
@@ -60,7 +60,7 @@ export async function DELETE(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('looms').deleteOne({ _id, userId })
+        let dbResponse = await db.collection('looms').deleteOne({ _id, owner:userId })
 
         if (dbResponse.deletedCount !== 1) {
             return new NextResponse('No loom to delete found', { status: 200 });
@@ -97,7 +97,7 @@ export async function PUT(
         const { loom } = body.values
         const { shafts, treadles, brand, type }:Loom=loom
 
-        let dbResponse = await db.collection('looms').updateOne({ _id, userId },  { $set:{shafts, treadles, brand, type} } )
+        let dbResponse = await db.collection('looms').updateOne({ _id, owner:userId },  { $set:{shafts, treadles, brand, type} } )
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No loom to update found', { status: 200 });
