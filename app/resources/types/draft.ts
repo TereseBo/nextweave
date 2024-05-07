@@ -7,6 +7,12 @@ type Draft = {
     public: Boolean
 }
 
+type PublicDraft= {
+    weave: WeaveObject,
+}
+
 type DateString=string
 
 type DraftList=Draft[]
+
+type PublicDraftList =PublicDraft[]
