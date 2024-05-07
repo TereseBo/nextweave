@@ -18,7 +18,7 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('drafts').findOne({ userId: userId })
+        let dbResponse = await db.collection('drafts').findOne({ owner: userId })
 
         if (dbResponse) {
             const draftDocument = dbResponse
@@ -59,7 +59,7 @@ export async function POST(
         const db = await dbConnection() as Db
         const body = await req.json();
         const { weaveObject, name } = body.values
-        let newDocument: DraftDocument = { userId, name, weave: weaveObject, created: Date.now(), updated: Date.now(), public: false }
+        let newDocument: DraftDocument = { owner:userId, name, weave: weaveObject, created: Date.now(), updated: Date.now(), public: false }
         let dbResponse = await db.collection('drafts').insertOne(newDocument)
         
         console.log(dbResponse)
@@ -87,7 +87,7 @@ export async function DELETE(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('drafts').deleteOne({ _id, userId })
+        let dbResponse = await db.collection('drafts').deleteOne({ _id, owner:userId })
 
         if (dbResponse.deletedCount !== 1) {
             return new NextResponse('No draft to delete found', { status: 200 });

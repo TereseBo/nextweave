@@ -16,7 +16,7 @@ export async function GET(
 
     try {
         const db = await dbConnection() as Db
-        let dbResponse = await db.collection('reeds').find({ userId: userId }).toArray()
+        let dbResponse = await db.collection('reeds').find({ owner: userId }).toArray()
 
         let reedList:ReedList=[]
 

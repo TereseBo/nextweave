@@ -3,7 +3,7 @@ import * as mongoDB from 'mongodb'
 
 interface DraftDocument extends mongoDB.Document {
     _id?: ObjectId,
-    userId: string,
+    owner: string,
     weave: WeaveObject,
     created: number,
     updated: number,
@@ -12,7 +12,7 @@ interface DraftDocument extends mongoDB.Document {
 
 interface LoomDocument extends mongoDB.Document {
     _id?: ObjectId,
-    userId: string,
+    owner: string,
     shafts: number,
     treadles: number,
     brand: string,
@@ -23,7 +23,7 @@ interface LoomDocument extends mongoDB.Document {
 
 interface ReedDocument extends mongoDB.Document {
     _id?: ObjectId,
-    userId: string,
+    owner: string,
     dents: number,
     section: number,
     unit: 'cm' | 'in',
