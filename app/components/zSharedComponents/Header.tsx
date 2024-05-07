@@ -20,9 +20,10 @@ export function Header(params: { title: string, text: string }) {
             </div>
 
             <nav className="nav-bar">
-                <Link href="/weaver/calculator">Calculator</Link>
                 <Link href="/weaver">Settings</Link>
-                <Link href="/weaver/draft">Draft</Link>
+                <Link href="/weaver/calculator">Calculator</Link>
+                <Link href="/weaver/draft">Create Draft</Link>
+                <Link href="/weaver/library"> Draft Library</Link>
             </nav>
         </header>
     )
