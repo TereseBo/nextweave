@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 import { dbConnection } from '@/app/resources/db/mongodb'
 
 export async function GET(
-    req: Request|null
+    req: Request
     ) {
 
     try {

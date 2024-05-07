@@ -1,5 +1,7 @@
 import './page.scss'
 
+import { NextRequest } from 'next/server'
+
 import * as library from '@/app/api/public/drafts/route'
 import { FormDisplay } from '@/app/components/calculator/formdisplay'
 import { PublicDraftCard } from '@/app/components/library/publicDraftCard'
@@ -8,8 +10,9 @@ import { Header } from '@/app/components/zSharedComponents/Header'
 export default async function LibraryPage() {
 
     const getPublicDrafts = async () => {
+        const req= new NextRequest('', undefined)
         try {
-            let response = await library.GET(null)
+            let response = await library.GET(req)
 
             if (response.status == 200) {
 
