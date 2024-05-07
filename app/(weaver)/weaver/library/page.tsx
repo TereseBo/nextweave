@@ -1,31 +1,39 @@
+'use client'
 import './page.scss'
 
-import { NextRequest } from 'next/server'
+import { useEffect, useState } from 'react'
 
-import * as library from '@/app/api/public/drafts/route'
-import { FormDisplay } from '@/app/components/calculator/formdisplay'
 import { PublicDraftCard } from '@/app/components/library/publicDraftCard'
 import { Header } from '@/app/components/zSharedComponents/Header'
 
-export default async function LibraryPage() {
+export default function LibraryPage() {
 
-    const getPublicDrafts = async () => {
-        const req= new NextRequest('', undefined)
-        try {
-            let response = await library.GET(req)
+    const [publicDrafts, setPublicDrafts]=useState<PublicDraftList|null>(null)
 
-            if (response.status == 200) {
+//TODO: Add second state and components for filtering/sorting
 
-                const body = await response.json();
-                const { publicDraftList } = body
-                return publicDraftList
+    useEffect(()=>{
+        const getPublicDrafts = async () => {
+       
+            try {
+                let response = await fetch('/api/public/drafts')
+    
+                if (response.status == 200) {
+    
+                    const body = await response.json();
+                    const { publicDraftList } = body
+                    setPublicDrafts(publicDraftList)
+                }
+            } catch (error) {
+            console.log(error)
             }
-        } catch (error) {
-            return []
         }
-    }
 
-    const publicDrafts: PublicDraftList = await getPublicDrafts()
+        getPublicDrafts()
+
+    },[])
+
+
 
     return (
         <div id='library-page'>
