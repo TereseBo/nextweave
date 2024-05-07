@@ -8,7 +8,7 @@ type Draft = {
 }
 
 type PublicDraft= {
-    weave: WeaveObject,
+    weave: WeaveObject
 }
 
 type DateString=string

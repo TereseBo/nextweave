@@ -3,7 +3,7 @@
 //The prop type is used to keep track of the parentgrid of downstream components
 import '@/app/components/draft/draft/grid.scss'
 
-import { ReactElement, useContext } from 'react'
+import { ReactElement } from 'react'
 
 import { Row } from '@/app/components/draft/draft/Row'
 
