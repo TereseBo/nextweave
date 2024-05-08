@@ -22,6 +22,7 @@ const templateLoom: Loom = {
     id: undefined,
     shafts: defaultShafts,
     treadles: defaultTreadles,
+    weavewidth:105,
     brand: loomMakers[0],
     type: loomTypes[0]
 }

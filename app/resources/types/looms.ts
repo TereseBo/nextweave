@@ -3,6 +3,7 @@ type Loom ={
     id: string|undefined,
     shafts: number,
     treadles: number,
+    weavewidth:number,
     brand: string,
     type:LoomType,
 
