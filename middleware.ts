@@ -6,7 +6,7 @@ import { NextRequest } from 'next/server'
 
 const isProtectedRoute = createRouteMatcher([
   '/profile(.*)',
-  '/api(.*)',
+  '/api/[userId](.*)',
 ]);
 
 export default clerkMiddleware((auth: ClerkMiddlewareAuth, request:NextRequest) => {
