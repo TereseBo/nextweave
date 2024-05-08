@@ -29,6 +29,7 @@ export async function GET(
                     id: stringId,
                     shafts: loomDocument.shafts,
                     treadles: loomDocument.treadles,
+                    weavewidth:loomDocument.weavewidth,
                     brand: loomDocument.brand,
                     type: loomDocument.type,
                 }

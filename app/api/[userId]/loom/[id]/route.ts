@@ -31,6 +31,7 @@ export async function GET(
             id: stringId,
             shafts: dbResponse.shafts,
             treadles: dbResponse.treadles,
+            weavewidth:dbResponse.weavewidth,
             brand: dbResponse.brand,
             type: dbResponse.type,
         }
@@ -95,9 +96,9 @@ export async function PUT(
         const db = await dbConnection() as Db
         const body = await req.json();
         const { loom } = body.values
-        const { shafts, treadles, brand, type }:Loom=loom
+        const { shafts, treadles, brand, type, weavewidth }:Loom=loom
 
-        let dbResponse = await db.collection('looms').updateOne({ _id, owner:userId },  { $set:{shafts, treadles, brand, type} } )
+        let dbResponse = await db.collection('looms').updateOne({ _id, owner:userId },  { $set:{shafts, treadles, brand, type, weavewidth} } )
 
         if (dbResponse.modifiedCount !== 1) {
             return new NextResponse('No loom to update found', { status: 200 });
