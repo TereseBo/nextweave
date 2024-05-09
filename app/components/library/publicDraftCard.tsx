@@ -1,6 +1,3 @@
-'use client'
-
-import { useRouter } from 'next/navigation'
 
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
@@ -8,7 +5,7 @@ import { readWeaveObject } from '@/app/resources/functions/weaveObjHandling/read
 import { createWeave } from '@/app/resources/functions/weaveObjHandling/readWeaveObj/writeDraftGrid'
 
 import { PreviewGrid } from '../zSharedComponents/PreviewGrid'
-
+import { ReplaceDraftButton } from './replaceDraftButton'
 
 export function PublicDraftCard(params: { draft: { weave: WeaveObject } }) {
 
@@ -17,17 +14,6 @@ export function PublicDraftCard(params: { draft: { weave: WeaveObject } }) {
     const weaveGrid=createWeave(gridSet, 50,30)
     const { upSetGrids } = useWeaveContext()
 
-    const router = useRouter()
-
-    function useDraft() {
-        if (weave) {
-            upSetGrids(weave)
-            router.push('/weaver/draft')
-        } else {
-            alert('Ops, something went wrong, please try another one')
-        }
-    }
-
     return (
         <div id='draft-card-container'>
             <DisplayCard >
@@ -35,7 +21,7 @@ export function PublicDraftCard(params: { draft: { weave: WeaveObject } }) {
                     <div className='vertical draft-card' >
                         
                         <div className='draft-info-container'>
-                                <button type='button' onClick={useDraft}>Use</button>
+                            <ReplaceDraftButton weave={weave}/>
                         </div>
                         <PreviewGrid content={weaveGrid} type='publicDraft' />
 
