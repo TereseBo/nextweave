@@ -13,6 +13,8 @@ import { SecondaryMenu } from '@/app/components/zSharedComponents/SecondaryMeny'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
 import { toggleBool } from '@/app/resources/functions/toggleBool'
 
+import { Formsection } from '../../calculator/Formsection'
+
 
 export function ProjectOptions() {
     //State controls if yarnlist and warpeidth form are to be seen in the draftpage
@@ -47,22 +49,37 @@ export function ProjectOptions() {
         setDisplayWarp(toggleBool(displayWarp))
         window.scrollTo(0, document.body.scrollHeight)
     }
+
+    function printPage() {
+        window.print()
+    }
     return (
         <div>
             <SecondaryMenu>
-                {displayYarn ? <button onClick={yarnClickhandler}>Hide yarn list</button> : <button onClick={yarnClickhandler}>Add yarn list</button>}
-                {displayWarp ? <button onClick={warpClickhandler}>Hide warp info</button> : <button onClick={warpClickhandler}>Add warp info</button>}
-            
-                {/* Save options */}
-                {isSignedIn ? <DbOptions /> : <FileOptions />}
-
+                <div className='multirow-nav'>
+                    {/* Save options */}
+                    <div className='menu-row'>
+                        {isSignedIn ? <DbOptions /> : <FileOptions />}
+                    </div>
+                    <form className='menu-row'>
+                        <h3>Insert:</h3>
+                        <Formsection>
+                        <label>yarn list</label><input type='checkbox' checked={displayYarn} onChange={yarnClickhandler} />
+                        </Formsection>
+                        <Formsection>
+                        <label>warp info</label><input type='checkbox' checked={displayWarp} onChange={warpClickhandler} />
+                        </Formsection>
+                       
+                    </form>
+                </div>
             </SecondaryMenu>
             <div className='optional-content'>
                 {displayYarn ? <Yarnlist content={warpColors} heading={'Warp'} /> : null}
                 {displayYarn ? <Yarnlist content={weftColors} heading={'Weft'} /> : null}
                 {displayWarp ? <Warpwidthform /> : null}
             </div>
-            <div ref={bottomRef} />
+            <button onClick={printPage}>Print</button>
+            <div className='draftpage-bottomref' ref={bottomRef} />
         </div>
     )
 }
