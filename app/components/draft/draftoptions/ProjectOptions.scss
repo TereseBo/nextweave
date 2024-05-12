@@ -1,7 +1,23 @@
+@use '@/app/resources/style/mixins.scss' as m;
+@use '@/app/resources/style/variables.scss' as v;
+
+.multirow-nav{
+    @include m.flexColumn;
+    margin-top: 0px;
+}
+.menu-row{
+    @include m.flexRow;
+
+}
+
 .optional-content{
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
+}
+
+.draftpage-bottomref{
+    margin: 1rem;
 }

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { DisplayCard } from '@/app/components/(userpages)/DisplayCard'
 import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
+import { ReplaceDraftButton } from '@/app/components/library/replaceDraftButton'
 
 import { EditDraftForm } from './EditDraftForm'
 //TODO:Add typing
@@ -43,7 +44,7 @@ export function DraftCard(params: { draft: Draft }) {
                             <p>  Shafts:<span>{draft.weave.shafts?.count || '-'}</span></p>
                             <p className='date'>  {draft.updateDate}</p>
                             <div className='action-container'>
-                                {open ? <><button type='button' onClick={closeForm}>Close</button></> : <button type='button' onClick={openForm}>Edit</button>}
+                                {open ? <><button type='button' onClick={closeForm}>Close</button></> : <><ReplaceDraftButton weave={draft.weave}/><button type='button' onClick={openForm}>Edit</button></>}
                             </div>
                         </div>
                     </div>

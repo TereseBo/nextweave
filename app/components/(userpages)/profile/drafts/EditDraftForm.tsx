@@ -5,6 +5,7 @@ import './editdraftform.scss'
 import { useState } from 'react'
 
 import { StateDraft } from '@/app/components/draft/draft/StateDraft'
+import { ReplaceDraftButton } from '@/app/components/library/replaceDraftButton'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
 export function EditDraftForm(params: { resource: Draft, open: boolean, closeForm: () => void }) {
@@ -70,7 +71,7 @@ export function EditDraftForm(params: { resource: Draft, open: boolean, closeFor
                 <StateDraft weaveObj={{ ...params.resource.weave }} updateObj={updateObj} />
             </div >
             <div className='action-container'>
-                <><button type='button' onClick={(e) => { editDraft(e) }}>Save</button> <button className='icon-button' id={`draft-${draftId}`} onClick={(e) => { deleteDraft(e) }}>Delete</button></>
+                <><button type='button' onClick={(e) => { editDraft(e) }}>Save</button> <button className='icon-button' id={`draft-${draftId}`} onClick={(e) => { deleteDraft(e) }}>Delete</button><ReplaceDraftButton weave={resource.weave}/></>
             </div>
         </div>
     )

@@ -28,6 +28,7 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
         if (editedLoom.shafts < lowerAccessoryGridLimit || editedLoom.shafts > upperAccessoryGridLimit || editedLoom.treadles < lowerAccessoryGridLimit || editedLoom.treadles > upperAccessoryGridLimit) { message = `Please enter a number of shafts and treadles between ${lowerAccessoryGridLimit} and ${upperAccessoryGridLimit}.`}
         if (!loomTypes.includes(editedLoom.type)) { message = 'Please enter a valid type of loom' }
         if (editedLoom.brand.length > 25 || editedLoom.brand.length < 2) { message = 'Please enter a valid maker for your loom.' }
+        if (editedLoom.weavewidth < 1 || editedLoom.weavewidth > 400) { message = 'Please enter a valid weave width for your loom.' }
 
         if (message === '') {
             return true
@@ -129,15 +130,19 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
             <form className={isEditing ? 'loom-form' : 'view-only-form'} >
                 <Formsection>
                     <label>Shafts:</label>
-                    <input name="shafts" id="shafts" type='number' min='1' max='36' value={editedLoom.shafts.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>{ }</input>
+                    <input name="shafts" id="shafts" type='number' min='1' max='36' value={editedLoom.shafts.toString()||''} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>{ }</input>
                 </Formsection>
                 <Formsection>
                     <label>Treadles:</label>
-                    <input name="treadles" id="treadles" type='number' min={1} max={36} value={editedLoom.treadles.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}></input>
+                    <input name="treadles" id="treadles" type='number' min={1} max={36} value={editedLoom.treadles.toString()||''} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}></input>
+                </Formsection>
+                <Formsection>
+                    <label>Weave width:</label>
+                    <input name="weavewidth" id="weavewidth" type='number' min={1} max={400} value={editedLoom.weavewidth.toString()||''} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}></input>
                 </Formsection>
                 <Formsection>
                     <label>Type:</label>
-                    <select name="type" id="type" value={editedLoom.type.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>
+                    <select name="type" id="type" value={editedLoom.type.toString()||''} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}>
                         <option value={''}></option>
                         {loomTypes.map(type => {
                             return (<option key={type} value={type}>{type}</option>)
@@ -146,7 +151,7 @@ export function EditLoomForm(params: { loom: Loom, closeForm: (() => void) | nul
                 </Formsection>
                 <Formsection>
                     <label>Make:</label>
-                    <input name="brand" id="brand" type='text' maxLength={25} size={15} value={editedLoom.brand.toString()} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}></input>
+                    <input name="brand" id="brand" type='text' maxLength={25} size={15} value={editedLoom.brand.toString()||''} onChange={(e) => { onChangeHandler(e) }} disabled={!isEditing}></input>
                 </Formsection>
             </form>
             <div className='action-container'>

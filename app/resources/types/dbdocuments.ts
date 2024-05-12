@@ -15,6 +15,7 @@ interface LoomDocument extends mongoDB.Document {
     owner: string,
     shafts: number,
     treadles: number,
+    weavewidth:number,
     brand: string,
     type:LoomType,
 

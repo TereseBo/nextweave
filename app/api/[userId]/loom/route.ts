@@ -18,9 +18,9 @@ export async function POST(
         const db = await dbConnection() as Db
         const body = await req.json();
         const { loom } = body.values
-        const { shafts, treadles, brand, type }:Loom=loom
+        const { shafts, treadles, brand, type, weavewidth }:Loom=loom
 
-        let newDocument:LoomDocument  = { owner:userId, shafts, treadles, brand, type}
+        let newDocument:LoomDocument  = { owner:userId, shafts, treadles, brand, type, weavewidth}
         let dbResponse = await db.collection('looms').insertOne(newDocument)
         
         return NextResponse.json({createdId:dbResponse.insertedId.toString()}, { status: 201 });
