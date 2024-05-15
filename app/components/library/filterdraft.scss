@@ -1,0 +1,33 @@
+@use '@/app/resources/style/mixins.scss' as m;
+@use '@/app/resources/style/variables.scss' as v;
+
+.filter-container {
+
+    h3 {
+        min-width: 100px;
+        text-align: end;
+        white-space: nowrap
+    }
+
+    .form-row {
+        @include m.flexRow;
+
+        .radio-box {
+            display: flex;
+            font-size: 1rem;
+            align-items: center;
+            align-content: center;
+            justify-items: center;
+            justify-content: center;
+
+
+            .arrow {
+                font-size: 1.5rem;
+                font-weight: 900;
+                padding-bottom: 0.5rem;
+            }
+
+        }
+    }
+
+}

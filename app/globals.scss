@@ -63,10 +63,11 @@ body {
         -moz-appearance: textfield;
         appearance: textfield;
       }
-      &.notMatching{
+
+      &.notMatching {
         background-color: rgb(241, 165, 165);
         border-radius: 3px;
-    }
+      }
     }
 
     .form-header {
@@ -75,14 +76,18 @@ body {
       margin: 0 0 1rem 0;
 
     }
+
+    input[type='radio'] {
+      accent-color: v.$accent-color1;
+    }
   }
 
   .hidden {
     display: none;
-}
+  }
 }
 
-footer{
+footer {
   margin-bottom: 1rem;
 }
 

@@ -1,9 +1,18 @@
-.library-content {
-    margin: 2rem;
+@use '@/app/resources/style/mixins.scss' as m;
 
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2rem;
+
+.library-container {
+
+    @include m.flexColumn;
+
+
+    .library-content {
+
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 2rem;
+    }
 }
