@@ -5,8 +5,8 @@ import { createGrid } from './createGrid'
 
 export function resizeGrid(oldGrid: grid | undefined, newHeight: number, newWidth: number): grid {
 
-  newWidth=verifyMinValue(newWidth, lowerAccessoryGridLimit)
-  newHeight=verifyMinValue(newHeight, lowerAccessoryGridLimit)
+  newWidth = verifyMinValue(newWidth, lowerAccessoryGridLimit)
+  newHeight = verifyMinValue(newHeight, lowerAccessoryGridLimit)
 
   //Return a new empty grid if no grid was supplied
   if (!oldGrid) {
@@ -14,23 +14,24 @@ export function resizeGrid(oldGrid: grid | undefined, newHeight: number, newWidt
     return newGrid
   }
 
-  let gridCopy: grid = JSON.parse(JSON.stringify(oldGrid)) 
+  let gridCopy: grid = JSON.parse(JSON.stringify(oldGrid))
 
   //If grid does not need resizing, return copy of original grid
-  if(oldGrid.length===newHeight && oldGrid[0].length===newWidth){
+  if (oldGrid.length === newHeight && oldGrid[0].length === newWidth) {
     return gridCopy
   }
 
   let emptySubArray: string[] = new Array(newWidth).fill('', 0)
 
-
   //If grid is to shrink, remove exess elements else add elements with expected contents until requested length (both in x and y direction)
-  gridCopy.length > newHeight ? gridCopy.splice(newHeight) : gridCopy = gridCopy.concat(new Array(newHeight - gridCopy.length).fill(JSON.parse(JSON.stringify(emptySubArray))))
+  //Content is preserved accordingto convention of reading direction of the warp (aka, end of array)
+  gridCopy.length > newHeight ? gridCopy.reverse().splice(newHeight) : gridCopy = gridCopy.concat(new Array(newHeight - gridCopy.length).fill(JSON.parse(JSON.stringify(emptySubArray))))
 
   if (gridCopy[0].length > newWidth) {
-    gridCopy.forEach(row => {
-      row.splice(newWidth)
-    });
+
+    gridCopy.forEach((row, index) => {
+      gridCopy[index] = row.slice(-newWidth-1, -1)
+    })
   } else if (gridCopy[0].length < newWidth) {
 
     gridCopy.forEach((row, index) => {
@@ -38,6 +39,6 @@ export function resizeGrid(oldGrid: grid | undefined, newHeight: number, newWidt
       gridCopy[index] = row.concat(JSON.parse(JSON.stringify(addition)))
     });
   }
-
-  return gridCopy
+  //Grid direction is restored before return
+  return gridCopy.reverse()
 }
