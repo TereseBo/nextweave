@@ -1,8 +1,9 @@
 //This component renders a list of drafts from the DB, including a generated preview.
 import './draftselection.scss' //The styling is heavy on this component in order to render as desired
 
-import { DraftPreview } from '@/app/components/draft/draftoptions/dbhandler/DraftPreview'
 import { useWeaveContext } from '@/app/resources/contexts/weavecontext'
+
+import { DraftPreview } from '../../zSharedComponents/DraftPreview'
 
 export function DraftSelection(params: { userDrafts: DraftList, setVisibility: React.Dispatch<React.SetStateAction<boolean>> }) {
 
@@ -39,7 +40,7 @@ export function DraftSelection(params: { userDrafts: DraftList, setVisibility: R
                                 return (
                                     <div key={draft.id} id={draft.id} className='draft-select-option' onClick={loadDraft}>
                                         <div className='bob'>
-                                            <DraftPreview weaveObj={draft?.weave} />
+                                            <DraftPreview weaveObj={draft?.weave} x={10} y={10} />
                                             <div className='draft-info-container'>
                                                 <p> Treadles:<span>{draft.weave.treadling?.count || '-'}</span></p>
                                                 <p>  Shafts:<span>{draft.weave.shafts?.count || '-'}</span></p>
