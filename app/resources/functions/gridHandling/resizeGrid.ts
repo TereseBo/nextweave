@@ -30,9 +30,8 @@ export function resizeGrid(oldGrid: grid | undefined, newHeight: number, newWidt
   if (gridCopy[0].length > newWidth) {
 
     gridCopy.forEach((row, index) => {
-      gridCopy[index] = row.slice(-newWidth, -1)
-      console.log(row)
-    });
+      gridCopy[index] = row.slice(-newWidth-1, -1)
+    })
   } else if (gridCopy[0].length < newWidth) {
 
     gridCopy.forEach((row, index) => {
