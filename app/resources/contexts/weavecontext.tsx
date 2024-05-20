@@ -60,7 +60,7 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
       let colors = row.filter((color) => color != '' && !uniqueColors.includes(color))
       uniqueColors = uniqueColors.concat(colors)
     })
-    setWarpColors(Array.from(new Set(uniqueColors)))
+    setWarpColors(Array.from(new Set(uniqueColors)).sort((a, b) => a.localeCompare(b)))
   }, [warpGrid])
 
   //Keeps the state for weftcolors on updated
@@ -74,7 +74,7 @@ export function WeaveProvider({ children }: { children: React.ReactElement | Rea
       let colors = row.filter((color) => color != '' && !uniqueColors.includes(color))
       uniqueColors = uniqueColors.concat(colors)
     })
-    setWeftColors(Array.from(new Set(uniqueColors)))
+    setWeftColors(Array.from(new Set(uniqueColors)).sort((a, b) => a.localeCompare(b)))
   }, [treadleGrid])
 
   //Returns a deepcopy of a grid by name
