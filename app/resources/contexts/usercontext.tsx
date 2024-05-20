@@ -45,7 +45,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
     }
 
     //Accepts a draftId and and updated weave to replace the weave in the draftlist
-    function updateDraft(_id: string, weave: WeaveObject): void {
+    function updateDraft(_id: string, weave: WeaveObject,  publicStatus: boolean): void {
 
         if (!drafts) {
             return
@@ -63,6 +63,7 @@ export function UserProvider({ children }: { children: React.ReactElement | Reac
                 let updatedDraft: Draft = JSON.parse(JSON.stringify(draft))
                 let copiedUpdate: WeaveObject = JSON.parse(JSON.stringify(weave))
                 updatedDraft = Object.assign(updatedDraft, copiedUpdate)
+                updatedDraft.public=publicStatus
                 return updatedDraft
             } else {
                 return draft

@@ -8,14 +8,15 @@ import { StateDraft } from '@/app/components/draft/draft/StateDraft'
 import { ReplaceDraftButton } from '@/app/components/library/replaceDraftButton'
 import { useUserContext } from '@/app/resources/contexts/usercontext'
 
-export function EditDraftForm(params: { resource: Draft, open: boolean, closeForm: () => void }) {
+export function EditDraftForm(params: { resource: Draft, open: boolean, closeForm: () => void, publicStatus:boolean }) {
 
-    const { open, resource, closeForm } = params
+    const { open, resource, closeForm, publicStatus } = params
     const draftId = resource.id
     const { user, updateDraft, removeDraft } = useUserContext()
     //TODO:Move colorpixker style to relevant place
 
     const [updatedWeaveObj, setUpdatedWeaveObj] = useState<WeaveObject>(JSON.parse(JSON.stringify({ ...resource.weave })))
+    const [updatedPublicStatus, setUpdatedPublicStatus]=useState<boolean>(publicStatus)
     const updateObj = (neObj: WeaveObject) => { setUpdatedWeaveObj(neObj) }
 
     //Submitts edition to DB and updates draftList in context
@@ -25,7 +26,7 @@ export function EditDraftForm(params: { resource: Draft, open: boolean, closeFor
         }
 
         //TODO: Add components to toggle public status
-        const body = { values: { weaveObject: updatedWeaveObj, public: false } }
+        const body = { values: { weaveObject: updatedWeaveObj,  publicStatus: updatedPublicStatus  } }
         fetch(`/api/${user}/draft/${draftId}`, {
             method: 'PATCH',
             headers: {
@@ -36,7 +37,7 @@ export function EditDraftForm(params: { resource: Draft, open: boolean, closeFor
 
             if (response.status == 200) {
                 //TODO:Update draft in usderContext to match
-                updateDraft(draftId, { weave: updatedWeaveObj, public: false })
+                updateDraft(draftId, { weave: updatedWeaveObj, publicStatus: updatedPublicStatus })
                 alert('Draft updated!')
                 closeForm()
             } else {
@@ -64,6 +65,12 @@ export function EditDraftForm(params: { resource: Draft, open: boolean, closeFor
                 }
             })
     }
+
+    function editStatus(e: React.ChangeEvent<HTMLInputElement> ){
+        
+        setUpdatedPublicStatus(e.target.checked)
+
+    }
     //TODO:Fix broken styling of buttons
     return (
         <div className={open ? 'edit-draft-container' : 'hidden'}>
@@ -73,6 +80,7 @@ export function EditDraftForm(params: { resource: Draft, open: boolean, closeFor
             <div className='action-container'>
                 <><button type='button' onClick={(e) => { editDraft(e) }}>Save</button> <button className='icon-button' id={`draft-${draftId}`} onClick={(e) => { deleteDraft(e) }}>Delete</button><ReplaceDraftButton weave={resource.weave}/></>
             </div>
+            {open ? <div>  Public:<span>{<label className="switch" ><input type="checkbox" checked={updatedPublicStatus} onChange={(e) => { editStatus(e) }}/><span className="slider"></span></label>}</span></div> : null}
         </div>
     )
 

@@ -4,7 +4,7 @@ type Draft = {
     weave: WeaveObject,
     creationDate: DateString,
     updateDate: DateString,
-    public: Boolean
+    public: boolean
 }
 
 type PublicDraft= {
