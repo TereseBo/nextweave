@@ -1,0 +1,39 @@
+@use '@/app/resources/style/variables.scss' as v;
+@use '@/app/resources/style/mixins.scss' as m;
+
+#draft-options{
+    display: flex;
+    flex-direction: column;
+}
+    .transparent-form {
+        background-color: inherit !important;
+        border: none;
+        //padding: 0.5rem;
+        margin: 0.5rem;
+//  @include m.small-button;
+//background-color: v.$base-color;
+
+        input {
+          
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+
+            width: 1rem;
+            height: 1rem;
+            background-color: transparent;
+            border: v.$thin-border;
+            padding: 2px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor:pointer;   
+          }
+
+          input:checked {
+            background: v.$accent-color1 content-box;
+            border-color: v.$accent-color1;
+
+          }
+
+    }

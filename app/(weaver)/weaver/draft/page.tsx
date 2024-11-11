@@ -4,6 +4,7 @@ import './draftpage.scss'
 
 import { ColorPicker } from '@/app/components/draft/colorpicker/Colorpicker'
 import { Draft } from '@/app/components/draft/draft/Draft'
+import { DraftOptions } from '@/app/components/draft/draftoptions/DraftOptions'
 import { ProjectOptions } from '@/app/components/draft/draftoptions/ProjectOptions'
 import { Header } from '@/app/components/zSharedComponents/Header'
 
@@ -12,6 +13,7 @@ export default function DraftPage() {
     return (
         <div id='draft-page'>
             <Header title="Welcome to the draft creator!" text="Choose a color and click to fill in warp and treadling"></Header>
+            <DraftOptions/>
                 <ColorPicker />
                 <Draft />
                 <ProjectOptions/>
