@@ -2,7 +2,7 @@
 import './ProjectOptions.scss'
 
 import { useState } from 'react'
-import { useContext, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useAuth, } from '@clerk/nextjs'
 
 import { Warpwidthform } from '@/app/components/calculator/Warpwidthform'
